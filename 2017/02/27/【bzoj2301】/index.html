@@ -3,48 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>同校神犇 | chty</title>
+  <title>【bzoj2301】Problem b | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？坐看红树不知远，膜拜神犇柳志轩|chad 
-
-（钦定HA省队长）
-
-葡萄美酒夜光杯，膜拜神犇焦景辉|Cydiater 
-
-（刷题狂魔）
-
-洛阳亲友如想稳，膜拜神犇柴东辰|CDCQ 
-
-（高智商人才）">
-<meta property="og:type" content="website">
-<meta property="og:title" content="同校神犇">
-<meta property="og:url" content="http://yoursite.com/gods/index.html">
+  <meta name="description" content="本文为博主原创，未经许可不得转载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【bzoj2301】Problem b">
+<meta property="og:url" content="http://yoursite.com/2017/02/27/【bzoj2301】/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？坐看红树不知远，膜拜神犇柳志轩|chad 
-
-（钦定HA省队长）
-
-葡萄美酒夜光杯，膜拜神犇焦景辉|Cydiater 
-
-（刷题狂魔）
-
-洛阳亲友如想稳，膜拜神犇柴东辰|CDCQ 
-
-（高智商人才）">
-<meta property="og:updated_time" content="2017-02-26T14:21:58.068Z">
+<meta property="og:description" content="本文为博主原创，未经许可不得转载">
+<meta property="og:updated_time" content="2017-02-27T01:39:31.928Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="同校神犇">
-<meta name="twitter:description" content="灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？坐看红树不知远，膜拜神犇柳志轩|chad 
-
-（钦定HA省队长）
-
-葡萄美酒夜光杯，膜拜神犇焦景辉|Cydiater 
-
-（刷题狂魔）
-
-洛阳亲友如想稳，膜拜神犇柴东辰|CDCQ 
-
-（高智商人才）">
+<meta name="twitter:title" content="【bzoj2301】Problem b">
+<meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -70,7 +40,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -244,11 +214,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【bzoj2301】" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/gods/index.html" class="article-date">
-      <time datetime="2017-02-26T14:03:14.000Z" itemprop="datePublished">2017-02-26</time>
+      <a href="/2017/02/27/【bzoj2301】/" class="article-date">
+      <time datetime="2017-02-27T01:17:30.000Z" itemprop="datePublished">2017-02-27</time>
 </a>
     </div>
   
@@ -261,7 +231,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      同校神犇
+      【bzoj2301】Problem b
     </h1>
   
 
@@ -271,6 +241,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容斥原理/">容斥原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -278,65 +252,93 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
-
-
-          
-        <hr>
-<h2 id="灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？"><a href="#灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？" class="headerlink" title="灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？"></a>灵台上燃起了星星微火，深深地低头膜拜，问：世间可有蒟蒻归途？</h2><p>坐看红树不知远，膜拜神犇柳志轩|chad </p>
-<ul>
-<li>（钦定HA省队长）</li>
+        <ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p>葡萄美酒夜光杯，膜拜神犇焦景辉|Cydiater </p>
-<ul>
-<li>（刷题狂魔）</li>
-</ul>
-<p>洛阳亲友如想稳，膜拜神犇柴东辰|CDCQ </p>
-<ul>
-<li>（高智商人才）</li>
-</ul>
-
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2301" target="_blank" rel="external">AC通道</a></p>
+<hr>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先我们利用容斥原理把1个询问拆成4个，即ans(b,d)-ans(b,c-1)-ans(a-1,d)+ans(a-1,c-1)</p>
+<p>其中ans(x,y)表示1&lt;=i&lt;=x/k,1&lt;=j&lt;=y/k且gcd(x,y)=1的(x,y)的有序数对的数量</p>
+<p>那么如何求出ans(x,y)呢？</p>
+<p>我们可以令f(i)为1&lt;=x&lt;=n,1&lt;=y&lt;=m且gcd(x,y)=i的数对(x,y)的个数，F(i)为1&lt;=x&lt;=n,1&lt;=y&lt;=m且i|gcd(x,y)的数对(x,y)的个数</p>
+<p>那么显然$F(i)=\sum_{i|d}^{ } f(d)$</p>
+<p>且 $F(i)=\left [ \frac{n}{i} \right ]\left [ \frac{m}{i} \right ]$</p>
+<p>所以我们使用莫比乌斯反演的倍数形式得到$f(i)=\sum_{i|d}^{ }\mu (\frac{d}{i})F(d)$</p>
+<p>f(1)就是答案</p>
+<p>那么我们枚举1~n即可计算答案，时间复杂度O(n^2)</p>
+<p>还是无法通过此题，考虑进一步优化</p>
+<p>我们发现 $\left [ \frac{n}{d} \right ]\left [ \frac{m}{d} \right ]$ 最多只有 $2(\sqrt{n}+\sqrt{m})$ 个取值</p>
+<p>那么我们可以对每一个取值维护一段区间，对莫比乌斯函数维护一个前缀和sum[i]，然后计算这个区间的值即可</p>
+<p>时间复杂度O( $n\sqrt{n}$ )</p>
+<hr>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;cstdio&gt;</div><div class="line">#include&lt;cstdlib&gt;</div><div class="line">#include&lt;cstring&gt;</div><div class="line">#include&lt;cmath&gt;</div><div class="line">#include&lt;ctime&gt;</div><div class="line">#include&lt;algorithm&gt;</div><div class="line">using namespace std;</div><div class="line">#define FILE "read"</div><div class="line">const int MAXN(1e5),D(50);</div><div class="line">int cnt,k,check[MAXN+D],mu[MAXN+D],prime[MAXN+D],sum[MAXN+D];</div><div class="line">namespace INIT&#123;</div><div class="line">	char buf[1&lt;&lt;15],*fs,*ft;</div><div class="line">	inline char getc()&#123;return (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,1,1&lt;&lt;15,stdin),fs==ft))?0:*fs++;&#125;</div><div class="line">	inline int read()&#123;</div><div class="line">		int x=0,f=1; char ch=getc();</div><div class="line">		while(!isdigit(ch)) &#123;if(ch=='-') f=-1; ch=getc();&#125;</div><div class="line">		while(isdigit(ch)) &#123;x=x*10+ch-'0'; ch=getc();&#125;</div><div class="line">		return x*f;</div><div class="line">	&#125;</div><div class="line">&#125;using namespace INIT;</div><div class="line">void pre()&#123;</div><div class="line">	mu[1]=1;</div><div class="line">	for(int i=2;i&lt;=MAXN;++i)&#123;</div><div class="line">		if(!check[i])  prime[++cnt]=i,mu[i]=-1;</div><div class="line">		for(int j=1;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=MAXN;++j)&#123;</div><div class="line">			check[prime[j]*i]=1;</div><div class="line">			if(i%prime[j]==0)  &#123;mu[i*prime[j]]=0; break;&#125;</div><div class="line">			else mu[i*prime[j]]=-mu[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	for(int i=1;i&lt;=MAXN;++i)  sum[i]=sum[i-1]+mu[i];</div><div class="line">&#125;</div><div class="line">int solve(int n,int m)&#123;</div><div class="line">	n/=k;  m/=k; </div><div class="line">	if(n&gt;m) swap(n,m);</div><div class="line">	int ans(0),last(0);</div><div class="line">	for(int i=1;i&lt;=n;i=last+1)&#123;</div><div class="line">		last=min(n/(n/i),m/(m/i));</div><div class="line">		ans+=(n/i)*(m/i)*(sum[last]-sum[i-1]);</div><div class="line">	&#125;</div><div class="line">	return ans;</div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line">	freopen(FILE".in","r",stdin);</div><div class="line">	freopen(FILE".out","w",stdout);</div><div class="line">	int n=read();  pre();</div><div class="line">	while(n--)&#123;</div><div class="line">		int a=read(),b=read(),c=read(),d=read(); k=read();</div><div class="line">		printf("%d\n",solve(b,d)-solve(b,c-1)-solve(a-1,d)+solve(a-1,c-1));</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/27/【bzoj2301】/">【bzoj2301】Problem b</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
+        <p><span>发布时间:</span>2017年02月27日 - 09时17分</p>
+        <p><span>最后更新:</span>2017年02月27日 - 09时39分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/27/【bzoj2301】/" title="【bzoj2301】Problem b">http://yoursite.com/2017/02/27/【bzoj2301】/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/27/【bzoj2301】/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/26/【bzoj2440】完全平方数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj2440】完全平方数</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">2.</span> <span class="toc-text">参考代码</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
 
 
 
@@ -357,7 +359,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="gods/index.html" data-title="同校神犇" data-url="http://yoursite.com/gods/index.html"></div>
+    <div class="ds-thread" data-thread-key="2017/02/27/【bzoj2301】/" data-title="【bzoj2301】Problem b" data-url="http://yoursite.com/2017/02/27/【bzoj2301】/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -377,6 +379,37 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/26/【bzoj2440】完全平方数/" title="下一篇: 【bzoj2440】完全平方数">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/【bzoj2301】/">【bzoj2301】Problem b</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/【bzoj2440】完全平方数/">【bzoj2440】完全平方数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/2034/">【bzoj2034】K大数查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/1901/">【bzoj1901】Dynamic Rankings</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/16/111/">OIer的伤与痛</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
 
 
 
