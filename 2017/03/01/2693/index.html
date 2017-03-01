@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj2154】Crash的数字表格 | chty</title>
+  <title>【bzoj2693】jzptab | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj2154】Crash的数字表格">
-<meta property="og:url" content="http://yoursite.com/2017/03/01/2154/index.html">
+<meta property="og:title" content="【bzoj2693】jzptab">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/2693/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-03-01T13:03:16.728Z">
+<meta property="og:updated_time" content="2017-03-01T14:17:05.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj2154】Crash的数字表格">
+<meta name="twitter:title" content="【bzoj2693】jzptab">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
@@ -238,11 +238,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-2154" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2693" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/01/2154/" class="article-date">
-      <time datetime="2017-03-01T12:08:29.000Z" itemprop="datePublished">2017-03-01</time>
+      <a href="/2017/03/01/2693/" class="article-date">
+      <time datetime="2017-03-01T14:03:27.000Z" itemprop="datePublished">2017-03-01</time>
 </a>
     </div>
   
@@ -255,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj2154】Crash的数字表格
+      【bzoj2693】jzptab
     </h1>
   
 
@@ -279,19 +279,16 @@
         <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2154" target="_blank" rel="external">AC通道</a></p>
-<hr>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>一句话题意：给定n,m,求$\sum_{i=1}^{n}\sum_{j=1}^{m}lcm(i,j)(n,m&lt;=10^7)$</p>
-<p>-<br>-</p>
-<hr>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>$ans=\sum_{i=1}^{n}\sum_{j=1}^{m}lcm(i,j)=\sum_{i=1}^{n}\sum_{j=1}^{m}\frac{i\times j}{gcd(i,j)}$</p>
-<p>令$d=gcd(i,j)$，$F(x,y)=\sum_{1&lt;=i&lt;=x,1&lt;=j&lt;=y,gcd(i,j)=1}^{ }i \times j$</p>
-<p>然后我们枚举$d$，则有$ans=\sum_{d=1}^{min(n,m)}\frac{d^2 \times F(\left [ \frac{n}{d} \right ],\left [ \frac{m}{d} \right ])}{d}=\sum_{d=1}^{min(n,m)}d\times F(\left [ \frac{n}{d} \right ],\left [ \frac{m}{d} \right ])$  </p>
-<p>令$Sum(x,y)=\sum_{i=1}^{x}\sum_{j=1}^{y}i \times j=\frac{x(x-1)}{2}\times\frac{y(y-1)}{2}$</p>
-<p>显然$Sum(x,y)=\sum_{i=1}^{min(x,y)}i^2 \times F(\left [ \frac{x}{i} \right ],\left [ \frac{y}{i} \right ])$</p>
-<p>通过莫比乌斯反演可得$F(x,y)=\sum_{i=1}^{min(x,y)}i^2\times \mu(i)\times Sum(\left [ \frac{x}{i} \right ],\left [ \frac{y}{i} \right ])$</p>
-<p>这两个式子都可以进行$O(\sqrt n)$的计算，所以总的时间复杂度是$O(n)$</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=(<span class="keyword">int</span>)<span class="number">1e7</span>,D(<span class="number">50</span>),mod=<span class="number">20101009</span>;</div><div class="line"><span class="keyword">int</span> n,m,cnt,prime[MAXN+D],check[MAXN+D],mu[MAXN+D];</div><div class="line">ll ans,sum[MAXN+D];</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;=min(n,m);++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=min(n,m);++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;mu[i*prime[j]]=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			mu[i*prime[j]]=-mu[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=min(n,m);++i)  sum[i]=((sum[i<span class="number">-1</span>]+(mu[i]*i*i%mod)+mod)%mod+mod)%mod;</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">cal</span><span class="params">(ll x,ll y)</span></span>&#123;<span class="keyword">return</span> ((x*(x+<span class="number">1</span>)/<span class="number">2</span>%mod)*(y*(y+<span class="number">1</span>)/<span class="number">2</span>%mod))%mod;&#125;</div><div class="line"><span class="function">ll <span class="title">get</span><span class="params">(ll x,ll y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x&gt;y)  swap(x,y);  <span class="function">ll <span class="title">temp</span><span class="params">(<span class="number">0</span>)</span></span>;</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>,last;i&lt;=x;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=min(x/(x/i),y/(y/i));</div><div class="line">		temp+=((sum[last]-sum[i<span class="number">-1</span>])*cal(x/i,y/i))%mod;</div><div class="line">		temp%=mod;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> temp;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();  m=read();  pre();</div><div class="line">	<span class="keyword">if</span>(n&gt;m)  swap(n,m);</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=min(n/(n/i),m/(m/i));</div><div class="line">		ans+=(i+last)*(last-i+<span class="number">1</span>)/<span class="number">2</span>%mod*get(n/i,m/i)%mod;</div><div class="line">		ans%=mod;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(ans+mod)%mod);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2693" target="_blank" rel="external">AC通道</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这题是$bzoj2154$的加强版</p>
+<p>由于多组数据，我们像$bzoj2154$那样的$O(n)$做法已经不行了，考虑进一步优化</p>
+<p>$ans=\sum_{d=1}^{min(n,m)}d\times F(\left [ \frac{n}{d} \right ],\left [ \frac{m}{d} \right ])=\sum_{d=1}^{min(n,m)}d\sum_{i=1}^{min(n,m)}i^2 \times \mu(i)\times Sum(\left [ \frac{n}{di} \right ],\left [ \frac{m}{di} \right ])=\sum_{D=1}^{min(n,m)}Sum(\left [ \frac{n}{d} \right ],\left [ \frac{m}{d} \right ])\sum_{i|d}^{ }\frac{D}{i}\times i^2\times \mu(i)$</p>
+<p>我们发现$\sum_{i|d}^{ }\frac{D}{i}\times i^2\times \mu(i)$可以用前缀和来优化</p>
+<p>注意到积性函数的约数和也是积性函数</p>
+<p>因此后面的那坨东西可以利用线性筛求出来</p>
+<p>线性筛当$i%prime[j]=0$时不满足积性函数的条件，但是由于此时$\mu(prime[j])=0$，故多出来的因数的函数值都是0，增加的只有原先因数的答案乘了个$prime[j]$而已</p>
+<p>然后我们就可以$O(\sqrt n)$回答询问了</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=(<span class="keyword">int</span>)<span class="number">1e7</span>,D=<span class="number">50</span>,mod=(<span class="keyword">int</span>)(<span class="number">20101009</span>);</div><div class="line"><span class="keyword">int</span> cnt,check[MAXN+D],prime[MAXN+D];</div><div class="line">ll sum[MAXN+D];</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	sum[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,sum[i]=(i-(ll)i*i)%mod;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=MAXN;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;sum[i*prime[j]]=(sum[i]*prime[j])%mod; <span class="keyword">break</span>;&#125;</div><div class="line">			sum[i*prime[j]]=(sum[i]*sum[prime[j]])%mod;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)  sum[i]+=sum[i<span class="number">-1</span>]%mod,sum[i]%=mod;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">get</span><span class="params">(ll x,ll y)</span> </span>&#123;<span class="keyword">return</span> ((x*(x+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>)%mod)*((y*(y+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>)%mod)%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(n&gt;m)  swap(n,m);  <span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=min(n/(n/i),m/(m/i));</div><div class="line">		ans+=(sum[last]-sum[i<span class="number">-1</span>])*get(n/i,m/i)%mod;</div><div class="line">		ans%=mod;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,(ans+mod)%mod);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	pre();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> T=read();T;T--)&#123;</div><div class="line">		<span class="keyword">int</span> n=read(),m=read();</div><div class="line">		solve(n,m);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -300,13 +297,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/01/2154/">【bzoj2154】Crash的数字表格</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/01/2693/">【bzoj2693】jzptab</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年03月01日 - 20时08分</p>
-        <p><span>最后更新:</span>2017年03月01日 - 21时03分</p>
+        <p><span>发布时间:</span>2017年03月01日 - 22时03分</p>
+        <p><span>最后更新:</span>2017年03月01日 - 22时17分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/01/2154/" title="【bzoj2154】Crash的数字表格">http://yoursite.com/2017/03/01/2154/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/01/2154/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/01/2693/" title="【bzoj2693】jzptab">http://yoursite.com/2017/03/01/2693/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/01/2693/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -319,18 +316,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/01/2693/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【bzoj2693】jzptab
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/28/0228考试总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">0228考试总结</div>
+    <a href="/2017/03/01/2154/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj2154】Crash的数字表格</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -341,7 +329,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目大意"><span class="toc-number">1.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">2.</span> <span class="toc-text">参考代码</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -389,7 +377,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/01/2154/" data-title="【bzoj2154】Crash的数字表格" data-url="http://yoursite.com/2017/03/01/2154/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/01/2693/" data-title="【bzoj2693】jzptab" data-url="http://yoursite.com/2017/03/01/2693/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -412,13 +400,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/01/2693/" title="上一篇: 【bzoj2693】jzptab">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/28/0228考试总结/" title="下一篇: 0228考试总结">
+            <a href="/2017/03/01/2154/" title="下一篇: 【bzoj2154】Crash的数字表格">
                 <i class="fa fa-angle-right"></i>
             </a>
         
