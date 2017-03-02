@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj2440】完全平方数 | chty</title>
+  <title>1930 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj2440】完全平方数">
-<meta property="og:url" content="http://yoursite.com/2017/02/26/【bzoj2440】完全平方数/index.html">
+<meta property="og:title" content="1930">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/1930/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-02-27T03:12:20.000Z">
+<meta property="og:image" content="http://yoursite.com/1.png">
+<meta property="og:updated_time" content="2017-03-02T09:26:21.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj2440】完全平方数">
+<meta name="twitter:title" content="1930">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
+<meta name="twitter:image" content="http://yoursite.com/1.png">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -238,11 +240,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【bzoj2440】完全平方数" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-1930" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/26/【bzoj2440】完全平方数/" class="article-date">
-      <time datetime="2017-02-26T12:21:12.000Z" itemprop="datePublished">2017-02-26</time>
+      <a href="/2017/03/02/1930/" class="article-date">
+      <time datetime="2017-03-02T09:22:12.000Z" itemprop="datePublished">2017-03-02</time>
 </a>
     </div>
   
@@ -255,7 +257,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj2440】完全平方数
+      1930
     </h1>
   
 
@@ -266,7 +268,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分/">二分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容斥原理/">容斥原理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/费用流/">费用流</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -279,26 +281,9 @@
         <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2440" target="_blank" rel="external">AC通道</a></p>
-<hr>
-<h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>一句话题意：求第k个无平方因子数，无平方因子数，即分解之后所有质因数的次数都为1的数。</p>
-<hr>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先二分答案将问题转化为求[1,x]之间有多少个无平方因子数</p>
-<p>根据容斥原理可知：对于 $\sqrt{x}$ 以内所有的质数有</p>
-<blockquote>
-<p>x以内的无平方因子数</p>
-<p>=0个质数乘积的平方的倍数的数的数量(1的倍数)</p>
-<p>-每个质数的平方的倍数的数的数量(9的倍数,25的倍数,…)</p>
-<p>+每2个质数乘积的平方的倍数的数的数量(36的倍数,100的倍数,…)</p>
-<p>-…</p>
-</blockquote>
-<p>容易发现每个乘积a前面的符号恰好是 $\mu \left ( x \right )$</p>
-<p>x以内i^2的倍数有 $\left [ \frac{x}{i^{2}} \right ]$ 个 </p>
-<p>故有$Q(x)=\sum_{i=1}^{\sqrt{x}}\mu (i)\left [ \frac{x}{i^{2}} \right ]$</p>
-<p>这题和莫比乌斯反演没关系，算是莫比乌斯函数的一个应用吧。。。</p>
-<p>——题解来自POPOQQQ大爷的ppt</p>
-<hr>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=(<span class="keyword">int</span>)<span class="number">1e5</span>,D=<span class="number">50</span>;</div><div class="line"><span class="keyword">const</span> ll INF=(ll)<span class="number">1e10</span>;</div><div class="line"><span class="keyword">int</span> CASE,cnt,prime[MAXN+D],check[MAXN+D],mu[MAXN+D];</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		ll x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;i*prime[j]&lt;=MAXN;++j)&#123;</div><div class="line">			check[i*prime[j]]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;mu[i*prime[j]]=<span class="number">0</span>;<span class="keyword">break</span>;&#125;</div><div class="line">			mu[i*prime[j]]=-mu[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">solve</span><span class="params">(ll x)</span></span>&#123;</div><div class="line">	ll temp=(ll)<span class="built_in">sqrt</span>(x*<span class="number">1.0</span>),sum(<span class="number">0</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=temp;++i)&#123;</div><div class="line">		sum+=mu[i]*(x/((ll)i*i));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	CASE=read();  pre();</div><div class="line">	<span class="keyword">while</span>(CASE--)&#123;</div><div class="line">		ll k=read(),l(<span class="number">0</span>),r(INF),ans(<span class="number">0</span>);</div><div class="line">		<span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">			ll mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(solve(mid)&gt;=k)  &#123;ans=mid;  r=mid<span class="number">-1</span>;&#125;</div><div class="line">			<span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h2><p>先讲一个悲伤的故事</p>
+<p><img src="1.png" alt=""></p>
+
       
     </div>
     
@@ -306,14 +291,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/26/【bzoj2440】完全平方数/">【bzoj2440】完全平方数</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/02/1930/">1930</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年02月26日 - 20时21分</p>
-        <p><span>最后更新:</span>2017年02月27日 - 11时12分</p>
+        <p><span>发布时间:</span>2017年03月02日 - 17时22分</p>
+        <p><span>最后更新:</span>2017年03月02日 - 17时26分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/26/【bzoj2440】完全平方数/" title="【bzoj2440】完全平方数">http://yoursite.com/2017/02/26/【bzoj2440】完全平方数/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/26/【bzoj2440】完全平方数/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/02/1930/" title="1930">http://yoursite.com/2017/03/02/1930/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/02/1930/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -328,18 +313,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/27/【bzoj2301】/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2040/02/27/莫比乌斯反演详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【bzoj2301】Problem b
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解
         
       </div>
     </a>
   
   
-    <a href="/2017/02/25/2034/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【bzoj2034】K大数查询</div>
+    <a href="/2017/03/02/1457/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj1457】棋盘游戏</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -350,7 +335,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目大意"><span class="toc-number">1.</span> <span class="toc-text">题目大意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">2.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">3.</span> <span class="toc-text">参考代码</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#吐槽"><span class="toc-number">1.</span> <span class="toc-text">吐槽</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -399,7 +384,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/26/【bzoj2440】完全平方数/" data-title="【bzoj2440】完全平方数" data-url="http://yoursite.com/2017/02/26/【bzoj2440】完全平方数/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/02/1930/" data-title="1930" data-url="http://yoursite.com/2017/03/02/1930/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -422,13 +407,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/27/【bzoj2301】/" title="上一篇: 【bzoj2301】Problem b">
+            <a href="/2040/02/27/莫比乌斯反演详解/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/25/2034/" title="下一篇: 【bzoj2034】K大数查询">
+            <a href="/2017/03/02/1457/" title="下一篇: 【bzoj1457】棋盘游戏">
                 <i class="fa fa-angle-right"></i>
             </a>
         
