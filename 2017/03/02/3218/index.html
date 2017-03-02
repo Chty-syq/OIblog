@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj1874】取石子游戏 | chty</title>
+  <title>【bzoj3218\uoj#77】a+b Problem | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文为博主原创，未经许可不得转载">
+  <meta name="description" content="用主席树优化网络流真是一颗赛艇">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj1874】取石子游戏">
-<meta property="og:url" content="http://yoursite.com/2017/03/02/1874/index.html">
+<meta property="og:title" content="【bzoj3218\uoj#77】a+b Problem">
+<meta property="og:url" content="http://yoursite.com/2017/03/02/3218/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-03-02T02:01:06.420Z">
+<meta property="og:description" content="用主席树优化网络流真是一颗赛艇">
+<meta property="og:updated_time" content="2017-03-02T14:19:49.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj1874】取石子游戏">
-<meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
+<meta name="twitter:title" content="【bzoj3218\uoj#77】a+b Problem">
+<meta name="twitter:description" content="用主席树优化网络流真是一颗赛艇">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -238,11 +238,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-1874" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-3218" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/02/1874/" class="article-date">
-      <time datetime="2017-03-02T01:36:29.000Z" itemprop="datePublished">2017-03-02</time>
+      <a href="/2017/03/02/3218/" class="article-date">
+      <time datetime="2017-03-02T14:11:11.000Z" itemprop="datePublished">2017-03-02</time>
 </a>
     </div>
   
@@ -255,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj1874】取石子游戏
+      【bzoj3218\uoj#77】a+b Problem
     </h1>
   
 
@@ -266,7 +266,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博弈论/">博弈论</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uoj/">uoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主席树/">主席树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最小割/">最小割</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -277,14 +277,14 @@
       
           
         <ul>
-<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+<li>用主席树优化网络流真是一颗赛艇<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1874" target="_blank" rel="external">AC通道</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先我们求出所有状态的$SG$函数，很显然这道题中$x$的后继状态为$succ(x)=${$ x-v |v\in B $}</p>
-<p>那么所有$SG(A[i])$的抑或和不为$0$是先手必胜的条件</p>
-<p>至于输出方案，暴力枚举即可</p>
-<p>这道题目告诉我一定要注意位运算的优先级，博主因为这个wa掉多次</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=(<span class="keyword">int</span>)<span class="number">1e3</span>,D=<span class="number">50</span>;</div><div class="line"><span class="keyword">int</span> n,m,ans,a[<span class="number">15</span>],b[<span class="number">15</span>],check[MAXN+D],sg[MAXN+D];</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  a[i]=read();</div><div class="line">	m=read();  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)  b[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j) <span class="keyword">if</span>(i-b[j]&gt;=<span class="number">0</span>) check[sg[i-b[j]]]=i;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=MAXN;++j) <span class="keyword">if</span>(check[j]!=i) &#123;sg[i]=j; <span class="keyword">break</span>;&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  ans^=sg[a[i]];</div><div class="line">	<span class="keyword">if</span>(ans)&#123;</div><div class="line">		<span class="built_in">puts</span>(<span class="string">"YES"</span>);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)&#123;</div><div class="line">				<span class="keyword">if</span>((ans^sg[a[i]]^sg[a[i]-b[j]])==<span class="number">0</span>)&#123;</div><div class="line">					<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,i,b[j]);</div><div class="line">					<span class="built_in">exit</span>(<span class="number">0</span>);</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"NO"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://uoj.ac/problem/77" target="_blank" rel="external">AC通道一</a> <a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3218" target="_blank" rel="external">AC通道二</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先看到这种题目，就有一种最小割的冲动，其实正解就是最小割</p>
+<p>这题$POPOQQQ$大爷讲的非常好,<a href="http://blog.csdn.net/PoPoQQQ/article/details/42557217" target="_blank" rel="external">传送门</a></p>
+<p>注意维护主席树时，如果到了叶子节点，我们需要连一条从上一版本的树所对应的节点出发指向该叶子节点的边，这样做的原因很显然</p>
+<p>PS：$bzoj$丧心病狂卡空间，蒟蒻只好膜拜了$Cydiater$的代码才卡过去</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 5010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 1000000000</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>; </div><div class="line"><span class="keyword">struct</span> node&#123;<span class="keyword">int</span> y,next,v,rel;&#125;e[MAXN&lt;&lt;<span class="number">7</span>];</div><div class="line"><span class="keyword">int</span> n,len,cnt,tot,ans,S,T,Link[MAXN&lt;&lt;<span class="number">6</span>],A[MAXN],B[MAXN],W[MAXN],P[MAXN],L[MAXN],R[MAXN],num[MAXN&lt;&lt;<span class="number">6</span>],hash[MAXN&lt;&lt;<span class="number">6</span>];</div><div class="line"><span class="keyword">int</span> level[MAXN&lt;&lt;<span class="number">6</span>],root[MAXN],son[MAXN&lt;&lt;<span class="number">6</span>][<span class="number">2</span>],id[MAXN][<span class="number">2</span>];</div><div class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">	e[++len].next=Link[x];Link[x]=len;e[len].y=y;e[len].v=v;e[len].rel=len+<span class="number">1</span>;</div><div class="line">	e[++len].next=Link[y];Link[y]=len;e[len].y=x;e[len].v=<span class="number">0</span>;e[len].rel=len<span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=tot;</div><div class="line">	<span class="keyword">while</span>(l+<span class="number">1</span>&lt;r)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(hash[mid]&lt;=x)l=mid;</div><div class="line">		<span class="keyword">else</span> r=mid;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> hash[l]==x?l:r;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">newnode</span><span class="params">(<span class="keyword">int</span> last)</span></span>&#123;</div><div class="line">	son[++cnt][<span class="number">0</span>]=son[last][<span class="number">0</span>];</div><div class="line">	son[cnt][<span class="number">1</span>]=son[last][<span class="number">1</span>];</div><div class="line">	<span class="keyword">return</span> cnt;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> &amp;root,<span class="keyword">int</span> last,<span class="keyword">int</span> x,<span class="keyword">int</span> pos)</span></span>&#123;</div><div class="line">	root=newnode(last);</div><div class="line">	<span class="keyword">if</span>(l==r)  &#123;add(pos,root,INF);<span class="keyword">if</span>(last) add(last,root,INF); <span class="keyword">return</span>;&#125;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>; </div><div class="line">	<span class="keyword">if</span>(x&lt;=mid)  insert(l,mid,son[root][<span class="number">0</span>],son[last][<span class="number">0</span>],x,pos);</div><div class="line">	<span class="keyword">else</span> insert(mid+<span class="number">1</span>,r,son[root][<span class="number">1</span>],son[last][<span class="number">1</span>],x,pos);</div><div class="line">	<span class="keyword">if</span>(son[root][<span class="number">0</span>]) add(son[root][<span class="number">0</span>],root,INF); </div><div class="line">	<span class="keyword">if</span>(son[root][<span class="number">1</span>]) add(son[root][<span class="number">1</span>],root,INF);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> root,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> pos)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x&gt;r||y&lt;l) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;y&gt;=r) &#123;add(root,pos,INF); <span class="keyword">return</span>;&#125;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(mid&gt;=x) query(l,mid,son[root][<span class="number">0</span>],x,y,pos);</div><div class="line">	<span class="keyword">if</span>(mid+<span class="number">1</span>&lt;=y) query(mid+<span class="number">1</span>,r,son[root][<span class="number">1</span>],x,y,pos);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">memset</span>(level,<span class="number">-1</span>,<span class="keyword">sizeof</span>(level));</div><div class="line">	q.push(S); level[S]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(!q.empty())&#123;</div><div class="line">		<span class="keyword">int</span> x=q.front(); q.pop();</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)</div><div class="line">			<span class="keyword">if</span>(level[e[i].y]&lt;<span class="number">0</span>&amp;&amp;e[i].v)&#123;</div><div class="line">				q.push(e[i].y);</div><div class="line">				level[e[i].y]=level[x]+<span class="number">1</span>;</div><div class="line">			&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> level[T]&gt;=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">MAXFLOW</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> flow)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x==T)  <span class="keyword">return</span> flow;</div><div class="line">	<span class="keyword">int</span> maxflow=<span class="number">0</span>,d=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i&amp;&amp;maxflow&lt;flow;i=e[i].next)</div><div class="line">		<span class="keyword">if</span>(e[i].v&amp;&amp;level[e[i].y]==level[x]+<span class="number">1</span>)</div><div class="line">			<span class="keyword">if</span>(d=MAXFLOW(e[i].y,min(e[i].v,flow-maxflow)))&#123;</div><div class="line">				e[i].v-=d; e[e[i].rel].v+=d; maxflow+=d;</div><div class="line">			&#125;</div><div class="line">	<span class="keyword">if</span>(!maxflow)  level[x]=<span class="number">-1</span>;</div><div class="line">	<span class="keyword">return</span> maxflow;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> d=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(bfs()) <span class="keyword">while</span>(d=MAXFLOW(S,INF)) ans-=d;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();  </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		A[i]=read(); B[i]=read();W[i]=read();L[i]=read();R[i]=read();P[i]=read();</div><div class="line">		num[++cnt]=A[i]; num[++cnt]=L[i]; num[++cnt]=R[i]; ans+=B[i]+W[i];</div><div class="line">	&#125;</div><div class="line">	sort(num+<span class="number">1</span>,num+cnt+<span class="number">1</span>); hash[++tot]=num[<span class="number">1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=cnt;++i) <span class="keyword">if</span>(num[i]!=num[i<span class="number">-1</span>]) hash[++tot]=num[i];</div><div class="line">	cnt=<span class="number">0</span>;  S=++cnt;  T=++cnt;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		id[i][<span class="number">0</span>]=++cnt;  id[i][<span class="number">1</span>]=++cnt;</div><div class="line">		add(S,id[i][<span class="number">0</span>],W[i]);  add(id[i][<span class="number">0</span>],T,B[i]);</div><div class="line">		add(id[i][<span class="number">1</span>],id[i][<span class="number">0</span>],P[i]);  query(<span class="number">1</span>,tot,root[i<span class="number">-1</span>],find(L[i]),find(R[i]),id[i][<span class="number">1</span>]);</div><div class="line">		insert(<span class="number">1</span>,tot,root[i],root[i<span class="number">-1</span>],find(A[i]),id[i][<span class="number">0</span>]);</div><div class="line">	&#125;</div><div class="line">	solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -293,14 +293,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/02/1874/">【bzoj1874】取石子游戏</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/02/3218/">【bzoj3218\uoj#77】a+b Problem</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年03月02日 - 09时36分</p>
-        <p><span>最后更新:</span>2017年03月02日 - 10时01分</p>
+        <p><span>发布时间:</span>2017年03月02日 - 22时11分</p>
+        <p><span>最后更新:</span>2017年03月02日 - 22时19分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/02/1874/" title="【bzoj1874】取石子游戏">http://yoursite.com/2017/03/02/1874/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/02/1874/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/02/3218/" title="【bzoj3218\uoj#77】a+b Problem">http://yoursite.com/2017/03/02/3218/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/02/3218/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -315,18 +315,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/02/1188/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2040/02/27/莫比乌斯反演详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【bzoj1188】分裂游戏
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解
         
       </div>
     </a>
   
   
-    <a href="/2017/03/02/1115/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【bzoj1115】石子游戏Kam</div>
+    <a href="/2017/03/02/1930/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj1930】吃豆豆</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -386,7 +386,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/02/1874/" data-title="【bzoj1874】取石子游戏" data-url="http://yoursite.com/2017/03/02/1874/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/02/3218/" data-title="【bzoj3218\uoj#77】a+b Problem" data-url="http://yoursite.com/2017/03/02/3218/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -409,13 +409,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/02/1188/" title="上一篇: 【bzoj1188】分裂游戏">
+            <a href="/2040/02/27/莫比乌斯反演详解/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/02/1115/" title="下一篇: 【bzoj1115】石子游戏Kam">
+            <a href="/2017/03/02/1930/" title="下一篇: 【bzoj1930】吃豆豆">
                 <i class="fa fa-angle-right"></i>
             </a>
         
