@@ -17,7 +17,7 @@
 
 
 本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-03-01T14:26:32.730Z">
+<meta property="og:updated_time" content="2017-03-05T09:25:26.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
 <meta name="twitter:description" content="日期年份为人工置顶，请不要吐槽
@@ -295,21 +295,22 @@
 <p>莫比乌斯反演是数论中的重要内容，在许多情况下能够简化运算。</p>
 <p>我们来看这个函数$F(n)=\sum_{d|n}^{ } f(d)$，则有：</p>
 <blockquote>
-<p>F(1)=f(1)<br>F(2)=f(1)+f(2)<br>F(3)=f(1)+f(3)<br>F(4)=f(1)+f(2)+f(4)<br>F(5)=f(1)+f(5)<br>F(6)=f(1)+f(2)+f(3)+f(6)<br>F(7)=f(1)+f(7)<br>F(8)=f(1)+f(2)+f(4)+f(8)</p>
+<p>$F(1)=f(1)$<br>$F(2)=f(1)+f(2)$<br>$F(3)=f(1)+f(3)$<br>$F(4)=f(1)+f(2)+f(4)$<br>$F(5)=f(1)+f(5)$<br>$F(6)=f(1)+f(2)+f(3)+f(6)$<br>$F(7)=f(1)+f(7)$<br>$F(8)=f(1)+f(2)+f(4)+f(8)$</p>
 </blockquote>
-<p>于是我们可以通过F(n)推导出f(n)</p>
+<p>于是我们可以通过$F(n)$推导出$f(n)$</p>
 <blockquote>
-<p>f(1)=F(1)<br>f(2)=F(2)-F(1)<br>f(3)=F(3)-F(1)<br>f(4)=F(4)-F(2)<br>f(5)=F(5)-F(1)<br>f(6)=F(6)-F(3)-F(2)+F(1)<br>f(7)=F(7)-F(1)<br>f(8)=F(8)-F(4)</p>
+<p>$f(1)=F(1)$<br>$f(2)=F(2)-F(1)$<br>$f(3)=F(3)-F(1)$<br>$f(4)=F(4)-F(2)$<br>$f(5)=F(5)-F(1)$<br>$f(6)=F(6)-F(3)-F(2)+F(1)$<br>$f(7)=F(7)-F(1)$<br>$f(8)=F(8)-F(4)$</p>
 </blockquote>
 <p>观察以上式子的系数，我们做出如下猜想：$f(n)=\sum_{d|n}^{ }\mu (d)F(\frac{n}{d})$</p>
 <p>那么这个猜想到底是否正确呢？上式中的$\mu (d)$又是什么呢？</p>
 <p>诸位，让我们进入正题，翱翔在数学的天空中吧。</p>
-<p>-<br>-</p>
+<p>-<br>-<br>-</p>
 <h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><hr>
 <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>记莫比乌斯函数为$\mu (d)$，d为正整数</p>
 <p>若$d=1$，则$\mu (d)=1$</p>
 <p>若$d={p_{1}}{p_{2}} {p_{3}}…{p_{k}}$，则$\mu (d)=(-1)^k$</p>
 <p>其他情况下$\mu (d)=0$</p>
+<p>-<br>-<br>-</p>
 <h3 id="性质一"><a href="#性质一" class="headerlink" title="性质一"></a>性质一</h3><blockquote>
 <p>对于任意正整数n</p>
 <p>若$n=1$，则$\sum_{d|n}^{ } \mu (d)=1$</p>
@@ -317,6 +318,7 @@
 </blockquote>
 <p> 证明：</p>
 <p> （1）当$n=1$时，显然成立<br> （2）当$n\neq 1$时，将n分解为$n={p_{1}}^{a_{1}}{p_{2}}^{a_{2}}…{p_{k}}^{a_{k}}$<br> 在n的所有因子中，值不为零的只有所有质因子次数都为1的因子，其中质因数个数为r个的因子有$C_{k}^{r}$个<br> 那么显然有：$\sum_{n|d}^{ }\mu(d)=C_{k}^{0}-C_{k}^{1}+C_{k}^{2}+…+(-1)^{k}C_{k}^{k}=\sum_{i=0}^{k}(-1)^{i}C_{k}^{i}$<br> 根据二项式定理：$(x+y)^{n}=\sum_{i=0}^{n}C_{n}^{i}x^{i}y^{n-i}$<br> 令$x=1，y=-1$，代入即可得证</p>
+<p>-<br>-<br>-</p>
 <h3 id="性质二"><a href="#性质二" class="headerlink" title="性质二"></a>性质二</h3><ul>
 <li>温馨提示：此性质涉及欧拉函数和莫比乌斯定理，读者可先学习之</li>
 </ul>
@@ -324,26 +326,32 @@
 <p>对于任意正整数n有：$\sum_{d|n}^{ }\frac{\mu(d)}{d}=\frac{\phi (n)}{n}$</p>
 </blockquote>
 <p> 证明：<br> 因为$n=\sum_{d|n}^{ }\phi(d)$<br> 所以令$F(n)=n,f(n)=\phi(n)$<br> 代入莫比乌斯定理得：$\phi(n)=\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})$<br> 即$\sum_{d|n}^{ }\frac{\mu(d)}{d}=\frac{\phi (n)}{n}$</p>
+<p>-<br>-<br>-</p>
 <h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>数论上积性函数的定义：设$f(n)$为定义在$\mathbb{N^{+}}$上的函数，若对于任意的$\gcd (x,y)=1$，都有$f(xy)=f(x)f(y)$，则称$f(x)$为积性函数</p>
 <p>积性函数的性质：</p>
 <p>（1）$f(1)=1$</p>
 <p>（2）积性函数的前缀和也是积性函数</p>
 <p>莫比乌斯函数就是一个积性函数(我不会证明)</p>
 <p>所以我们可以通过线性筛来求莫比乌斯函数</p>
+<p>-<br>-<br>-</p>
 <h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> cnt,check[MAXN],prime[MAXN],mu[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>; </div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=MAXN;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;mu[prime[j]*i]=<span class="number">0</span>;<span class="keyword">break</span>;&#125; </div><div class="line">			mu[prime[j]*i]=-mu[i]; </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>【bzoj2440】完全平方数  <a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2440" target="_blank" rel="external">传送门</a>  <a href="http://localhost:4000/2017/02/26/%E3%80%90bzoj2440%E3%80%91%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" target="_blank" rel="external">题解传送门</a></p>
-<p>-<br>-</p>
-<h2 id="莫比乌斯定理"><a href="#莫比乌斯定理" class="headerlink" title="莫比乌斯定理"></a>莫比乌斯定理</h2><h3 id="因数形式"><a href="#因数形式" class="headerlink" title="因数形式"></a>因数形式</h3><blockquote>
+<p>-<br>-<br>-</p>
+<h2 id="莫比乌斯定理"><a href="#莫比乌斯定理" class="headerlink" title="莫比乌斯定理"></a>莫比乌斯定理</h2><hr>
+<h3 id="因数形式"><a href="#因数形式" class="headerlink" title="因数形式"></a>因数形式</h3><blockquote>
 <p>$F(n)=\sum_{d|n}^{ }f(d)\Leftrightarrow f(n)=\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})$</p>
 </blockquote>
 <p> 证明：<br> $\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})=\sum_{d|n}^{ }\mu(d)\sum_{k|\frac{n}{d}}^{ }f(k)=\sum_{k|n}^{ }f(k)\sum_{d|\frac{n}{k}}^{ }\mu(d)$<br> 根据性质一，当且仅当$\frac{n}{k}=1$时，$\sum_{d|\frac{n}{k}}^{ }\mu(d)$不为0<br> 所以原式=$f(n)$，证毕</p>
+<p>-<br>-<br>-</p>
 <h3 id="倍数形式"><a href="#倍数形式" class="headerlink" title="倍数形式"></a>倍数形式</h3><blockquote>
 <p>$F(n)=\sum_{n|d}^{ }f(d)\Leftrightarrow f(n)=\sum_{n|d}^{ }\mu(\frac{d}{n})F(d)$</p>
 </blockquote>
 <p>证明：<br>令$k=\frac{d}{n}$，则$\sum_{n|d}^{ }\mu(\frac{d}{n})F(d)=\sum_{k=1}^{+\infty}\mu(k)F(nk)=\sum_{k=1}^{+\infty}\mu(k)\sum_{nk|d}^{ }f(d)=\sum_{n|d}^{ }f(d)\sum_{k|\frac{d}{n}}^{ }\mu(k)$<br>根据性质一，当且仅当$\frac{d}{n}=1$时，$\sum_{k|\frac{d}{n}}^{ }\mu(k)$不为0<br>所以原式=$f(n)$，证毕</p>
+<p>-<br>-<br>-</p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>对于一些函数f(n)，如果我们很难直接求出它的值，而容易求出倍数和或约数和F(n)，那么我们可以通过莫比乌斯反演来求得f(n)的值</p>
 <p>例：f(n)表示某一范围内(x,y)=n的数对的数量，F(n)表示某一范围内n|(x,y)的数对的数量</p>
 <p>那么直接求f(n)并不是很好求，而F(n)求起来相对无脑一些，我们可以通过对F(n)进行莫比乌斯反演来求得f(n)</p>
+<p>-<br>-<br>-</p>
 <h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><p>【bzoj2301】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2301" target="_blank" rel="external">传送门</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2301%E3%80%91/" target="_blank" rel="external">题解传送门</a></p>
 <p>【bzoj2820】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2820" target="_blank" rel="external">传送门</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2820%E3%80%91/" target="_blank" rel="external">题解传送门</a></p>
 <p>-<br>-</p>
@@ -362,7 +370,7 @@
         <p><span>本文标题:</span><a href="/2040/02/27/莫比乌斯反演详解/">${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
         <p><span>发布时间:</span>2040年02月27日 - 11时34分</p>
-        <p><span>最后更新:</span>2017年03月01日 - 22时26分</p>
+        <p><span>最后更新:</span>2017年03月05日 - 17时25分</p>
         <!--
 		<p>
             <span>原始链接:</span><a class="post-url" href="/2040/02/27/莫比乌斯反演详解/" title="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">http://yoursite.com/2040/02/27/莫比乌斯反演详解/</a>
