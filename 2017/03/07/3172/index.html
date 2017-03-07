@@ -3,27 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解 | chty</title>
+  <title>【bzoj3172】单词 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="日期年份为人工置顶，请不要吐槽
-
-
-本文为博主原创，未经许可不得转载">
+  <meta name="description" content="AC自动机重修系列第二题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
-<meta property="og:url" content="http://yoursite.com/2040/02/27/莫比乌斯反演详解/index.html">
+<meta property="og:title" content="【bzoj3172】单词">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/3172/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="日期年份为人工置顶，请不要吐槽
-
-
-本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-03-05T09:25:26.119Z">
+<meta property="og:description" content="AC自动机重修系列第二题">
+<meta property="og:updated_time" content="2017-03-07T14:00:16.076Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
-<meta name="twitter:description" content="日期年份为人工置顶，请不要吐槽
-
-
-本文为博主原创，未经许可不得转载">
+<meta name="twitter:title" content="【bzoj3172】单词">
+<meta name="twitter:description" content="AC自动机重修系列第二题">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -247,11 +238,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-莫比乌斯反演详解" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-3172" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2040/02/27/莫比乌斯反演详解/" class="article-date">
-      <time datetime="2040-02-27T03:34:03.000Z" itemprop="datePublished">2040-02-27</time>
+      <a href="/2017/03/07/3172/" class="article-date">
+      <time datetime="2017-03-07T13:55:45.000Z" itemprop="datePublished">2017-03-07</time>
 </a>
     </div>
   
@@ -264,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解
+      【bzoj3172】单词
     </h1>
   
 
@@ -275,7 +266,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -286,79 +277,14 @@
       
           
         <ul>
-<li>日期年份为人工置顶，请不要吐槽</li>
+<li>AC自动机重修系列第二题<a id="more"></a></li>
 </ul>
-<ul>
-<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
-</ul>
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><hr>
-<p>莫比乌斯反演是数论中的重要内容，在许多情况下能够简化运算。</p>
-<p>我们来看这个函数$F(n)=\sum_{d|n}^{ } f(d)$，则有：</p>
-<blockquote>
-<p>$F(1)=f(1)$<br>$F(2)=f(1)+f(2)$<br>$F(3)=f(1)+f(3)$<br>$F(4)=f(1)+f(2)+f(4)$<br>$F(5)=f(1)+f(5)$<br>$F(6)=f(1)+f(2)+f(3)+f(6)$<br>$F(7)=f(1)+f(7)$<br>$F(8)=f(1)+f(2)+f(4)+f(8)$</p>
-</blockquote>
-<p>于是我们可以通过$F(n)$推导出$f(n)$</p>
-<blockquote>
-<p>$f(1)=F(1)$<br>$f(2)=F(2)-F(1)$<br>$f(3)=F(3)-F(1)$<br>$f(4)=F(4)-F(2)$<br>$f(5)=F(5)-F(1)$<br>$f(6)=F(6)-F(3)-F(2)+F(1)$<br>$f(7)=F(7)-F(1)$<br>$f(8)=F(8)-F(4)$</p>
-</blockquote>
-<p>观察以上式子的系数，我们做出如下猜想：$f(n)=\sum_{d|n}^{ }\mu (d)F(\frac{n}{d})$</p>
-<p>那么这个猜想到底是否正确呢？上式中的$\mu (d)$又是什么呢？</p>
-<p>诸位，让我们进入正题，翱翔在数学的天空中吧。</p>
-<p>-<br>-<br>-</p>
-<h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><hr>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>记莫比乌斯函数为$\mu (d)$，d为正整数</p>
-<p>若$d=1$，则$\mu (d)=1$</p>
-<p>若$d={p_{1}}{p_{2}} {p_{3}}…{p_{k}}$，则$\mu (d)=(-1)^k$</p>
-<p>其他情况下$\mu (d)=0$</p>
-<p>-<br>-<br>-</p>
-<h3 id="性质一"><a href="#性质一" class="headerlink" title="性质一"></a>性质一</h3><blockquote>
-<p>对于任意正整数n</p>
-<p>若$n=1$，则$\sum_{d|n}^{ } \mu (d)=1$</p>
-<p>若$n&gt;1$，则$\sum_{d|n}^{ } \mu (d)=0$</p>
-</blockquote>
-<p> 证明：</p>
-<p> （1）当$n=1$时，显然成立<br> （2）当$n\neq 1$时，将n分解为$n={p_{1}}^{a_{1}}{p_{2}}^{a_{2}}…{p_{k}}^{a_{k}}$<br> 在n的所有因子中，值不为零的只有所有质因子次数都为1的因子，其中质因数个数为r个的因子有$C_{k}^{r}$个<br> 那么显然有：$\sum_{n|d}^{ }\mu(d)=C_{k}^{0}-C_{k}^{1}+C_{k}^{2}+…+(-1)^{k}C_{k}^{k}=\sum_{i=0}^{k}(-1)^{i}C_{k}^{i}$<br> 根据二项式定理：$(x+y)^{n}=\sum_{i=0}^{n}C_{n}^{i}x^{i}y^{n-i}$<br> 令$x=1，y=-1$，代入即可得证</p>
-<p>-<br>-<br>-</p>
-<h3 id="性质二"><a href="#性质二" class="headerlink" title="性质二"></a>性质二</h3><ul>
-<li>温馨提示：此性质涉及欧拉函数和莫比乌斯定理，读者可先学习之</li>
-</ul>
-<blockquote>
-<p>对于任意正整数n有：$\sum_{d|n}^{ }\frac{\mu(d)}{d}=\frac{\phi (n)}{n}$</p>
-</blockquote>
-<p> 证明：<br> 因为$n=\sum_{d|n}^{ }\phi(d)$<br> 所以令$F(n)=n,f(n)=\phi(n)$<br> 代入莫比乌斯定理得：$\phi(n)=\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})$<br> 即$\sum_{d|n}^{ }\frac{\mu(d)}{d}=\frac{\phi (n)}{n}$</p>
-<p>-<br>-<br>-</p>
-<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>数论上积性函数的定义：设$f(n)$为定义在$\mathbb{N^{+}}$上的函数，若对于任意的$\gcd (x,y)=1$，都有$f(xy)=f(x)f(y)$，则称$f(x)$为积性函数</p>
-<p>积性函数的性质：</p>
-<p>（1）$f(1)=1$</p>
-<p>（2）积性函数的前缀和也是积性函数</p>
-<p>莫比乌斯函数就是一个积性函数(我不会证明)</p>
-<p>所以我们可以通过线性筛来求莫比乌斯函数</p>
-<p>-<br>-<br>-</p>
-<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> cnt,check[MAXN],prime[MAXN],mu[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>; </div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=MAXN;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;mu[prime[j]*i]=<span class="number">0</span>;<span class="keyword">break</span>;&#125; </div><div class="line">			mu[prime[j]*i]=-mu[i]; </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>【bzoj2440】完全平方数  <a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2440" target="_blank" rel="external">传送门</a>  <a href="http://localhost:4000/2017/02/26/%E3%80%90bzoj2440%E3%80%91%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" target="_blank" rel="external">题解传送门</a></p>
-<p>-<br>-<br>-</p>
-<h2 id="莫比乌斯定理"><a href="#莫比乌斯定理" class="headerlink" title="莫比乌斯定理"></a>莫比乌斯定理</h2><hr>
-<h3 id="因数形式"><a href="#因数形式" class="headerlink" title="因数形式"></a>因数形式</h3><blockquote>
-<p>$F(n)=\sum_{d|n}^{ }f(d)\Leftrightarrow f(n)=\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})$</p>
-</blockquote>
-<p> 证明：<br> $\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})=\sum_{d|n}^{ }\mu(d)\sum_{k|\frac{n}{d}}^{ }f(k)=\sum_{k|n}^{ }f(k)\sum_{d|\frac{n}{k}}^{ }\mu(d)$<br> 根据性质一，当且仅当$\frac{n}{k}=1$时，$\sum_{d|\frac{n}{k}}^{ }\mu(d)$不为0<br> 所以原式=$f(n)$，证毕</p>
-<p>-<br>-<br>-</p>
-<h3 id="倍数形式"><a href="#倍数形式" class="headerlink" title="倍数形式"></a>倍数形式</h3><blockquote>
-<p>$F(n)=\sum_{n|d}^{ }f(d)\Leftrightarrow f(n)=\sum_{n|d}^{ }\mu(\frac{d}{n})F(d)$</p>
-</blockquote>
-<p>证明：<br>令$k=\frac{d}{n}$，则$\sum_{n|d}^{ }\mu(\frac{d}{n})F(d)=\sum_{k=1}^{+\infty}\mu(k)F(nk)=\sum_{k=1}^{+\infty}\mu(k)\sum_{nk|d}^{ }f(d)=\sum_{n|d}^{ }f(d)\sum_{k|\frac{d}{n}}^{ }\mu(k)$<br>根据性质一，当且仅当$\frac{d}{n}=1$时，$\sum_{k|\frac{d}{n}}^{ }\mu(k)$不为0<br>所以原式=$f(n)$，证毕</p>
-<p>-<br>-<br>-</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>对于一些函数f(n)，如果我们很难直接求出它的值，而容易求出倍数和或约数和F(n)，那么我们可以通过莫比乌斯反演来求得f(n)的值</p>
-<p>例：f(n)表示某一范围内(x,y)=n的数对的数量，F(n)表示某一范围内n|(x,y)的数对的数量</p>
-<p>那么直接求f(n)并不是很好求，而F(n)求起来相对无脑一些，我们可以通过对F(n)进行莫比乌斯反演来求得f(n)</p>
-<p>-<br>-<br>-</p>
-<h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><p>【bzoj2301】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2301" target="_blank" rel="external">传送门</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2301%E3%80%91/" target="_blank" rel="external">题解传送门</a></p>
-<p>【bzoj2820】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2820" target="_blank" rel="external">传送门</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2820%E3%80%91/" target="_blank" rel="external">题解传送门</a></p>
-<p>-<br>-</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>《莫比乌斯反演》   ——吉大附中实验学校PoPoQQQ</p>
-<p>《莫比乌斯反演定理证明（两种形式）》  ——outer_form</p>
-<p>欢迎各位大佬前来指教</p>
-<p>-<br>-</p>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3172" target="_blank" rel="external">AC通道</a></p>
+<hr>
+<p>做过bzoj2434之后，这题就觉得很水了</p>
+<p>直接跑AC自动机，统计次数就行了</p>
+<p>注意最后要按照拓扑序更新后缀节点，因为当前串中出现过的字符后缀节点所代表的串一定出现过</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> T,cnt,pos[MAXN],v[MAXN],fail[MAXN],q[MAXN],tr[MAXN][<span class="number">27</span>];</div><div class="line"><span class="keyword">char</span> ch[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> &amp;now)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n=<span class="built_in">strlen</span>(ch+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!tr[now][ch[i]-<span class="string">'a'</span>])  tr[now][ch[i]-<span class="string">'a'</span>]=++cnt;</div><div class="line">		now=tr[now][ch[i]-<span class="string">'a'</span>];  v[now]++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> head=<span class="number">0</span>,tail=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i) <span class="keyword">if</span>(tr[<span class="number">0</span>][i]) q[++tail]=tr[<span class="number">0</span>][i];</div><div class="line">	<span class="keyword">while</span>(++head&lt;=tail)&#123;</div><div class="line">		<span class="keyword">int</span> x=q[head];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i)&#123;</div><div class="line">			<span class="keyword">if</span>(!tr[x][i])  tr[x][i]=tr[fail[x]][i];</div><div class="line">			<span class="keyword">else</span> fail[tr[x][i]]=tr[fail[x]][i],q[++tail]=tr[x][i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=tail;i;--i)  v[fail[q[i]]]+=v[q[i]];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ch+<span class="number">1</span>),extend(pos[i]);</div><div class="line">	build();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,v[pos[i]]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -367,14 +293,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2040/02/27/莫比乌斯反演详解/">${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/07/3172/">【bzoj3172】单词</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2040年02月27日 - 11时34分</p>
-        <p><span>最后更新:</span>2017年03月05日 - 17时25分</p>
+        <p><span>发布时间:</span>2017年03月07日 - 21时55分</p>
+        <p><span>最后更新:</span>2017年03月07日 - 22时00分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2040/02/27/莫比乌斯反演详解/" title="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">http://yoursite.com/2040/02/27/莫比乌斯反演详解/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2040/02/27/莫比乌斯反演详解/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/07/3172/" title="【bzoj3172】单词">http://yoursite.com/2017/03/07/3172/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/07/3172/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -389,18 +315,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2100/01/16/111/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2040/02/27/莫比乌斯反演详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解
         
       </div>
     </a>
   
   
-    <a href="/2017/03/07/3172/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【bzoj3172】单词</div>
+    <a href="/2017/03/07/2434/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj2434】阿狸的打字机</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -411,7 +337,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#莫比乌斯函数"><span class="toc-number">2.</span> <span class="toc-text">莫比乌斯函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质一"><span class="toc-number">2.2.</span> <span class="toc-text">性质一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质二"><span class="toc-number">2.3.</span> <span class="toc-text">性质二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#积性函数"><span class="toc-number">2.4.</span> <span class="toc-text">积性函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考代码"><span class="toc-number">2.5.</span> <span class="toc-text">参考代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例题"><span class="toc-number">2.6.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#莫比乌斯定理"><span class="toc-number">3.</span> <span class="toc-text">莫比乌斯定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#因数形式"><span class="toc-number">3.1.</span> <span class="toc-text">因数形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#倍数形式"><span class="toc-number">3.2.</span> <span class="toc-text">倍数形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-number">3.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例题-1"><span class="toc-number">3.4.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -460,7 +386,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2040/02/27/莫比乌斯反演详解/" data-title="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解" data-url="http://yoursite.com/2040/02/27/莫比乌斯反演详解/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/07/3172/" data-title="【bzoj3172】单词" data-url="http://yoursite.com/2017/03/07/3172/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -483,13 +409,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2100/01/16/111/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛">
+            <a href="/2040/02/27/莫比乌斯反演详解/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/07/3172/" title="下一篇: 【bzoj3172】单词">
+            <a href="/2017/03/07/2434/" title="下一篇: 【bzoj2434】阿狸的打字机">
                 <i class="fa fa-angle-right"></i>
             </a>
         
