@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj3172】单词 | chty</title>
+  <title>【bzoj2419】电阻 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AC自动机重修系列第二题">
+  <meta name="description" content="高斯消元重修系列第二题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj3172】单词">
-<meta property="og:url" content="http://yoursite.com/2017/03/07/3172/index.html">
+<meta property="og:title" content="【bzoj2419】电阻">
+<meta property="og:url" content="http://yoursite.com/2017/03/10/2419/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="AC自动机重修系列第二题">
-<meta property="og:updated_time" content="2017-03-07T14:00:16.076Z">
+<meta property="og:description" content="高斯消元重修系列第二题">
+<meta property="og:updated_time" content="2017-03-10T13:06:34.199Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj3172】单词">
-<meta name="twitter:description" content="AC自动机重修系列第二题">
+<meta name="twitter:title" content="【bzoj2419】电阻">
+<meta name="twitter:description" content="高斯消元重修系列第二题">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -238,11 +238,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-3172" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2419" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/07/3172/" class="article-date">
-      <time datetime="2017-03-07T13:55:45.000Z" itemprop="datePublished">2017-03-07</time>
+      <a href="/2017/03/10/2419/" class="article-date">
+      <time datetime="2017-03-10T12:56:41.000Z" itemprop="datePublished">2017-03-10</time>
 </a>
     </div>
   
@@ -255,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj3172】单词
+      【bzoj2419】电阻
     </h1>
   
 
@@ -266,7 +266,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高斯消元/">高斯消元</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -277,14 +277,21 @@
       
           
         <ul>
-<li>AC自动机重修系列第二题<a id="more"></a></li>
+<li>高斯消元重修系列第二题<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3172" target="_blank" rel="external">AC通道</a></p>
-<hr>
-<p>做过bzoj2434之后，这题就觉得很水了</p>
-<p>直接跑AC自动机，统计次数就行了</p>
-<p>注意最后要按照拓扑序更新后缀节点，因为当前串中出现过的字符后缀节点所代表的串一定出现过</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> T,cnt,pos[MAXN],v[MAXN],fail[MAXN],q[MAXN],tr[MAXN][<span class="number">27</span>];</div><div class="line"><span class="keyword">char</span> ch[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> &amp;now)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n=<span class="built_in">strlen</span>(ch+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!tr[now][ch[i]-<span class="string">'a'</span>])  tr[now][ch[i]-<span class="string">'a'</span>]=++cnt;</div><div class="line">		now=tr[now][ch[i]-<span class="string">'a'</span>];  v[now]++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> head=<span class="number">0</span>,tail=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i) <span class="keyword">if</span>(tr[<span class="number">0</span>][i]) q[++tail]=tr[<span class="number">0</span>][i];</div><div class="line">	<span class="keyword">while</span>(++head&lt;=tail)&#123;</div><div class="line">		<span class="keyword">int</span> x=q[head];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i)&#123;</div><div class="line">			<span class="keyword">if</span>(!tr[x][i])  tr[x][i]=tr[fail[x]][i];</div><div class="line">			<span class="keyword">else</span> fail[tr[x][i]]=tr[fail[x]][i],q[++tail]=tr[x][i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=tail;i;--i)  v[fail[q[i]]]+=v[q[i]];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ch+<span class="number">1</span>),extend(pos[i]);</div><div class="line">	build();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,v[pos[i]]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>引用妹主席的一句话: </p>
+<blockquote>
+<p>如今的OI界啊，仙人掌当道，玄学题横行，物理题为[和谐]一方</p>
+</blockquote>
+<p>这种物理题我也是醉了</p>
+<p>首先普及一下电流守恒定律：流入一个点的电流和等于流出这个点的电流和（和网络流有点像）</p>
+<p>然后根据欧姆定律有：$I_{i,j}=\frac{E_i-E_j}{R_{i,j}}$</p>
+<p>带入电流守恒定律有：$\sum \frac{E_i-E_j}{R_{i,j}}=0$  (i与j有电阻相连)</p>
+<p>特别的，对于1号点：$\sum \frac{E_i-E_j}{R_{i,j}}=1$</p>
+<p>对于n号点：$\sum \frac{E_i-E_j}{R_{i,j}}=-1$</p>
+<p>根据这些列出n个方程，高斯消元即可</p>
+<p>注意重边要累加电阻，自环要忽略，上邻接矩阵存图即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> eps 1e-6</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">double</span> a[<span class="number">510</span>][<span class="number">510</span>],Map[<span class="number">510</span>][<span class="number">510</span>];</div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">memset</span>(Map,<span class="number">0</span>,<span class="keyword">sizeof</span>(Map));</div><div class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</div><div class="line">		<span class="keyword">int</span> x=read(),y=read(),r=read();</div><div class="line">		Map[x][y]+=<span class="number">1.0</span>/r;  Map[y][x]+=<span class="number">1.0</span>/r;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)&#123;</div><div class="line">		a[i][i]+=Map[i][j];  a[i][j]-=Map[i][j];</div><div class="line">	&#125;</div><div class="line">	a[<span class="number">1</span>][n+<span class="number">1</span>]=<span class="number">1</span>; a[n][n+<span class="number">1</span>]=<span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">gauss</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> now=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,temp;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">for</span>(temp=now;temp&lt;=n;++temp) <span class="keyword">if</span>(<span class="built_in">fabs</span>(a[temp][i])&gt;eps) <span class="keyword">break</span>;</div><div class="line">		<span class="keyword">if</span>(temp&gt;n) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">if</span>(temp!=now) <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n+<span class="number">1</span>;++j) swap(a[now][j],a[temp][j]);</div><div class="line">		<span class="keyword">double</span> t=a[now][i];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n+<span class="number">1</span>;++j) a[now][j]/=t;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)<span class="keyword">if</span>(j!=now)&#123;</div><div class="line">			<span class="keyword">double</span> t=a[j][i];</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n+<span class="number">1</span>;++k) a[j][k]-=t*a[now][k];</div><div class="line">		&#125;</div><div class="line">		++now;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=now;i&lt;=n;++i)<span class="keyword">if</span>(<span class="built_in">fabs</span>(a[i][n+<span class="number">1</span>])&gt;eps)<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>,a[<span class="number">1</span>][n+<span class="number">1</span>]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m)!=EOF)&#123;</div><div class="line">		init();gauss();output();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -293,14 +300,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/07/3172/">【bzoj3172】单词</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/10/2419/">【bzoj2419】电阻</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年03月07日 - 21时55分</p>
-        <p><span>最后更新:</span>2017年03月07日 - 22时00分</p>
+        <p><span>发布时间:</span>2017年03月10日 - 20时56分</p>
+        <p><span>最后更新:</span>2017年03月10日 - 21时06分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/07/3172/" title="【bzoj3172】单词">http://yoursite.com/2017/03/07/3172/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/07/3172/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/10/2419/" title="【bzoj2419】电阻">http://yoursite.com/2017/03/10/2419/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/10/2419/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -315,18 +322,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/08/CF-163E/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2040/02/27/莫比乌斯反演详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【CF#163E】E-Government
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解
         
       </div>
     </a>
   
   
-    <a href="/2017/03/07/2434/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【bzoj2434】阿狸的打字机</div>
+    <a href="/2017/03/10/1013/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj1013】球形空间产生器</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -386,7 +393,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/07/3172/" data-title="【bzoj3172】单词" data-url="http://yoursite.com/2017/03/07/3172/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/10/2419/" data-title="【bzoj2419】电阻" data-url="http://yoursite.com/2017/03/10/2419/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -409,13 +416,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/08/CF-163E/" title="上一篇: 【CF#163E】E-Government">
+            <a href="/2040/02/27/莫比乌斯反演详解/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/07/2434/" title="下一篇: 【bzoj2434】阿狸的打字机">
+            <a href="/2017/03/10/1013/" title="下一篇: 【bzoj1013】球形空间产生器">
                 <i class="fa fa-angle-right"></i>
             </a>
         
