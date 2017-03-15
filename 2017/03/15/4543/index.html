@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj4710】分特产 | chty</title>
+  <title>【bzoj4543】Hotel加强版 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="不要相信这个调了2个小时的sb">
+  <meta name="description" content="长链剖分优化树形dp真是一颗赛艇
+
+
+获得成就：第一次使用指针">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj4710】分特产">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/4710/index.html">
+<meta property="og:title" content="【bzoj4543】Hotel加强版">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/4543/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="不要相信这个调了2个小时的sb">
-<meta property="og:updated_time" content="2017-03-09T08:23:12.317Z">
+<meta property="og:description" content="长链剖分优化树形dp真是一颗赛艇
+
+
+获得成就：第一次使用指针">
+<meta property="og:updated_time" content="2017-03-15T03:09:33.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj4710】分特产">
-<meta name="twitter:description" content="不要相信这个调了2个小时的sb">
+<meta name="twitter:title" content="【bzoj4543】Hotel加强版">
+<meta name="twitter:description" content="长链剖分优化树形dp真是一颗赛艇
+
+
+获得成就：第一次使用指针">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -244,11 +253,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-4710" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-4543" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/09/4710/" class="article-date">
-      <time datetime="2017-03-09T08:18:47.000Z" itemprop="datePublished">2017-03-09</time>
+      <a href="/2017/03/15/4543/" class="article-date">
+      <time datetime="2017-03-15T02:47:58.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
     </div>
   
@@ -261,7 +270,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj4710】分特产
+      【bzoj4543】Hotel加强版
     </h1>
   
 
@@ -272,7 +281,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/容斥原理/">容斥原理</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树形dp/">树形dp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树链剖分/">树链剖分</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -283,14 +292,40 @@
       
           
         <ul>
-<li>不要相信这个调了2个小时的sb<a id="more"></a></li>
+<li>长链剖分优化树形dp真是一颗赛艇</li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4710" target="_blank" rel="external">AC通道</a></p>
-<p>我们只需要枚举多少个同学没有分到即可进行容斥</p>
-<p>错误记录：</p>
-<p>（1）求组合数时没有令c[0][0]=1;<br>（2）搞错位运算优先级<br>（3）组合数取模没有加括号</p>
-<p>我是不是应该滚去普及组了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>,MAXN=<span class="number">2000</span>,D=<span class="number">50</span>;</div><div class="line"><span class="keyword">int</span> n,m,a[MAXN+D];</div><div class="line">ll ans,c[MAXN+D][MAXN+D];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=MAXN;++i)  c[i][<span class="number">0</span>]=c[i][i]=<span class="number">1L</span>L;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=MAXN;++i)</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;++j)</div><div class="line">			c[i][j]=(c[i<span class="number">-1</span>][j<span class="number">-1</span>]+c[i<span class="number">-1</span>][j])%mod;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();  m=read();  pre();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)  a[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">0</span>;--i)&#123;</div><div class="line">		ll f=((i&amp;<span class="number">1</span>)==(n&amp;<span class="number">1</span>)?<span class="number">1</span>:<span class="number">-1</span>);  f=f*c[n][i]%mod; </div><div class="line">		<span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;=m;++j)  f=(f*c[a[j]+i<span class="number">-1</span>][i<span class="number">-1</span>]+mod)%mod;</div><div class="line">		ans+=f;  ans=(ans+mod)%mod;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>获得成就：第一次使用指针<a id="more"></a></li>
+</ul>
+<p>首先我们设：</p>
+<blockquote>
+<p>$f[i][j]$ 表示以 $i$ 为根的子树中与 $i$ 的距离为 $j$ 的点的个数</p>
+<hr>
+<p>$g[i][j]$ 表示以 $i$ 为根的子树内有 $g[i][j]$ 对点深度相同，设 $t$ 为 $lca(i,j)$ ，且满足 $dis(i,t)=dis(j,t)=d$ 且 $dis(i,t)=d-j$ </p>
+<hr>
+</blockquote>
+<p>则状态转移方程(必须按顺序转移)：</p>
+<blockquote>
+<p>(1)$f[x][0]=1$</p>
+<hr>
+<p>(2)$ans+=g[x][0]$</p>
+<hr>
+<p>(3)$ans+=f[x][i-1]*g[y][i]+g[x][i+1]*f[y][i]$</p>
+<hr>
+<p>(4)$g[x][i-1]+=g[y][i]$</p>
+<hr>
+<p>(5)$g[x][i+1]+=f[x][i+1]*f[y][i]$</p>
+<hr>
+<p>(6)$f[x][i+1]+=f[y][i]$</p>
+<hr>
+</blockquote>
+<p>然后我们发现状态数是 $O(n^2)$ 级别的，怎么办？</p>
+<p>下面介绍一种套路：长链剖分优化树形 $dp$ </p>
+<p>我们发现状态转移方程中的(4)和(6)在第一次转移时是可以 $O(1)$ 实现的</p>
+<p>那么我们将树进行长链剖分，对于重儿子，我们直接进行 $O(1)$ 转移，对于轻儿子，只能暴力转移了</p>
+<p>可以证明这样做的时间复杂度是 $O(n)$ 的</p>
+<p>至于空间复杂度，我们使用动态内存分配即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">struct</span> node&#123;<span class="keyword">int</span> y,next;&#125;e[MAXN&lt;&lt;<span class="number">1</span>];</div><div class="line"><span class="keyword">int</span> n,len,Link[MAXN],deep[MAXN],bot[MAXN];</div><div class="line">ll ans,*p,memp[MAXN*<span class="number">5</span>],*f[MAXN],*g[MAXN];</div><div class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;e[++len].next=Link[x];Link[x]=len;e[len].y=y;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">	bot[x]=x;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=fa)&#123;<span class="comment">//长链剖分</span></div><div class="line">		deep[e[i].y]=deep[x]+<span class="number">1</span>; dfs(e[i].y,x);</div><div class="line">		<span class="keyword">if</span>(deep[bot[e[i].y]]&gt;deep[bot[x]]) bot[x]=bot[e[i].y];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=fa)&#123;<span class="comment">//动态内存分配</span></div><div class="line">		<span class="keyword">if</span>(bot[x]==bot[e[i].y]&amp;&amp;x!=<span class="number">1</span>)  <span class="keyword">continue</span>;</div><div class="line">		p+=deep[bot[e[i].y]]-deep[x]+<span class="number">1</span>;</div><div class="line">		f[bot[e[i].y]]=p;  g[bot[e[i].y]]=(p+=<span class="number">1</span>);</div><div class="line">		p+=(deep[bot[e[i].y]]-deep[x])&lt;&lt;<span class="number">1</span>|<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=fa)&#123;</div><div class="line">		dp(e[i].y,x);</div><div class="line">		<span class="keyword">if</span>(bot[x]==bot[e[i].y])f[x]=f[e[i].y]<span class="number">-1</span>,g[x]=g[e[i].y]+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	f[x][<span class="number">0</span>]=<span class="number">1</span>; ans+=g[x][<span class="number">0</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=fa)&#123;</div><div class="line">		<span class="keyword">if</span>(bot[x]==bot[e[i].y])  <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=deep[bot[e[i].y]]-deep[x];++j)</div><div class="line">			ans+=f[x][j<span class="number">-1</span>]*g[e[i].y][j]+g[x][j+<span class="number">1</span>]*f[e[i].y][j];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=deep[bot[e[i].y]]-deep[x];++j)&#123;</div><div class="line">			g[x][j<span class="number">-1</span>]+=g[e[i].y][j];</div><div class="line">			g[x][j+<span class="number">1</span>]+=f[e[i].y][j]*f[x][j+<span class="number">1</span>];</div><div class="line">			f[x][j+<span class="number">1</span>]+=f[e[i].y][j];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</div><div class="line">		<span class="keyword">int</span> x=read(),y=read();</div><div class="line">		insert(x,y); insert(y,x);</div><div class="line">	&#125;</div><div class="line">	p=memp+<span class="number">1</span>;  deep[<span class="number">1</span>]=<span class="number">1</span>;  </div><div class="line">	dfs(<span class="number">1</span>,<span class="number">0</span>);  dp(<span class="number">1</span>,<span class="number">0</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -299,14 +334,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/09/4710/">【bzoj4710】分特产</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/15/4543/">【bzoj4543】Hotel加强版</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年03月09日 - 16时18分</p>
-        <p><span>最后更新:</span>2017年03月09日 - 16时23分</p>
+        <p><span>发布时间:</span>2017年03月15日 - 10时47分</p>
+        <p><span>最后更新:</span>2017年03月15日 - 11时09分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/09/4710/" title="【bzoj4710】分特产">http://yoursite.com/2017/03/09/4710/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/09/4710/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/15/4543/" title="【bzoj4543】Hotel加强版">http://yoursite.com/2017/03/15/4543/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/15/4543/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -321,18 +356,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/09/4455/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2040/02/27/莫比乌斯反演详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【bzoj4455/uoj#185】小星星
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解
         
       </div>
     </a>
   
   
-    <a href="/2017/03/08/CF235-C/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【CF#235C】Cyclical Quest</div>
+    <a href="/2017/03/14/2160/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj2160】拉拉队排练</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -392,7 +427,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/09/4710/" data-title="【bzoj4710】分特产" data-url="http://yoursite.com/2017/03/09/4710/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/15/4543/" data-title="【bzoj4543】Hotel加强版" data-url="http://yoursite.com/2017/03/15/4543/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -415,13 +450,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/09/4455/" title="上一篇: 【bzoj4455/uoj#185】小星星">
+            <a href="/2040/02/27/莫比乌斯反演详解/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$莫比乌斯反演详解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/08/CF235-C/" title="下一篇: 【CF#235C】Cyclical Quest">
+            <a href="/2017/03/14/2160/" title="下一篇: 【bzoj2160】拉拉队排练">
                 <i class="fa fa-angle-right"></i>
             </a>
         
