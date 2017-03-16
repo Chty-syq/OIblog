@@ -3209,7 +3209,7 @@ color
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
-  color: #9e90ff;
+  color: #f92672;
 }
 .article-entry pre,
 .article-entry code {
@@ -3219,11 +3219,11 @@ color
   background-color: #555;
   padding: 10px 15px;
   word-break: break-word;
-  margin: 10px 0px;
+  margin: 20px 0px;
   border-left: 4px solid #2f2f2f;
-  border-top: 1px dashed #000;
-  border-right: 1px dashed #000;
-  border-bottom: 1px dashed #000;
+  border-top: 0px dashed #000;
+  border-right: 0px dashed #000;
+  border-bottom: 0px dashed #000;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -3505,7 +3505,7 @@ pre .command {
   color: #258fb8;
 }
 pre .comment {
-  color: #75715e;
+  color: #a6e22e;
 }
 pre .keyword {
   color: #66d9ef;
