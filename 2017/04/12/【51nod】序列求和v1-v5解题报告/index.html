@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj3529】数表 | chty</title>
+  <title>【51nod】序列求和v1~v5解题报告 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj3529】数表">
-<meta property="og:url" content="http://yoursite.com/2017/02/27/3529/index.html">
+<meta property="og:title" content="【51nod】序列求和v1~v5解题报告">
+<meta property="og:url" content="http://yoursite.com/2017/04/12/【51nod】序列求和v1-v5解题报告/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-02-27T14:15:29.573Z">
+<meta property="og:updated_time" content="2017-04-12T13:51:08.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj3529】数表">
+<meta name="twitter:title" content="【51nod】序列求和v1~v5解题报告">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
@@ -244,11 +244,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-3529" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【51nod】序列求和v1-v5解题报告" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/27/3529/" class="article-date">
-      <time datetime="2017-02-27T13:41:59.000Z" itemprop="datePublished">2017-02-27</time>
+      <a href="/2017/04/12/【51nod】序列求和v1-v5解题报告/" class="article-date">
+      <time datetime="2017-04-12T12:51:55.000Z" itemprop="datePublished">2017-04-12</time>
 </a>
     </div>
   
@@ -261,7 +261,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj3529】数表
+      【51nod】序列求和v1~v5解题报告
     </h1>
   
 
@@ -272,7 +272,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树状数组/">树状数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/51nod/">51nod</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -285,19 +285,35 @@
         <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3529" target="_blank" rel="external">AC通道</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>我们先考虑如果没有a的限制条件的情况：</p>
-<p>设n&lt;m</p>
-<p>令$F(i)$表示i的约数和，则$F(i)$可以在$O(n\log(n))$的时间内求出来（POPOQQQ大爷有一种$O(n)$的方法）</p>
-<p>令$g(i)$表示$\gcd(x,y)=i$的数对$(x,y)$的个数，则通过莫比乌斯反演可得 $g(i)=\sum_{i|d}^{ }\mu(\frac{d}{i})\left [ \frac{n}{d} \right ]\left [ \frac{m}{d} \right ]$</p>
-<p>则 $ans=\sum_{i=1}^{n}F(i)g(i)=\sum_{i=1}^{n}F(i)\sum_{i|d}^{ }\mu(\frac{d}{i})\left [ \frac{n}{d} \right ]\left [ \frac{m}{d} \right ]=\sum_{d=1}^{n}\left [ \frac{n}{d} \right ]\left [ \frac{m}{d} \right ]\sum_{i|d}^{ }F(i)\mu(\frac{d}{i})$</p>
-<p>所以我们只需要计算出 $\sum_{i|d}^{ }F(i)\mu(\frac{d}{i})$ 的前缀和就行了</p>
-<p>然而现在有a的限制，怎么做呢？</p>
-<p>我们发现对答案有贡献的$i$只有$F(i)&lt;=a$的$i$</p>
-<p>所以我们离线处理，将$F(i)$排序，将询问按$a$排序</p>
-<p>每次询问前将满足$F(i)&lt;=a$的$i$插入到树状数组中，然后查询。</p>
-<p>时间复杂度：$O(n\log^2{n}+q\sqrt{n}\log{n})$</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=(<span class="keyword">int</span>)<span class="number">1e5</span>,D(<span class="number">50</span>);</div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">	<span class="keyword">int</span> n,m,a,id;</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;b) <span class="keyword">const</span> &#123;<span class="keyword">return</span> a&lt;b.a;&#125;</div><div class="line">&#125;Q[MAXN+D];</div><div class="line"><span class="keyword">int</span> T,cnt,maxx,mu[MAXN+D],prime[MAXN+D],check[MAXN+D],tr[MAXN+D],ans[MAXN+D];</div><div class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;f[MAXN+D];</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> v)</span></span>&#123;<span class="keyword">while</span>(x&lt;=maxx)tr[x]+=v,x+=(x&amp;-x);&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="number">0</span>)</span></span>;<span class="keyword">while</span>(x)sum+=tr[x],x-=(x&amp;-x);<span class="keyword">return</span> sum;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=maxx;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=maxx;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;mu[i*prime[j]]=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			mu[i*prime[j]]=-mu[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=maxx;++i)</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=maxx;j+=i)  f[j].first+=i;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=maxx;++i)  f[i].second=i;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n=Q[x].n,m=Q[x].m;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=min(n/(n/i),m/(m/i));</div><div class="line">		ans[Q[x].id]+=(n/i)*(m/i)*(get(last)-get(i<span class="number">-1</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	T=read();  </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)&#123;</div><div class="line">		Q[i].n=read(); Q[i].m=read(); Q[i].a=read(); Q[i].id=i;</div><div class="line">		<span class="keyword">if</span>(Q[i].n&gt;Q[i].m)  swap(Q[i].n,Q[i].m);</div><div class="line">		cmax(maxx,Q[i].n);</div><div class="line">	&#125;</div><div class="line">	pre(); </div><div class="line">	sort(Q+<span class="number">1</span>,Q+T+<span class="number">1</span>);  sort(f+<span class="number">1</span>,f+maxx+<span class="number">1</span>); <span class="function"><span class="keyword">int</span> <span class="title">now</span><span class="params">(<span class="number">0</span>)</span></span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)&#123;</div><div class="line">		<span class="keyword">while</span>(now&lt;maxx&amp;&amp;f[now+<span class="number">1</span>].first&lt;=Q[i].a)&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=f[++now].second;j&lt;=maxx;j+=f[now].second)</div><div class="line">				add(j,f[now].first*mu[j/f[now].second]);</div><div class="line">		&#125;</div><div class="line">		solve(i);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[i]&amp;<span class="number">0x7fffffff</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>今天考了机房最强妹子wyj的互测题，跪在了T2</p>
+<p>然后uoj大佬说这是一道51nod上的题，于是我便去创建了一个账号</p>
+<p>然后发现51nod上有5道这样的题目</p>
+<p>于是我就立下了一个flag，然将这5道题目切掉</p>
+<p>(flag毕竟是flag，有很大的可能性刚不动而弃疗</p>
+<h2 id="序列求和-level-1"><a href="#序列求和-level-1" class="headerlink" title="序列求和$level 1$"></a>序列求和$level 1$</h2><p>【一句话题意】</p>
+<blockquote>
+<p>给定$n$和$k$，求$\sum_{i=1}^{n}i^k$，结果对$10^9+7$取模</p>
+</blockquote>
+<p>【解析】</p>
+<blockquote>
+<p>有一个叫做伯努利数的东西，它是这样定义的：$\sum_{k=0}^{n} C_{n+1}^kB_{k}=0$<br> 　　<br>通过定义我们可以得到它的递推式：$b_{n}=-\frac{1}{n+1}(C_{n+1}^0B_{0}+C_{n+1}^1B_{1}+…+C_{n+1}^{n-1} B_{n-1})$<br>　　<br>然后给出自然数幂求和的公式(我不会证明)：$\sum_{i=1}^{n}i^k=\frac{1}{n+1}\sum_{i=1}^{k+1} C_{k+1}^i B_{k+1-i} (n+1)^i$<br>　　<br>那么这个问题就完美的解决了，我们只需要递推出所有的伯努利数，就能求出自然数幂的和<br>　　<br>时间复杂度：$O(n^2)$</p>
+</blockquote>
+<p>【AC代码】(话说这东西直接在51nod上看还得花60个点头盾)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 2000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> D 50</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=(<span class="keyword">int</span>)<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line">ll n,k,ans,p[MAXN+D],b[MAXN+D],inv[MAXN+D],c[MAXN+D][MAXN+D];</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	ll x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		c[i][<span class="number">0</span>]=c[i][i]=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;++j)</div><div class="line">			c[i][j]=(c[i<span class="number">-1</span>][j]+c[i<span class="number">-1</span>][j<span class="number">-1</span>])%mod;</div><div class="line">	&#125;</div><div class="line">	inv[<span class="number">1</span>]=<span class="number">1</span>;<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)inv[i]=(mod-mod/i)*inv[mod%i]%mod;</div><div class="line">	b[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)  (b[i]+=b[j]*c[i+<span class="number">1</span>][j]%mod)%=mod;</div><div class="line">		b[i]*=-inv[i+<span class="number">1</span>];  b[i]=(b[i]%mod+mod)%mod;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	n=read();  k=read();  n%=mod;  p[<span class="number">0</span>]=<span class="number">1</span>;  ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">1</span>;++i)  p[i]=p[i<span class="number">-1</span>]*(n+<span class="number">1</span>)%mod;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">1</span>;++i)  (ans+=c[k+<span class="number">1</span>][i]*b[k+<span class="number">1</span>-i]%mod*p[i]%mod)%=mod;</div><div class="line">	ans=ans*inv[k+<span class="number">1</span>]%mod;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	pre();<span class="keyword">for</span>(<span class="keyword">int</span> T=read();T;--T)solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="序列求和-level2"><a href="#序列求和-level2" class="headerlink" title="序列求和$level2$"></a>序列求和$level2$</h2><p>【一句话题意】</p>
+<blockquote>
+<p>给定$n$，$k$，$r$，求$\sum_{i=1}^{n}i^k r^i$，结果对$10^9+7$取模</p>
+</blockquote>
+<p>【解析】</p>
+<blockquote>
+<p>错位相减法 （似乎是高中数学知识）<br>　　<br>设$S(n,k)=\sum_{i=1}^{n}i^k r^i$，那么有：<br>　　<br>$S(n,k)=1^k r^1+2^k r^2+…+n^k r^n$<br>　　<br>$rS(n,k)=1^k r^2+2^k r^3+…+n^k r^{n+1}$<br>　　<br>$(1-r)S(n,k)=r+(2^k-1^k)r^2+(3^k-2^k)r^3+…+[(n+1)^k-n^k)]r^{n+1}-(n+1)^k r^{n+1}$<br>　　<br>重点关注$(n+1)^k-n^k$，因为我们发现$(n+1)^k$可以使用二项式定理展开<br>　　<br>$(n+1)^k-n^k=C_{k}^1 n^{k-1}+C_{k}^2 n^{k-2}+…+C_{k}^k n^0$<br>　　<br>所以$S(n,k)=\sum_{i=1}^{k} \sum_{j=1}^{n}C_{k}^i j^{k-i}r^j+r-(n+1)^k r^{n+1}$<br>　　<br>所以$S(n,k)=\sum_{i=1}^{k}C_{k}^{i} S(n,k-i)+r-(n+1)^k r^{n+1}$<br>　　<br>这是一个递归式，当$k=0$时，$S(n,0)=\frac{r(r^n-1)}{r-1}$<br>　　<br>所以我们使用记忆化搜索就能解决这个问题<br>　　<br>注意当$r=1$时，分母为$0$，此时需要特判，解法和$level1$是一样的</p>
+</blockquote>
+<p>【AC代码】</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=(<span class="keyword">int</span>)<span class="number">1e9</span>+<span class="number">7</span>,MAXN=<span class="number">2000</span>,D=<span class="number">50</span>;</div><div class="line">ll n,k,r,c[MAXN+D][MAXN+D],inv[MAXN+D],b[MAXN+D],f[MAXN+D],p[MAXN+D];</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	ll x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">fast</span><span class="params">(ll a,ll b)</span></span>&#123;<span class="function">ll <span class="title">temp</span><span class="params">(<span class="number">1</span>)</span></span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a%mod)<span class="keyword">if</span>(b&amp;<span class="number">1</span>)temp=temp*a%mod;<span class="keyword">return</span> temp;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		c[i][<span class="number">0</span>]=c[i][i]=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</div><div class="line">			c[i][j]=(c[i<span class="number">-1</span>][j<span class="number">-1</span>]+c[i<span class="number">-1</span>][j])%mod;</div><div class="line">	&#125;</div><div class="line">	inv[<span class="number">1</span>]=<span class="number">1</span>; <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i) inv[i]=(mod-mod/i)*inv[mod%i]%mod;</div><div class="line">	b[<span class="number">0</span>]=<span class="number">1</span>; <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)  (b[i]+=c[i+<span class="number">1</span>][j]*b[j]%mod)%=mod;</div><div class="line">		b[i]*=-inv[i+<span class="number">1</span>];  b[i]=(b[i]%mod+mod)%mod;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(f[k]!=<span class="number">-1</span>)  <span class="keyword">return</span> f[k];</div><div class="line">	<span class="keyword">if</span>(!k)&#123;</div><div class="line">		f[k]=r*(fast(r,n)<span class="number">-1</span>)%mod*fast(r<span class="number">-1</span>,mod<span class="number">-2</span>)%mod;  </div><div class="line">		f[k]=(f[k]%mod+mod)%mod;</div><div class="line">		<span class="keyword">return</span> f[k];</div><div class="line">	&#125;</div><div class="line">	f[k]=fast((n+<span class="number">1</span>)%mod,k)*fast(r,n+<span class="number">1</span>)%mod*fast(r<span class="number">-1</span>,mod<span class="number">-2</span>)%mod;  ll temp=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;++i)  (temp+=c[k][i]*dfs(k-i)%mod)%=mod;</div><div class="line">	f[k]=f[k]-r*fast(r<span class="number">-1</span>,mod<span class="number">-2</span>)%mod*temp%mod;  f[k]=(f[k]%mod+mod)%mod;</div><div class="line">	<span class="keyword">return</span> f[k];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	n=read();  k=read();  r=read()%mod;  </div><div class="line">	<span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">	<span class="keyword">if</span>(r==<span class="number">1</span>)&#123;</div><div class="line">		ll ans=<span class="number">0</span>;  n%=mod;  p[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">1</span>;++i)  p[i]=p[i<span class="number">-1</span>]*(n+<span class="number">1</span>)%mod;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k+<span class="number">1</span>;++i)  ans=(ans+c[k+<span class="number">1</span>][i]*b[k+<span class="number">1</span>-i]%mod*p[i]%mod)%mod;</div><div class="line">		ans=ans*inv[k+<span class="number">1</span>]%mod;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,dfs(k));</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	pre();<span class="keyword">for</span>(<span class="keyword">int</span> T=read();T;--T)solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -306,14 +322,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/27/3529/">【bzoj3529】数表</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/12/【51nod】序列求和v1-v5解题报告/">【51nod】序列求和v1~v5解题报告</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年02月27日 - 21时41分</p>
-        <p><span>最后更新:</span>2017年02月27日 - 22时15分</p>
+        <p><span>发布时间:</span>2017年04月12日 - 20时51分</p>
+        <p><span>最后更新:</span>2017年04月12日 - 21时51分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/27/3529/" title="【bzoj3529】数表">http://yoursite.com/2017/02/27/3529/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/27/3529/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/12/【51nod】序列求和v1-v5解题报告/" title="【51nod】序列求和v1~v5解题报告">http://yoursite.com/2017/04/12/【51nod】序列求和v1-v5解题报告/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/12/【51nod】序列求和v1-v5解题报告/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -328,18 +344,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/28/0228考试总结/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2100/01/16/111/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          0228考试总结
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛
         
       </div>
     </a>
   
   
-    <a href="/2017/02/27/莫比乌斯反演详解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【算法笔记】莫比乌斯反演详解</div>
+    <a href="/2017/04/11/时间复杂度分析初探/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【算法笔记】时间复杂度分析初探</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -350,7 +366,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-number">1.</span> <span class="toc-text">题解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考代码"><span class="toc-number">2.</span> <span class="toc-text">参考代码</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#序列求和-level-1"><span class="toc-number">1.</span> <span class="toc-text">序列求和$level 1$</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#序列求和-level2"><span class="toc-number">2.</span> <span class="toc-text">序列求和$level2$</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -399,7 +415,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/27/3529/" data-title="【bzoj3529】数表" data-url="http://yoursite.com/2017/02/27/3529/"></div>
+    <div class="ds-thread" data-thread-key="2017/04/12/【51nod】序列求和v1-v5解题报告/" data-title="【51nod】序列求和v1~v5解题报告" data-url="http://yoursite.com/2017/04/12/【51nod】序列求和v1-v5解题报告/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -422,13 +438,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/28/0228考试总结/" title="上一篇: 0228考试总结">
+            <a href="/2100/01/16/111/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/27/莫比乌斯反演详解/" title="下一篇: 【算法笔记】莫比乌斯反演详解">
+            <a href="/2017/04/11/时间复杂度分析初探/" title="下一篇: 【算法笔记】时间复杂度分析初探">
                 <i class="fa fa-angle-right"></i>
             </a>
         
