@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【bzoj3172】单词 | chty</title>
+  <title>1486 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AC自动机重修系列第二题">
+  <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【bzoj3172】单词">
-<meta property="og:url" content="http://yoursite.com/2017/03/07/3172/index.html">
+<meta property="og:title" content="1486">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/1486/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="AC自动机重修系列第二题">
-<meta property="og:updated_time" content="2017-03-07T14:00:16.076Z">
+<meta property="og:description" content="本文为博主原创，未经许可不得转载">
+<meta property="og:updated_time" content="2017-04-21T03:03:14.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【bzoj3172】单词">
-<meta name="twitter:description" content="AC自动机重修系列第二题">
+<meta name="twitter:title" content="1486">
+<meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -246,11 +246,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-3172" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-1486" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/07/3172/" class="article-date">
-      <time datetime="2017-03-07T13:55:45.000Z" itemprop="datePublished">2017-03-07</time>
+      <a href="/2017/04/21/1486/" class="article-date">
+      <time datetime="2017-04-21T03:01:55.000Z" itemprop="datePublished">2017-04-21</time>
 </a>
     </div>
   
@@ -263,7 +263,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【bzoj3172】单词
+      1486
     </h1>
   
 
@@ -273,10 +273,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bzoj/">bzoj</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -285,14 +281,15 @@
       
           
         <ul>
-<li>AC自动机重修系列第二题<a id="more"></a></li>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3172" target="_blank" rel="external">AC通道</a></p>
-<hr>
-<p>做过bzoj2434之后，这题就觉得很水了</p>
-<p>直接跑AC自动机，统计次数就行了</p>
-<p>注意最后要按照拓扑序更新后缀节点，因为当前串中出现过的字符后缀节点所代表的串一定出现过</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> T,cnt,pos[MAXN],v[MAXN],fail[MAXN],q[MAXN],tr[MAXN][<span class="number">27</span>];</div><div class="line"><span class="keyword">char</span> ch[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> &amp;now)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n=<span class="built_in">strlen</span>(ch+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!tr[now][ch[i]-<span class="string">'a'</span>])  tr[now][ch[i]-<span class="string">'a'</span>]=++cnt;</div><div class="line">		now=tr[now][ch[i]-<span class="string">'a'</span>];  v[now]++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> head=<span class="number">0</span>,tail=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i) <span class="keyword">if</span>(tr[<span class="number">0</span>][i]) q[++tail]=tr[<span class="number">0</span>][i];</div><div class="line">	<span class="keyword">while</span>(++head&lt;=tail)&#123;</div><div class="line">		<span class="keyword">int</span> x=q[head];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">26</span>;++i)&#123;</div><div class="line">			<span class="keyword">if</span>(!tr[x][i])  tr[x][i]=tr[fail[x]][i];</div><div class="line">			<span class="keyword">else</span> fail[tr[x][i]]=tr[fail[x]][i],q[++tail]=tr[x][i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=tail;i;--i)  v[fail[q[i]]]+=v[q[i]];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ch+<span class="number">1</span>),extend(pos[i]);</div><div class="line">	build();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=T;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,v[pos[i]]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486" target="_blank" rel="external">AC通道</a></p>
+<p>取出 k 个坏格，记 f[i] 表示从左上角不经过其它坏格，走到第 i 个坏格的方案数</p>
+<p>考虑转移，走到 (x,y) 这个格，共有 C(x+y, x) 种方案</p>
+<p>减掉不合法的，枚举第一次经过的坏格为 j</p>
+<p>f[i] -= f[j] * C(x[i]+y[i]-x[j]-y[j], x[i] - x[j])</p>
+<p>把终点也视为一个坏格，就能算方案数了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200000</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll mod=(ll)<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"><span class="keyword">struct</span> node&#123;ll x,y;&#125;p[<span class="number">2010</span>];</div><div class="line">ll n,m,k,f[<span class="number">2010</span>],inv[N+<span class="number">50</span>],fac[N+<span class="number">50</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	ll x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;<span class="keyword">return</span> a.x==b.x?a.y&lt;b.y:a.x&lt;b.x;&#125;</div><div class="line"><span class="function">ll <span class="title">fast</span><span class="params">(ll a,ll b)</span></span>&#123;<span class="function">ll <span class="title">ret</span><span class="params">(<span class="number">1</span>)</span></span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a%mod)<span class="keyword">if</span>(b&amp;<span class="number">1</span>)ret=ret*a%mod;<span class="keyword">return</span> ret;&#125;</div><div class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n,ll m)</span></span>&#123;<span class="keyword">return</span> fac[n]*inv[m]%mod*inv[n-m]%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	fac[<span class="number">0</span>]=<span class="number">1</span>; <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=N;++i) fac[i]=fac[i<span class="number">-1</span>]*i%mod;</div><div class="line">	inv[N]=fast(fac[N],mod<span class="number">-2</span>);</div><div class="line">	<span class="keyword">for</span>(ll i=N<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)  inv[i]=inv[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%mod;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read()<span class="number">-1</span>;  m=read()<span class="number">-1</span>;  k=read();  pre();</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=k;++i)  p[i].x=read()<span class="number">-1</span>,p[i].y=read()<span class="number">-1</span>;</div><div class="line">	p[++k].x=n;  p[k].y=m;</div><div class="line">	sort(p+<span class="number">1</span>,p+k+<span class="number">1</span>,cmp);</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=k;++i)&#123;</div><div class="line">		f[i]=C(p[i].x+p[i].y,p[i].x);</div><div class="line">		<span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;i;++j)</div><div class="line">			<span class="keyword">if</span>(p[i].y&gt;=p[j].y) (f[i]-=f[j]*C(p[i].x+p[i].y-p[j].x-p[j].y,p[i].x-p[j].x)%mod)%=mod;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(f[k]+mod)%mod);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -301,14 +298,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/07/3172/">【bzoj3172】单词</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/21/1486/">1486</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年03月07日 - 21时55分</p>
-        <p><span>最后更新:</span>2017年03月07日 - 22时00分</p>
+        <p><span>发布时间:</span>2017年04月21日 - 11时01分</p>
+        <p><span>最后更新:</span>2017年04月21日 - 11时03分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/07/3172/" title="【bzoj3172】单词">http://yoursite.com/2017/03/07/3172/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/07/3172/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/21/1486/" title="1486">http://yoursite.com/2017/04/21/1486/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/21/1486/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -323,18 +320,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/08/CF-163E/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2100/01/16/111/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【CF#163E】E-Government
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛
         
       </div>
     </a>
   
   
-    <a href="/2017/03/07/2434/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【bzoj2434】阿狸的打字机</div>
+    <a href="/2017/04/21/1587/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【51nod1587】半现串</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -394,7 +391,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/07/3172/" data-title="【bzoj3172】单词" data-url="http://yoursite.com/2017/03/07/3172/"></div>
+    <div class="ds-thread" data-thread-key="2017/04/21/1486/" data-title="1486" data-url="http://yoursite.com/2017/04/21/1486/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -417,13 +414,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/08/CF-163E/" title="上一篇: 【CF#163E】E-Government">
+            <a href="/2100/01/16/111/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/07/2434/" title="下一篇: 【bzoj2434】阿狸的打字机">
+            <a href="/2017/04/21/1587/" title="下一篇: 【51nod1587】半现串">
                 <i class="fa fa-angle-right"></i>
             </a>
         
