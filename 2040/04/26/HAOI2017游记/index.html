@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【51nod1486】大大走格子 | chty</title>
+  <title>${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文为博主原创，未经许可不得转载">
+  <meta name="description" content="日期年份为人工置顶，请不要吐槽
+
+
+本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【51nod1486】大大走格子">
-<meta property="og:url" content="http://yoursite.com/2017/04/21/1486/index.html">
+<meta property="og:title" content="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记">
+<meta property="og:url" content="http://yoursite.com/2040/04/26/HAOI2017游记/index.html">
 <meta property="og:site_name" content="chty">
-<meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-04-21T04:23:20.423Z">
+<meta property="og:description" content="日期年份为人工置顶，请不要吐槽
+
+
+本文为博主原创，未经许可不得转载">
+<meta property="og:updated_time" content="2017-04-26T13:49:49.296Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【51nod1486】大大走格子">
-<meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
+<meta name="twitter:title" content="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记">
+<meta name="twitter:description" content="日期年份为人工置顶，请不要吐槽
+
+
+本文为博主原创，未经许可不得转载">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -246,11 +255,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-1486" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HAOI2017游记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/04/21/1486/" class="article-date">
-      <time datetime="2017-04-21T03:01:55.000Z" itemprop="datePublished">2017-04-21</time>
+      <a href="/2040/04/26/HAOI2017游记/" class="article-date">
+      <time datetime="2040-04-26T12:49:48.000Z" itemprop="datePublished">2040-04-26</time>
 </a>
     </div>
   
@@ -263,7 +272,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【51nod1486】大大走格子
+      ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记
     </h1>
   
 
@@ -273,10 +282,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/51nod/">51nod</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组合计数/">组合计数</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -285,15 +290,45 @@
       
           
         <ul>
+<li>日期年份为人工置顶，请不要吐槽</li>
+</ul>
+<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1486" target="_blank" rel="external">AC通道</a></p>
-<p>取出 k 个坏格，记 f[i] 表示从左上角不经过其它坏格，走到第 i 个坏格的方案数</p>
-<p>考虑转移，走到 (x,y) 这个格，共有 C(x+y, x) 种方案</p>
-<p>减掉不合法的，枚举第一次经过的坏格为 j</p>
-<p>f[i] -= f[j] * C(x[i]+y[i]-x[j]-y[j], x[i] - x[j])</p>
-<p>把终点也视为一个坏格，就能算方案数了</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 200000</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll mod=(ll)<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"><span class="keyword">struct</span> node&#123;ll x,y;&#125;p[<span class="number">2010</span>];</div><div class="line">ll n,m,k,f[<span class="number">2010</span>],inv[N+<span class="number">50</span>],fac[N+<span class="number">50</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	ll x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node a,node b)</span></span>&#123;<span class="keyword">return</span> a.x==b.x?a.y&lt;b.y:a.x&lt;b.x;&#125;</div><div class="line"><span class="function">ll <span class="title">fast</span><span class="params">(ll a,ll b)</span></span>&#123;<span class="function">ll <span class="title">ret</span><span class="params">(<span class="number">1</span>)</span></span>;<span class="keyword">for</span>(;b;b&gt;&gt;=<span class="number">1</span>,a=a*a%mod)<span class="keyword">if</span>(b&amp;<span class="number">1</span>)ret=ret*a%mod;<span class="keyword">return</span> ret;&#125;</div><div class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n,ll m)</span></span>&#123;<span class="keyword">return</span> fac[n]*inv[m]%mod*inv[n-m]%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	fac[<span class="number">0</span>]=<span class="number">1</span>; <span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=N;++i) fac[i]=fac[i<span class="number">-1</span>]*i%mod;</div><div class="line">	inv[N]=fast(fac[N],mod<span class="number">-2</span>);</div><div class="line">	<span class="keyword">for</span>(ll i=N<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)  inv[i]=inv[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%mod;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read()<span class="number">-1</span>;  m=read()<span class="number">-1</span>;  k=read();  pre();</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=k;++i)  p[i].x=read()<span class="number">-1</span>,p[i].y=read()<span class="number">-1</span>;</div><div class="line">	p[++k].x=n;  p[k].y=m;</div><div class="line">	sort(p+<span class="number">1</span>,p+k+<span class="number">1</span>,cmp);</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=k;++i)&#123;</div><div class="line">		f[i]=C(p[i].x+p[i].y,p[i].x);</div><div class="line">		<span class="keyword">for</span>(ll j=<span class="number">1</span>;j&lt;i;++j)</div><div class="line">			<span class="keyword">if</span>(p[i].y&gt;=p[j].y) (f[i]-=f[j]*C(p[i].x+p[i].y-p[j].x-p[j].y,p[i].x-p[j].x)%mod)%=mod;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,(f[k]+mod)%mod);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>本次$HAOI$题目质量相较于往年十分新颖，没有常见的套路，需要选手具备较高的思维能力</p>
+<p>$T1$是一道二分图最大独立集的题目，我虽然看出了这一定是在二分图上搞事情，但是没有想到最大独立集</p>
+<p>于是写了一发贪心，过了$10$分</p>
+<p>此外在写这题的时候，我没看清输入的是不是贸易伙伴的关系，然后一直在考虑如何存图，耗费了大量时间</p>
+<p>$T2$是字符串的题目，一眼看过去后缀数组，5555我不会写后缀数组，怎么办？</p>
+<p>没办法，只好强行上后缀自动机，建出后缀树，然后在后缀树上搞$lca$，拿到了$60$分</p>
+<p>这几天得赶紧学后缀数组(神$TM$比赛现场的$smartc++$里有后缀数组的板子)</p>
+<p>对拍完$T2$，我发现$T3$一脸不可做的样子，于是去刚$T1$，终究是没有刚出来，于是上午$gg$</p>
+<p>下午的题面我就不吐槽了</p>
+<p>$T1$的与运算非得写一个”^”,让我一直以为是异或，坑害了我不少时间</p>
+<p>然后随手码了$20$分暴力，毕竟$uoj$模数把我吓傻了，直接去看$T2$</p>
+<p>刚看到$T2$时还以为是$AC$自动机板子题，然后它告诉我容错，我不会处理容错啊</p>
+<p>于是写$20$分暴力，然后去刚$T1$</p>
+<p>然后我就发现$T1$似乎可以按位处理的样子，但是不合法状态该怎么减去呢？</p>
+<p>我尝试着拆子状态，然后发现这种方法不对，然后只好写梦想分了，我的程序只能处理没有障碍或只有一个障碍的情况</p>
+<p> 　　</p>
+<p> 　　</p>
+<p> 　　</p>
+<h2 id="题目风波"><a href="#题目风波" class="headerlink" title="题目风波"></a>题目风波</h2><p>实际上考试前我已经做好了退役的准备，我甚至在网上订了一年的《数学通讯》，准备回去高考</p>
+<p>而且刚考完试的那会，我也已经释然了，退役已稳，回去学文化课也是一种不错的选择</p>
+<p>可是当成绩出来的那一刻，我惊呆了，我下午的$T1$竟然获得了$90$分，我也因为这$90$分进入了省队</p>
+<p>而我上午的成绩只有$10$分，我一度怀疑我的后缀树写挂了</p>
+<p>事后我才知道评测空间开小了，而且下午的数据实在是太水了</p>
+<p>我能进队确实是靠水数据和运气，对此我深感惭愧</p>
+<p>我也没有料到会是这样的结果，我也没有想过我能进队，比我强的人纷纷退役，我的心里也不是滋味</p>
+<p>与我同班的焦景辉如此热爱$OI$，机房内很少能见到他在颓废，而且我也认为他的实力远胜于我</p>
+<p>可是退役的却是他，进队的却是我，我的心里久久不能平静</p>
+<p>但是事已至此，我也无可奈何</p>
+<p>在我面前的只有一条路，那就是继续前进，奋战到底，摆脱蒟蒻的命运，完成向神犇的蜕变</p>
+<p>也许这才是对退役选手最大的尊敬吧</p>
+<p>　　</p>
+<p>　　</p>
+<p>　　</p>
 
       
     </div>
@@ -302,14 +337,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/21/1486/">【51nod1486】大大走格子</a></p>
+        <p><span>本文标题:</span><a href="/2040/04/26/HAOI2017游记/">${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年04月21日 - 11时01分</p>
-        <p><span>最后更新:</span>2017年04月21日 - 12时23分</p>
+        <p><span>发布时间:</span>2040年04月26日 - 20时49分</p>
+        <p><span>最后更新:</span>2017年04月26日 - 21时49分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/21/1486/" title="【51nod1486】大大走格子">http://yoursite.com/2017/04/21/1486/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/21/1486/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2040/04/26/HAOI2017游记/" title="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记">http://yoursite.com/2040/04/26/HAOI2017游记/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2040/04/26/HAOI2017游记/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -324,18 +359,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/04/22/1693/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2100/01/16/111/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【51nod1693】水群
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛
         
       </div>
     </a>
   
   
-    <a href="/2017/04/21/1587/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【51nod1587】半现串</div>
+    <a href="/2017/04/26/198/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【CTSC2016】时空旅行</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -346,7 +381,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目分析"><span class="toc-number">1.</span> <span class="toc-text">题目分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目风波"><span class="toc-number">2.</span> <span class="toc-text">题目风波</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -395,7 +430,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/04/21/1486/" data-title="【51nod1486】大大走格子" data-url="http://yoursite.com/2017/04/21/1486/"></div>
+    <div class="ds-thread" data-thread-key="2040/04/26/HAOI2017游记/" data-title="${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记" data-url="http://yoursite.com/2040/04/26/HAOI2017游记/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -418,13 +453,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/04/22/1693/" title="上一篇: 【51nod1693】水群">
+            <a href="/2100/01/16/111/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/04/21/1587/" title="下一篇: 【51nod1587】半现串">
+            <a href="/2017/04/26/198/" title="下一篇: 【CTSC2016】时空旅行">
                 <i class="fa fa-angle-right"></i>
             </a>
         
