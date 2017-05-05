@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【算法笔记】莫比乌斯反演详解 | chty</title>
+  <title>【算法笔记】多项式快速算法——快速傅里叶变换 | chty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法笔记】莫比乌斯反演详解">
-<meta property="og:url" content="http://yoursite.com/2017/02/27/莫比乌斯反演详解/index.html">
+<meta property="og:title" content="【算法笔记】多项式快速算法——快速傅里叶变换">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/多项式快速算法——快速傅里叶换/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:updated_time" content="2017-04-11T12:48:46.000Z">
+<meta property="og:image" content="http://i1.piimg.com/591838/8863b2d7c21e79d3.png">
+<meta property="og:image" content="http://i2.muimg.com/591838/de01bf5bf866220ct.jpg">
+<meta property="og:image" content="http://i4.buimg.com/591838/676266cd0b847acat.jpg">
+<meta property="og:updated_time" content="2017-05-05T12:01:53.509Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法笔记】莫比乌斯反演详解">
+<meta name="twitter:title" content="【算法笔记】多项式快速算法——快速傅里叶变换">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
+<meta name="twitter:image" content="http://i1.piimg.com/591838/8863b2d7c21e79d3.png">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -246,11 +250,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-莫比乌斯反演详解" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-多项式快速算法——快速傅里叶换" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/27/莫比乌斯反演详解/" class="article-date">
-      <time datetime="2017-02-27T03:34:03.000Z" itemprop="datePublished">2017-02-27</time>
+      <a href="/2017/05/04/多项式快速算法——快速傅里叶换/" class="article-date">
+      <time datetime="2017-05-04T07:18:05.000Z" itemprop="datePublished">2017-05-04</time>
 </a>
     </div>
   
@@ -263,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【算法笔记】莫比乌斯反演详解
+      【算法笔记】多项式快速算法——快速傅里叶变换
     </h1>
   
 
@@ -274,7 +278,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法笔记/">算法笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多项式/">多项式</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -287,74 +291,145 @@
         <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><hr>
-<p>莫比乌斯反演是数论中的重要内容，在许多情况下能够简化运算。</p>
-<p>我们来看这个函数$F(n)=\sum_{d|n}^{ } f(d)$，则有：</p>
+<hr>
+<h2 id="多项式简介"><a href="#多项式简介" class="headerlink" title="多项式简介"></a>多项式简介</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>形如$A(x)=\sum_{i=0}^{n-1} a_i x^i$的式子成为多项式</p>
+<p>我们把$n$称为该多项式的次数界</p>
+<p>需要注意的是，$n-1$次多项式需要用到$n$个数，次数界的定义为最高次项的次数加一</p>
+<p>　　</p>
+<h3 id="运算法则"><a href="#运算法则" class="headerlink" title="运算法则"></a>运算法则</h3><p>设$A(x)$和$B(x)$为多项式，且次数界分别为$n$和$m$，即</p>
+<p>$A(x)=\sum_{i=0}^{n-1}a_i x^i$</p>
+<p>$B(x)=\sum_{i=0}^{m-1}b_i x^i$</p>
+<p>则他们遵循如下的运算法则：</p>
+<p>$A(x)+B(x)=\sum_{i=0}^{max(n-1,m-1)} (a_i+b_i)x^i$</p>
+<p>$A(x)-B(x)=\sum_{i=0}^{max(n-1,m-1)} (a_i-b_i)x^i$</p>
+<p>$A(x)B(x)=\sum_{k=0}^{n+m-2}\sum_{i=0}^{k}a_i b_{k-i} x^k$</p>
+<p>其中两个多项式相乘的结果称为它们的卷积，两个次数界为$n$和$m$的多项式相乘的卷积的次数界为$n+m-1$</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="变换与反演"><a href="#变换与反演" class="headerlink" title="变换与反演"></a>变换与反演</h2><h3 id="多项式的两种表示方法"><a href="#多项式的两种表示方法" class="headerlink" title="多项式的两种表示方法"></a>多项式的两种表示方法</h3><p>从上面的定义中，我们可以看到求多项式的卷积复杂度为$O(n^2)$</p>
+<p>而$n^2$看起来不太友好的样子，怎么样才算是友好的呢？嗯，我看这个$log$就不错</p>
+<p>使用快速傅里叶变换，可将多项式乘法的复杂度降至$O(n\log n)$</p>
+<p>事实上除了上面的$A(x)=\sum_{i=0}^{n-1}a_i x^i$的系数表示方法，多项式还有一种表示方法：点值表示法</p>
+<p>一个多项式$A(x)$的点值表达就是一个由n个点值对多组成的集合：{$(x_0,y_0),(x_1,y_1),…,(x_{n-1},y_{n-1})$}，对于$0&lt;=k&lt;=n-1$，所有$x_k$各不相同，记作：$y_k=A(x_k)$</p>
+<p>　　</p>
+<h3 id="求值与插值"><a href="#求值与插值" class="headerlink" title="求值与插值"></a>求值与插值</h3><p>对于一个多项式，如果知道它的系数表达式，我们很容易求出它的点值表达式，这一过程成为求值</p>
+<p>如果知道它的点值表达式，让你求它的系数表达式，这一过程称为插值</p>
 <blockquote>
-<p>$F(1)=f(1)$<br>$F(2)=f(1)+f(2)$<br>$F(3)=f(1)+f(3)$<br>$F(4)=f(1)+f(2)+f(4)$<br>$F(5)=f(1)+f(5)$<br>$F(6)=f(1)+f(2)+f(3)+f(6)$<br>$F(7)=f(1)+f(7)$<br>$F(8)=f(1)+f(2)+f(4)+f(8)$</p>
+<p>定理：当插值多项式的次数界等于已知点值对的数目时，插值才是明确的</p>
 </blockquote>
-<p>于是我们可以通过$F(n)$推导出$f(n)$</p>
+<p>证明：$y_k=A(x_k)$等价于下式：</p>
+<p><img src="http://i1.piimg.com/591838/8863b2d7c21e79d3.png"></p>
+<p>其中，左边的矩阵称为范德蒙矩阵，其行列式恒不为0，也就是说左边矩阵是存在逆矩阵的</p>
+<p>所以系数向量存在且唯一</p>
+<p>所以如果我们知道了一个多项式的点值表示，就可以通过矩阵求逆的方法来算出系数向量</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="离散傅里叶变换"><a href="#离散傅里叶变换" class="headerlink" title="离散傅里叶变换"></a>离散傅里叶变换</h2><h3 id="朴素算法"><a href="#朴素算法" class="headerlink" title="朴素算法"></a>朴素算法</h3><p>根据霍纳法则，我们可以在$O(n)$的时间内完成多项式的单点求值：</p>
+<p>$A(x_0)=a_0+x_0(a_1+x_0(a_2+…+x_0(a_{n-2}+x_0(a_{n-1}))))$</p>
+<p>所以在$n$个点进行求值的复杂度为$O(n^2)$</p>
+<p>我们尝试进行优化</p>
+<p>　　</p>
+<h3 id="一种分治算法"><a href="#一种分治算法" class="headerlink" title="一种分治算法"></a>一种分治算法</h3><p>对于$A(x)=\sum_{i=0}^{n-1}a_i x^i=a_0+a_1 x+a_2 x^2+a_3 x^3+…+a_{n-1}x^{n-1}$</p>
+<p>我们按照奇偶分开来算：</p>
+<p>$A(x)=(a_0 x^0+a_2 x^2+…+a_{n-2}x^{n-2})+x(a_1 x^0+a_3 x^2+…+a_{n-1}x^{n-1})$</p>
+<p>$A(x)=(a_0 (x^2)^0+a_2 (x^2)^1+…+a_{n-2}(x^2)^{n/2-1})+x(a_1 (x^2)^0+a_3 (x^2)^1+…+a_{n-1}(x^2)^{n/2-1})$ </p>
+<p>我们发现左右两边的形式是一样的，都可以被表示成一个多项式的形式</p>
+<p>则有如下性质：</p>
+<p>$A(x_i)=A_L(A_{i}^{2})+x_iA_R(A_{i}^{2})$</p>
+<p>$A(-x_i)=A_L(A_{i}^{2})-x_iA_R(A_{i}^{2})$</p>
+<p>这意味着什么？我们可以选择$\frac{n}{2}$个$x_i$进行求值得到$n$个点值，如此不断递归下去</p>
+<p>时间复杂度$O(n\log n)$</p>
+<p>但是这样做会有问题：x不断平方会爆掉计算机储存的最大值，如果用高精度也是得不偿失</p>
+<p>为了解决这个问题，我们引入复数</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="复数简介"><a href="#复数简介" class="headerlink" title="复数简介"></a>复数简介</h2><h3 id="复数的代数形式"><a href="#复数的代数形式" class="headerlink" title="复数的代数形式"></a>复数的代数形式</h3><p>形如$a+bi$的数我们称为复数，其中$i$为$\sqrt{-1}$</p>
+<p>对应的，我们可以用二维平面上的点$(a,b)$来表示这个复数</p>
+<p>复数的运算法则和实数类似，你只需要把复数看成一个式子就行了</p>
+<p>　　</p>
+<h3 id="复数的三角形式"><a href="#复数的三角形式" class="headerlink" title="复数的三角形式"></a>复数的三角形式</h3><p>上面提到的$a+bi$称为复数的代数形式</p>
+<p>除此之外，复数还可以用三角函数的形式来表示</p>
+<p>如下图所示：</p>
+<p><img src="http://i2.muimg.com/591838/de01bf5bf866220ct.jpg"></p>
+<p>我们知道复数$a+bi$对应着复平面上的点$(a,b)$，也对应着复平面上的一个向量</p>
+<p>这个向量的长度叫作复数$a+bi$的模，记作|$a+bi$|,一般情况下用字母$r$表示</p>
+<p>这个向量与$x$轴正方向有一个夹角，称为辐角，一般情况下用希腊字母$\theta$表示</p>
+<p>那么显然$a=r\cos\theta$，$b=r\sin\theta$</p>
+<p>带入到代数形式的表达式中，可以得到它的三角形式：$a+bi=r(\cos\theta+i\sin\theta)$</p>
+<p>　　</p>
+<h3 id="复数的指数形式"><a href="#复数的指数形式" class="headerlink" title="复数的指数形式"></a>复数的指数形式</h3><blockquote>
+<p>欧拉公式：$e^{i\theta}=\cos\theta+i\sin\theta$</p>
+</blockquote>
+<p>证明：将$e^x,\sin x,\cos x$按照泰勒公式进行展开得到它们的泰勒级数：</p>
+<p>$e^x=1+\frac{x}{1!}+\frac{x^2}{2!}+\frac{x^3}{3!}+…$</p>
+<p>$\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+…$</p>
+<p>$\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}$</p>
+<p>将$x=i\theta$带入得：</p>
+<p>$e^{i\theta}=1+\theta i-\frac{\theta^2}{2!}-\frac{\theta^3}{3!}i+\frac{\theta^4}{4!}+\frac{\theta^5}{5!}i-\frac{\theta^6}{6!}-\frac{\theta^7}{7!}i+…$</p>
+<p>$e^{i\theta}=(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\frac{\theta^6}{6!}+…)+i(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\frac{\theta^7}{7!}+…)$</p>
+<p>即$e^{i\theta}=\cos\theta+i\sin\theta$</p>
+<p>证毕</p>
+<p>将欧拉公式带入到三角形式的表达式中就能得到复数的指数形式表达式：$z=r(\cos\theta+i\sin\theta)=re^{i\theta}$</p>
+<p>　　</p>
+<h3 id="单位复数根"><a href="#单位复数根" class="headerlink" title="单位复数根"></a>单位复数根</h3><p>在复数域内，有且仅有n个数，使得这个数的n次方等于1，我们把这样的数称为单位复数根，记作　$\omega_{n}^{i}　(i\epsilon [0,n-1])$</p>
+<p>将$\theta=2\pi$带入到欧拉公式中得到：$e^{2\pi i}=1$</p>
+<p>所以$\omega_{n}^{k}=(e^{\frac{2\pi i}{n}})^k$</p>
 <blockquote>
-<p>$f(1)=F(1)$<br>$f(2)=F(2)-F(1)$<br>$f(3)=F(3)-F(1)$<br>$f(4)=F(4)-F(2)$<br>$f(5)=F(5)-F(1)$<br>$f(6)=F(6)-F(3)-F(2)+F(1)$<br>$f(7)=F(7)-F(1)$<br>$f(8)=F(8)-F(4)$</p>
+<p>消去引理：$\omega_{dn}^{dk}=\omega_{n}^{k}$</p>
 </blockquote>
-<p>观察以上式子的系数，我们做出如下猜想：$f(n)=\sum_{d|n}^{ }\mu (d)F(\frac{n}{d})$</p>
-<p>那么这个猜想到底是否正确呢？上式中的$\mu (d)$又是什么呢？</p>
-<p>诸位，让我们进入正题，翱翔在数学的天空中吧。</p>
-<p>-<br>-<br>-</p>
-<h2 id="莫比乌斯函数"><a href="#莫比乌斯函数" class="headerlink" title="莫比乌斯函数"></a>莫比乌斯函数</h2><hr>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>记莫比乌斯函数为$\mu (d)$，d为正整数</p>
-<p>若$d=1$，则$\mu (d)=1$</p>
-<p>若$d={p_{1}}{p_{2}} {p_{3}}…{p_{k}}$，则$\mu (d)=(-1)^k$</p>
-<p>其他情况下$\mu (d)=0$</p>
-<p>-<br>-<br>-</p>
-<h3 id="性质一"><a href="#性质一" class="headerlink" title="性质一"></a>性质一</h3><blockquote>
-<p>对于任意正整数n</p>
-<p>若$n=1$，则$\sum_{d|n}^{ } \mu (d)=1$</p>
-<p>若$n&gt;1$，则$\sum_{d|n}^{ } \mu (d)=0$</p>
+<p>证明：$\omega_{dn}^{dk}=(e^{\frac{2\pi i}{dn}})^{dk}=(e^{\frac{2\pi i}{n}})^k=\omega_{n}^{k}$</p>
+<blockquote>
+<p>折半引理：$(\omega_{n}^{k})^2=\omega_{n/2}^{k}$</p>
 </blockquote>
-<p> 证明：</p>
-<p> （1）当$n=1$时，显然成立<br> （2）当$n\neq 1$时，将n分解为$n={p_{1}}^{a_{1}}{p_{2}}^{a_{2}}…{p_{k}}^{a_{k}}$<br> 在n的所有因子中，值不为零的只有所有质因子次数都为1的因子，其中质因数个数为r个的因子有$C_{k}^{r}$个<br> 那么显然有：$\sum_{n|d}^{ }\mu(d)=C_{k}^{0}-C_{k}^{1}+C_{k}^{2}+…+(-1)^{k}C_{k}^{k}=\sum_{i=0}^{k}(-1)^{i}C_{k}^{i}$<br> 根据二项式定理：$(x+y)^{n}=\sum_{i=0}^{n}C_{n}^{i}x^{i}y^{n-i}$<br> 令$x=1，y=-1$，代入即可得证</p>
-<p>-<br>-<br>-</p>
-<h3 id="性质二"><a href="#性质二" class="headerlink" title="性质二"></a>性质二</h3><ul>
-<li>温馨提示：此性质涉及欧拉函数和莫比乌斯定理，读者可先学习之</li>
+<p>证明：将$d=\frac{1}{2}$带入消去引理即可得证</p>
+<blockquote>
+<p>求和引理：$\sum_{i=0}^{n-1} (\omega_{n}^{k})^i=0$  ($k$不是$n$倍数)</p>
+</blockquote>
+<p>证明：利用等差数列求和公式：原式$=\frac{(\omega_{n}^{k})^n-1}{\omega_{n}^{k}-1}=\frac{0}{\omega_{n}^{k}-1}$</p>
+<p>因为分母不能为$0$，所以${\omega_{n}^{k}}$不能为$1$，所以$k$不是$n$倍数</p>
+<blockquote>
+<p>循环性质：$(\omega_{n}^{k})^p=\omega_{n}^{pk}=\omega_{n}^{(pk\mod{n})}$</p>
+</blockquote>
+<p>证明：$\omega_{n}^{kp}=\omega_{n}^{(kp\mod n+\left \lfloor \frac{kp}{n} \right \rfloor n)}=\omega_{n}^{(kp \mod n)}$</p>
+<p>有了这些性质，我们发现上面提到的精度问题就解决了，因为单位复数根不断平方可以用折半引理解决</p>
+<p>所以我们另$x=\omega_{n}^{k}$，代入到分治算法中就能完成离散傅里叶变换</p>
+<p>中文伪代码如下：</p>
+<p><img src="http://i4.buimg.com/591838/676266cd0b847acat.jpg"></p>
+<p>这里解释一下第12行：</p>
+<p>$A(\omega_{n}^{k})=A_L(\omega_{n/2}^{k})+\omega_{n}^{k}A_R(\omega_{n/2}^{k})$</p>
+<p>$A(-\omega_{n}^{k})=A_L(\omega_{n/2}^{k})-\omega_{n}^{k}A_R(\omega_{n/2}^{k})$</p>
+<p>$-\omega_{n}^{k}=\omega_{n}^{n/2+k}$</p>
+<p>所以代码就是这样写的</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="快速傅里叶逆变换"><a href="#快速傅里叶逆变换" class="headerlink" title="快速傅里叶逆变换"></a>快速傅里叶逆变换</h2><p>现在我们得到了点值表达式，那么如何求系数表达式呢？</p>
+<p>矩阵求逆的复杂度是O(n^3)的，范德蒙矩阵求逆可以优化至O(n^2)，但是复杂度依旧很高</p>
+<p>我们考虑利用单位复数根的性质进行优化</p>
+<p>诶，我看这个求和引理就不错</p>
+<p>我们构造一个新的向量：$c_k=\sum_{i=0}^{n-1}y_i (\omega_{n}^{-k})^i$</p>
+<p>即多项式$A(x)$在$\omega_{n}^{0}，\omega_{n}^{-1}，\omega_{n}^{-2}…\omega_{n}^{-(n-1)}$处的点值</p>
+<p>将$y_i=\sum_{j=0}^{n-1}(\omega_{n}{i})^j$带入上式得到：</p>
+<p>$c_k=\sum_{j=0}^{n-1}a_j(\sum_{i=0}^{n-1}(\omega_{n}^{j-k})^i)$</p>
+<p>根据求和引理，当且仅当$j=k$时$a_i=\frac{c_i}{n}$</p>
+<p>所以我们只需要求出向量$c$，然后除以$n$就能得到系数表达式</p>
+<p>我们观察$c$的表达式，这是一个多项式啊有木有，直接套用上面的离散傅里叶变换就行了</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="模板代码"><a href="#模板代码" class="headerlink" title="模板代码"></a>模板代码</h2><p>这里以uoj34为模板题亮一下代码</p>
+<ul>
+<li><a href="http://uoj.ac/problem/34" target="_blank" rel="external">AC传送门</a></li>
 </ul>
-<blockquote>
-<p>对于任意正整数n有：$\sum_{d|n}^{ }\frac{\mu(d)}{d}=\frac{\phi (n)}{n}$</p>
-</blockquote>
-<p> 证明：<br> 因为$n=\sum_{d|n}^{ }\phi(d)$<br> 所以令$F(n)=n,f(n)=\phi(n)$<br> 代入莫比乌斯定理得：$\phi(n)=\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})$<br> 即$\sum_{d|n}^{ }\frac{\mu(d)}{d}=\frac{\phi (n)}{n}$</p>
-<p>-<br>-<br>-</p>
-<h3 id="积性函数"><a href="#积性函数" class="headerlink" title="积性函数"></a>积性函数</h3><p>数论上积性函数的定义：设$f(n)$为定义在$\mathbb{N^{+}}$上的函数，若对于任意的$\gcd (x,y)=1$，都有$f(xy)=f(x)f(y)$，则称$f(x)$为积性函数</p>
-<p>积性函数的性质：</p>
-<p>（1）$f(1)=1$</p>
-<p>（2）积性函数的前缀和也是积性函数</p>
-<p>莫比乌斯函数就是一个积性函数(我不会证明)</p>
-<p>所以我们可以通过线性筛来求莫比乌斯函数</p>
-<p>-<br>-<br>-</p>
-<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> cnt,check[MAXN],prime[MAXN],mu[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=MAXN;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>; </div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=MAXN;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;mu[prime[j]*i]=<span class="number">0</span>;<span class="keyword">break</span>;&#125; </div><div class="line">			mu[prime[j]*i]=-mu[i]; </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>【bzoj2440】完全平方数  <a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2440" target="_blank" rel="external">传送门</a>  <a href="http://localhost:4000/2017/02/26/%E3%80%90bzoj2440%E3%80%91%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" target="_blank" rel="external">题解传送门</a></p>
-<p>-<br>-<br>-</p>
-<h2 id="莫比乌斯定理"><a href="#莫比乌斯定理" class="headerlink" title="莫比乌斯定理"></a>莫比乌斯定理</h2><hr>
-<h3 id="因数形式"><a href="#因数形式" class="headerlink" title="因数形式"></a>因数形式</h3><blockquote>
-<p>$F(n)=\sum_{d|n}^{ }f(d)\Leftrightarrow f(n)=\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})$</p>
-</blockquote>
-<p> 证明：<br> $\sum_{d|n}^{ }\mu(d)F(\frac{n}{d})=\sum_{d|n}^{ }\mu(d)\sum_{k|\frac{n}{d}}^{ }f(k)=\sum_{k|n}^{ }f(k)\sum_{d|\frac{n}{k}}^{ }\mu(d)$<br> 根据性质一，当且仅当$\frac{n}{k}=1$时，$\sum_{d|\frac{n}{k}}^{ }\mu(d)$不为0<br> 所以原式=$f(n)$，证毕</p>
-<p>-<br>-<br>-</p>
-<h3 id="倍数形式"><a href="#倍数形式" class="headerlink" title="倍数形式"></a>倍数形式</h3><blockquote>
-<p>$F(n)=\sum_{n|d}^{ }f(d)\Leftrightarrow f(n)=\sum_{n|d}^{ }\mu(\frac{d}{n})F(d)$</p>
-</blockquote>
-<p>证明：<br>令$k=\frac{d}{n}$，则$\sum_{n|d}^{ }\mu(\frac{d}{n})F(d)=\sum_{k=1}^{+\infty}\mu(k)F(nk)=\sum_{k=1}^{+\infty}\mu(k)\sum_{nk|d}^{ }f(d)=\sum_{n|d}^{ }f(d)\sum_{k|\frac{d}{n}}^{ }\mu(k)$<br>根据性质一，当且仅当$\frac{d}{n}=1$时，$\sum_{k|\frac{d}{n}}^{ }\mu(k)$不为0<br>所以原式=$f(n)$，证毕</p>
-<p>-<br>-<br>-</p>
-<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>对于一些函数f(n)，如果我们很难直接求出它的值，而容易求出倍数和或约数和F(n)，那么我们可以通过莫比乌斯反演来求得f(n)的值</p>
-<p>例：f(n)表示某一范围内(x,y)=n的数对的数量，F(n)表示某一范围内n|(x,y)的数对的数量</p>
-<p>那么直接求f(n)并不是很好求，而F(n)求起来相对无脑一些，我们可以通过对F(n)进行莫比乌斯反演来求得f(n)</p>
-<p>-<br>-<br>-</p>
-<h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><p>【bzoj2301】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2301" target="_blank" rel="external">传送门</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2301%E3%80%91/" target="_blank" rel="external">题解传送门</a></p>
-<p>【bzoj2820】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2820" target="_blank" rel="external">传送门</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2820%E3%80%91/" target="_blank" rel="external">题解传送门</a></p>
-<p>-<br>-</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>《莫比乌斯反演》   ——吉大附中实验学校PoPoQQQ</p>
-<p>《莫比乌斯反演定理证明（两种形式）》  ——outer_form</p>
-<p>欢迎各位大佬前来指教</p>
-<p>-<br>-</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi=<span class="built_in">acos</span>(<span class="number">-1</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300010</span></div><div class="line"><span class="keyword">int</span> n,m,H(<span class="number">0</span>),L(<span class="number">1</span>),R[MAXN];</div><div class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">struct</span> <span class="keyword">complex</span>&#123;</div><div class="line">	<span class="keyword">double</span> r,v;</div><div class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> a=<span class="number">0</span>,<span class="keyword">double</span> b=<span class="number">0</span>):r(a),v(b)&#123;&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r+b.r,v+b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r-b.r,v-b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r*b.r-v*b.v,r*b.v+v*b.r);&#125;</div><div class="line">&#125;a[MAXN],b[MAXN],w[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">complex</span> &amp;a,<span class="keyword">complex</span> &amp;b)</span></span>&#123;<span class="function"><span class="keyword">complex</span> <span class="title">t</span><span class="params">(a)</span></span>;a=b;b=t;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(<span class="keyword">complex</span> *a,<span class="keyword">int</span> f)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  <span class="keyword">if</span>(i&lt;R[i])  swap(a[i],a[R[i]]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=L;len&lt;&lt;=<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">int</span> l=len&gt;&gt;<span class="number">1</span>;  <span class="comment">//complex wn(cos(pi/l),f*sin(pi/l));  </span></div><div class="line">		<span class="comment">//因为本博客的代码高亮问题，所以不得不注释掉这句代码</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;l;i++)  w[i]=w[i<span class="number">-1</span>]*wn;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;L;st+=len) <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;l;++k)&#123;</div><div class="line">			<span class="keyword">complex</span> x=a[st+k],y=w[k]*a[st+k+l];</div><div class="line">			a[st+k]=x+y;  a[st+k+l]=x-y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	n=read()+<span class="number">1</span>,m=read()+<span class="number">1</span>,w[<span class="number">0</span>].r=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)  a[i].r=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;++i)  b[i].r=read();</div><div class="line">	<span class="keyword">while</span>(L&lt;n+m) L&lt;&lt;=<span class="number">1</span>,++H;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  R[i]=(R[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(H<span class="number">-1</span>));</div><div class="line">	FFT(a,<span class="number">1</span>);  FFT(b,<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i) a[i]=a[i]*b[i];</div><div class="line">	FFT(a,<span class="number">-1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n+m<span class="number">-1</span>;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,(<span class="keyword">int</span>)(a[i].r+<span class="number">0.5</span>));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><hr>
+<ul>
+<li>《算法导论》</li>
+<li>《FFT学习笔记》——menci <a href="https://oi.men.ci/fft-notes/" target="_blank" rel="external">传送门</a></li>
+<li>《深入探究多项式乘法的快速算法》——闵梓轩 <a href="https://wenku.baidu.com/view/0dcf1cbdcaaedd3382c4d32c.html" target="_blank" rel="external">传送门</a></li>
+<li>《复数的三角形式与指数形式》<a href="https://wenku.baidu.com/view/4229ca748e9951e79b892759.html" target="_blank" rel="external">传送门</a></li>
+<li>《多项式》——百度百科 <a href="http://baike.baidu.com/link?url=0HuEd3b2kN1t8lvvl_m--kr_EnNraMuwdmEyOL3Iaacisw1uOUxylj-J1DR0NoC4Wgsn2n-B72hqVs3YykDz6vx-13ALQRozswDY6q38qg4zCAyLB4tF-owYH1f6kMff" target="_blank" rel="external">传送门</a></li>
+</ul>
 
       
     </div>
@@ -363,14 +438,14 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/27/莫比乌斯反演详解/">【算法笔记】莫比乌斯反演详解</a></p>
+        <p><span>本文标题:</span><a href="/2017/05/04/多项式快速算法——快速傅里叶换/">【算法笔记】多项式快速算法——快速傅里叶变换</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
-        <p><span>发布时间:</span>2017年02月27日 - 11时34分</p>
-        <p><span>最后更新:</span>2017年04月11日 - 20时48分</p>
+        <p><span>发布时间:</span>2017年05月04日 - 15时18分</p>
+        <p><span>最后更新:</span>2017年05月05日 - 20时01分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/27/莫比乌斯反演详解/" title="【算法笔记】莫比乌斯反演详解">http://yoursite.com/2017/02/27/莫比乌斯反演详解/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/27/莫比乌斯反演详解/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/04/多项式快速算法——快速傅里叶换/" title="【算法笔记】多项式快速算法——快速傅里叶变换">http://yoursite.com/2017/05/04/多项式快速算法——快速傅里叶换/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/04/多项式快速算法——快速傅里叶换/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -385,18 +460,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/27/3529/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2040/04/26/HAOI2017游记/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          【bzoj3529】数表
+          ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记
         
       </div>
     </a>
   
   
-    <a href="/2017/02/27/【bzoj2820】/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">【bzoj2820】YY的GCD</div>
+    <a href="/2017/05/02/SHOI2017解题报告/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【SHOI2017】解题报告</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -407,7 +482,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入"><span class="toc-number">1.</span> <span class="toc-text">引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#莫比乌斯函数"><span class="toc-number">2.</span> <span class="toc-text">莫比乌斯函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质一"><span class="toc-number">2.2.</span> <span class="toc-text">性质一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质二"><span class="toc-number">2.3.</span> <span class="toc-text">性质二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#积性函数"><span class="toc-number">2.4.</span> <span class="toc-text">积性函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考代码"><span class="toc-number">2.5.</span> <span class="toc-text">参考代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例题"><span class="toc-number">2.6.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#莫比乌斯定理"><span class="toc-number">3.</span> <span class="toc-text">莫比乌斯定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#因数形式"><span class="toc-number">3.1.</span> <span class="toc-text">因数形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#倍数形式"><span class="toc-number">3.2.</span> <span class="toc-text">倍数形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用"><span class="toc-number">3.3.</span> <span class="toc-text">应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例题-1"><span class="toc-number">3.4.</span> <span class="toc-text">例题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#多项式简介"><span class="toc-number">1.</span> <span class="toc-text">多项式简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运算法则"><span class="toc-number">1.2.</span> <span class="toc-text">运算法则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换与反演"><span class="toc-number">2.</span> <span class="toc-text">变换与反演</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多项式的两种表示方法"><span class="toc-number">2.1.</span> <span class="toc-text">多项式的两种表示方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求值与插值"><span class="toc-number">2.2.</span> <span class="toc-text">求值与插值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#离散傅里叶变换"><span class="toc-number">3.</span> <span class="toc-text">离散傅里叶变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#朴素算法"><span class="toc-number">3.1.</span> <span class="toc-text">朴素算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一种分治算法"><span class="toc-number">3.2.</span> <span class="toc-text">一种分治算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复数简介"><span class="toc-number">4.</span> <span class="toc-text">复数简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复数的代数形式"><span class="toc-number">4.1.</span> <span class="toc-text">复数的代数形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复数的三角形式"><span class="toc-number">4.2.</span> <span class="toc-text">复数的三角形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复数的指数形式"><span class="toc-number">4.3.</span> <span class="toc-text">复数的指数形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单位复数根"><span class="toc-number">4.4.</span> <span class="toc-text">单位复数根</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速傅里叶逆变换"><span class="toc-number">5.</span> <span class="toc-text">快速傅里叶逆变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板代码"><span class="toc-number">6.</span> <span class="toc-text">模板代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -456,7 +531,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/27/莫比乌斯反演详解/" data-title="【算法笔记】莫比乌斯反演详解" data-url="http://yoursite.com/2017/02/27/莫比乌斯反演详解/"></div>
+    <div class="ds-thread" data-thread-key="2017/05/04/多项式快速算法——快速傅里叶换/" data-title="【算法笔记】多项式快速算法——快速傅里叶变换" data-url="http://yoursite.com/2017/05/04/多项式快速算法——快速傅里叶换/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -479,13 +554,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/27/3529/" title="上一篇: 【bzoj3529】数表">
+            <a href="/2040/04/26/HAOI2017游记/" title="上一篇: ${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/27/【bzoj2820】/" title="下一篇: 【bzoj2820】YY的GCD">
+            <a href="/2017/05/02/SHOI2017解题报告/" title="下一篇: 【SHOI2017】解题报告">
                 <i class="fa fa-angle-right"></i>
             </a>
         
