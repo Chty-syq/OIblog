@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:image" content="http://i1.piimg.com/591838/4de5476e0664371dt.jpg">
-<meta property="og:updated_time" content="2017-05-24T13:48:33.974Z">
+<meta property="og:updated_time" content="2017-05-25T12:54:50.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法笔记】漫话计算几何">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
@@ -401,6 +401,35 @@
 <p>求半平面交的方法与凸包类似，先按照极角排序，然后采用在线添加的方式，用双端队列维护</p>
 <p>时间复杂度也是$O(n\log n)$，具体细节见代码</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Halfplane_Jiao</span><span class="params">()</span></span>&#123;</div><div class="line">	sort(L+<span class="number">1</span>,L+n+<span class="number">1</span>);  <span class="keyword">int</span> head=<span class="number">1</span>,tail=<span class="number">0</span>; q[++tail]=L[<span class="number">1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;!On_Left(P[tail<span class="number">-1</span>],L[i])) --tail;</div><div class="line">		<span class="keyword">while</span>(head&lt;tail&amp;&amp;!On_Left(P[head],L[i])) ++head;</div><div class="line">		q[++tail]=L[i];</div><div class="line">		<span class="keyword">if</span>(<span class="built_in">fabs</span>(q[tail].ang-q[tail<span class="number">-1</span>].ang)&lt;eps)&#123;</div><div class="line">			--tail;</div><div class="line">			<span class="keyword">if</span>(On_Left(L[i].P,q[tail])) q[tail]=L[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(head&lt;tail) P[tail<span class="number">-1</span>]=Line_Jiao(q[tail<span class="number">-1</span>],q[tail]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span>(head&lt;tail&amp;&amp;!On_Left(P[tail<span class="number">-1</span>],q[head])) --tail;</div><div class="line">	<span class="keyword">return</span> tail-head&gt;<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="旋转卡壳"><a href="#旋转卡壳" class="headerlink" title="旋转卡壳"></a>旋转卡壳</h3><p>旋转卡壳算法用于求对踵点</p>
+<blockquote>
+<p>对踵点：若分别经过$P_i$和$P_j$存在两条平行直线，将整个凸包卡在中间，则称$P_i$和$P_j$为一对对踵点</p>
+</blockquote>
+<p>我们逆向思考一下：</p>
+<p>如果$P_i,P_j$是凸包上最远两点，必然可以分别过$P_i,P_j$画出一对平行线</p>
+<p>通过旋转这对平行线，我们可以让它和凸包上的一条边重合，假设这条边为$P_j P_k$</p>
+<p>可以注意到，$P_i$是凸包上离直线$P_j P_k$最远的点</p>
+<p>于是我们的思路就是枚举凸包上的所有边，对每一条边找出凸包上离该边最远的顶点</p>
+<p>计算这个顶点到该边两个端点的距离，并记录最大的值</p>
+<p>直观上这是一个$O(n^2)$的算法，和直接枚举任意两个顶点一样了</p>
+<p>但是注意到当我们逆时针枚举边的时候，最远点的变化也是逆时针的</p>
+<p>这样就可以不用从头计算最远点，而可以紧接着上一次的最远点继续计算</p>
+<p>至于判断最远点，用叉积计算对应的三角形面积即可</p>
+<p>于是我们得到了$O(n)$的算法，而且代码十分简洁</p>
+<p>这里吐个槽：老师看到我在搞旋转卡壳，问我这东西好像得用平衡树维护吧，2333</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> pos=<span class="number">2</span>;  A[n+<span class="number">1</span>]=A[<span class="number">1</span>];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">fabs</span>(Cross(A[pos%n+<span class="number">1</span>]-A[i+<span class="number">1</span>],A[i]-A[i+<span class="number">1</span>]))&gt;<span class="built_in">fabs</span>(Cross(A[pos]-A[i+<span class="number">1</span>],A[i]-A[i+<span class="number">1</span>]))) </div><div class="line">		pos%=n,++pos;</div><div class="line">	<span class="comment">//此时，i和pos就是一对对踵点</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><hr>
+<ul>
+<li>刘汝佳《算法竞赛入门经典——训练指南》</li>
+<li>cydiater的博文《计算几何初步》 <a href="http://www.cnblogs.com/Cydiater/p/6340218.html" target="_blank" rel="external">传送门</a></li>
+<li>Coding的博文《旋转卡壳算法》 <a href="http://www.cppblog.com/staryjy/archive/2009/11/19/101412.html" target="_blank" rel="external">传送门</a></li>
+<li>金字塔的博文《谈谈我对旋转卡壳算法本质的理解》 <a href="http://blog.csdn.net/kingpharaoh/article/details/47807901" target="_blank" rel="external">传送门</a></li>
+</ul>
 
       
     </div>
@@ -412,7 +441,7 @@
         <p><span>本文标题:</span><a href="/2017/05/24/【算法笔记】计算几何基础/">【算法笔记】漫话计算几何</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
         <p><span>发布时间:</span>2017年05月24日 - 18时07分</p>
-        <p><span>最后更新:</span>2017年05月24日 - 21时48分</p>
+        <p><span>最后更新:</span>2017年05月25日 - 20时54分</p>
         <!--
 		<p>
             <span>原始链接:</span><a class="post-url" href="/2017/05/24/【算法笔记】计算几何基础/" title="【算法笔记】漫话计算几何">http://yoursite.com/2017/05/24/【算法笔记】计算几何基础/</a>
@@ -453,7 +482,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二维几何基础"><span class="toc-number">1.</span> <span class="toc-text">二维几何基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#向量和点"><span class="toc-number">1.1.</span> <span class="toc-text">向量和点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本运算"><span class="toc-number">1.2.</span> <span class="toc-text">基本运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#点和直线"><span class="toc-number">2.</span> <span class="toc-text">点和直线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#直线的参数方程"><span class="toc-number">2.1.</span> <span class="toc-text">直线的参数方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直线的交点"><span class="toc-number">2.2.</span> <span class="toc-text">直线的交点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点到直线的距离"><span class="toc-number">2.3.</span> <span class="toc-text">点到直线的距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点到线段的距离"><span class="toc-number">2.4.</span> <span class="toc-text">点到线段的距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求投影点"><span class="toc-number">2.5.</span> <span class="toc-text">求投影点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线段相交判定"><span class="toc-number">2.6.</span> <span class="toc-text">线段相交判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断点是否在线段上"><span class="toc-number">2.7.</span> <span class="toc-text">判断点是否在线段上</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二维几何常用算法"><span class="toc-number">3.</span> <span class="toc-text">二维几何常用算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#求多边形面积"><span class="toc-number">3.1.</span> <span class="toc-text">求多边形面积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点在多边形内判定"><span class="toc-number">3.2.</span> <span class="toc-text">点在多边形内判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凸包"><span class="toc-number">3.3.</span> <span class="toc-text">凸包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#半平面交"><span class="toc-number">3.4.</span> <span class="toc-text">半平面交</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#二维几何基础"><span class="toc-number">1.</span> <span class="toc-text">二维几何基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#向量和点"><span class="toc-number">1.1.</span> <span class="toc-text">向量和点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本运算"><span class="toc-number">1.2.</span> <span class="toc-text">基本运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#点和直线"><span class="toc-number">2.</span> <span class="toc-text">点和直线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#直线的参数方程"><span class="toc-number">2.1.</span> <span class="toc-text">直线的参数方程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直线的交点"><span class="toc-number">2.2.</span> <span class="toc-text">直线的交点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点到直线的距离"><span class="toc-number">2.3.</span> <span class="toc-text">点到直线的距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点到线段的距离"><span class="toc-number">2.4.</span> <span class="toc-text">点到线段的距离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#求投影点"><span class="toc-number">2.5.</span> <span class="toc-text">求投影点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线段相交判定"><span class="toc-number">2.6.</span> <span class="toc-text">线段相交判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断点是否在线段上"><span class="toc-number">2.7.</span> <span class="toc-text">判断点是否在线段上</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二维几何常用算法"><span class="toc-number">3.</span> <span class="toc-text">二维几何常用算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#求多边形面积"><span class="toc-number">3.1.</span> <span class="toc-text">求多边形面积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点在多边形内判定"><span class="toc-number">3.2.</span> <span class="toc-text">点在多边形内判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凸包"><span class="toc-number">3.3.</span> <span class="toc-text">凸包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#半平面交"><span class="toc-number">3.4.</span> <span class="toc-text">半平面交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转卡壳"><span class="toc-number">3.5.</span> <span class="toc-text">旋转卡壳</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
