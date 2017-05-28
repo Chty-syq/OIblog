@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【CF#8D】Two Friends | chty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文为博主原创，未经许可不得转载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【CF#8D】Two Friends">
+<meta property="og:url" content="http://yoursite.com/2017/05/28/CF-8D/index.html">
+<meta property="og:site_name" content="chty">
+<meta property="og:description" content="本文为博主原创，未经许可不得转载">
+<meta property="og:updated_time" content="2017-05-28T13:36:32.301Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【CF#8D】Two Friends">
+<meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
+  
+    <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.jpg">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="你好啊，少年">chty</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">或许是不知梦的缘故，琉璃之人追逐幻影</p>
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a class="fl 算法笔记" target="_blank" href="/note">算法笔记</a></li>
+                        
+                            <li><a class="fl 标签云页" target="_blank" href="http://www.chty.me/tags">标签云页</a></li>
+                        
+                            <li><a class="fl 个人简介" target="_blank" href="http://www.chty.me/about">个人简介</a></li>
+                        
+                            <li><a class="fl 同校神犇" target="_blank" href="http://www.chty.me/gods">同校神犇</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/" title="github">github</a>
+                            
+                                <a class="fl zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+                            
+                                <a class="fl google" target="_blank" href="http://www.google.com/" title="google">google</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/2-sat/" style="font-size: 10px;">2-sat</a> <a href="/tags/51nod/" style="font-size: 17.78px;">51nod</a> <a href="/tags/AC自动机/" style="font-size: 13.33px;">AC自动机</a> <a href="/tags/CDQ分治/" style="font-size: 10px;">CDQ分治</a> <a href="/tags/CF/" style="font-size: 17.78px;">CF</a> <a href="/tags/KDTree/" style="font-size: 10px;">KDTree</a> <a href="/tags/LCT/" style="font-size: 11.11px;">LCT</a> <a href="/tags/bzoj/" style="font-size: 20px;">bzoj</a> <a href="/tags/dp/" style="font-size: 15.56px;">dp</a> <a href="/tags/floyed/" style="font-size: 10px;">floyed</a> <a href="/tags/hdu/" style="font-size: 10px;">hdu</a> <a href="/tags/kmp/" style="font-size: 12.22px;">kmp</a> <a href="/tags/manacher/" style="font-size: 10px;">manacher</a> <a href="/tags/tarjan/" style="font-size: 12.22px;">tarjan</a> <a href="/tags/uoj/" style="font-size: 16.67px;">uoj</a> <a href="/tags/三分/" style="font-size: 11.11px;">三分</a> <a href="/tags/主席树/" style="font-size: 10px;">主席树</a> <a href="/tags/乘法逆元/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/二分/" style="font-size: 14.44px;">二分</a> <a href="/tags/仙人掌/" style="font-size: 11.11px;">仙人掌</a> <a href="/tags/伯努利数/" style="font-size: 10px;">伯努利数</a> <a href="/tags/公式推导/" style="font-size: 12.22px;">公式推导</a> <a href="/tags/凸包/" style="font-size: 12.22px;">凸包</a> <a href="/tags/分治/" style="font-size: 13.33px;">分治</a> <a href="/tags/单调性优化/" style="font-size: 11.11px;">单调性优化</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/博弈论/" style="font-size: 15.56px;">博弈论</a> <a href="/tags/后缀自动机/" style="font-size: 16.67px;">后缀自动机</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/回文自动机/" style="font-size: 10px;">回文自动机</a> <a href="/tags/多项式/" style="font-size: 12.22px;">多项式</a> <a href="/tags/容斥原理/" style="font-size: 14.44px;">容斥原理</a> <a href="/tags/差分/" style="font-size: 10px;">差分</a> <a href="/tags/广义后缀自动机/" style="font-size: 10px;">广义后缀自动机</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/搜索/" style="font-size: 10px;">搜索</a> <a href="/tags/数位dp/" style="font-size: 13.33px;">数位dp</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/整体二分/" style="font-size: 11.11px;">整体二分</a> <a href="/tags/斜率优化/" style="font-size: 12.22px;">斜率优化</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最小割/" style="font-size: 14.44px;">最小割</a> <a href="/tags/最短路/" style="font-size: 12.22px;">最短路</a> <a href="/tags/构造/" style="font-size: 12.22px;">构造</a> <a href="/tags/树形dp/" style="font-size: 14.44px;">树形dp</a> <a href="/tags/树状数组/" style="font-size: 14.44px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/概率dp/" style="font-size: 11.11px;">概率dp</a> <a href="/tags/模拟/" style="font-size: 11.11px;">模拟</a> <a href="/tags/点分治/" style="font-size: 11.11px;">点分治</a> <a href="/tags/状压dp/" style="font-size: 11.11px;">状压dp</a> <a href="/tags/矩阵乘法/" style="font-size: 11.11px;">矩阵乘法</a> <a href="/tags/算法笔记/" style="font-size: 12.22px;">算法笔记</a> <a href="/tags/线段树/" style="font-size: 18.89px;">线段树</a> <a href="/tags/组合计数/" style="font-size: 10px;">组合计数</a> <a href="/tags/网络流/" style="font-size: 15.56px;">网络流</a> <a href="/tags/考试总结/" style="font-size: 10px;">考试总结</a> <a href="/tags/莫比乌斯反演/" style="font-size: 16.67px;">莫比乌斯反演</a> <a href="/tags/计算几何/" style="font-size: 14.44px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 11.11px;">贪心</a> <a href="/tags/费用流/" style="font-size: 12.22px;">费用流</a> <a href="/tags/链表/" style="font-size: 10px;">链表</a> <a href="/tags/高斯消元/" style="font-size: 14.44px;">高斯消元</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://cydiater.space/">Cydiater(现)</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.cnblogs.com/Cydiater/">Cydiater(原)</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.cnblogs.com/JSL2018/">Cdcq</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/chadinblog/">Chad</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/popoqqq">POPOQQQ</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/wmdcstdio?viewmode=contents">wmdcstdio</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/acdreamers">ACdreamer</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/iwtwiioi/">iwtwiioi</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://blog.csdn.net/qq_24451605">llin-黎辰</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://hzwer.com/">hzwer</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/candy99/">Candy</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://oi.men.ci/#blog">Menci</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/beiyuoi/">北屿</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://zyqn.tech/">ZYQN</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://ruanx.pw/">阮行止</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.cnblogs.com/mlystdcall/">stdcall</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://eolv.farbox.com/">E-olv</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">HA-OIer</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">chty</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">chty</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">或许是不知梦的缘故，琉璃之人追逐幻影</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/note">算法笔记</a></li>
+                
+                    <li><a href="http://www.chty.me/tags">标签云页</a></li>
+                
+                    <li><a href="http://www.chty.me/about">个人简介</a></li>
+                
+                    <li><a href="http://www.chty.me/gods">同校神犇</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+                    
+                        <a class="google" target="_blank" href="http://www.google.com/" title="google">google</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-CF-8D" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/05/28/CF-8D/" class="article-date">
+      <time datetime="2017-05-28T13:21:38.000Z" itemprop="datePublished">2017-05-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【CF#8D】Two Friends
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CF/">CF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二分/">二分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算几何/">计算几何</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<hr>
+<p>设$L1=t1+dis(A,B)$，$L2=t2+dis(A,C)+dis(B,C)$</p>
+<p>如果$L1&gt;=dis(A,C)+dis(B,C)$，那么答案显然就是$min(L1,L2)$</p>
+<p>否则，我们可以二分一个$mid$，设分离点为$P$</p>
+<p>那么$mid$合法的条件如下：</p>
+<blockquote>
+<p>$dis(A,P)&lt;=mid$</p>
+<p>$dis(B,P)+dis(B,C)+mid&lt;=L2$</p>
+<p>$dis(C,P)+mid&lt;=L1$</p>
+</blockquote>
+<p>这实际上是三个圆</p>
+<p>只需要判断这三个圆有没有公共部分即可</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">#define FILE "read"</div><div class="line">#define eps 1e-10</div><div class="line">#define INF 1e9</div><div class="line">using namespace std;</div><div class="line">const double pi=acos(-1);</div><div class="line">struct Point&#123;</div><div class="line">	double x,y;</div><div class="line">	Point(double a=0,double b=0):x(a),y(b)&#123;&#125;</div><div class="line">	inline void read()&#123;scanf("%lf%lf",&amp;x,&amp;y);&#125;</div><div class="line">	inline void print()&#123;printf("%.2lf %.2lf\n",x,y);&#125;</div><div class="line">	inline Point operator+(const Point &amp;b)&#123;return Point(x+b.x,y+b.y);&#125;</div><div class="line">	inline Point operator-(const Point &amp;b)&#123;return Point(x-b.x,y-b.y);&#125;</div><div class="line">	inline Point operator*(const double p)&#123;return Point(x*p,y*p);&#125;</div><div class="line">	inline Point operator/(const double p)&#123;return Point(x/p,y/p);&#125;</div><div class="line">	inline Point operator==(const Point &amp;b)&#123;return fabs(x-b.x)&lt;eps&amp;&amp;fabs(y-b.y)&lt;eps;&#125;</div><div class="line">	inline Point operator&lt; (const Point &amp;b)&#123;return x&lt;b.x||(x==b.x&amp;&amp;y&lt;b.y);&#125;</div><div class="line">	inline double ang()&#123;return atan2(y,x);&#125;</div><div class="line">&#125;A,B,C;</div><div class="line">struct Interval&#123;</div><div class="line">	double l,r;</div><div class="line">	Interval(double a=0,double b=0):l(a),r(b)&#123;&#125;</div><div class="line">	inline bool In_Interval(double x)&#123;return x&gt;=l&amp;&amp;x&lt;=r;&#125;</div><div class="line">&#125;;</div><div class="line">struct Circle&#123;</div><div class="line">	Point O; double r; </div><div class="line">	Circle()&#123;&#125;</div><div class="line">	Circle(Point O,double r):O(O),r(r)&#123;&#125;</div><div class="line">	inline Point point(double rad)&#123;return Point(O.x+r*cos(rad),O.y+r*sin(rad));&#125;</div><div class="line">&#125;;</div><div class="line">double t1,t2,L1,L2;</div><div class="line">inline double Dot(Point A,Point B)&#123;return A.x*B.x+A.y*B.y;&#125;</div><div class="line">inline double Lenth(Point A)&#123;return sqrt(Dot(A,A));&#125;</div><div class="line">Interval Circle_Jiao(Circle c1,Circle c2)&#123;</div><div class="line">	double a=c1.r;</div><div class="line">	double b=c2.r;</div><div class="line">	double c=Lenth(c1.O-c2.O);</div><div class="line">	double temp=(c1.O-c2.O).ang();</div><div class="line">	double delta=acos((a*a+c*c-b*b)/(2*a*c));</div><div class="line">	return Interval(temp-delta,temp+delta);</div><div class="line">&#125;</div><div class="line">bool Separate(Circle c1,Circle c2)&#123;</div><div class="line">	return Lenth(c1.O-c2.O)&gt;c1.r+c2.r+eps;</div><div class="line">&#125;</div><div class="line">bool Contain(Circle c1,Circle c2)&#123;</div><div class="line">	return Lenth(c1.O-c2.O)&lt;fabs(c1.r-c2.r);</div><div class="line">&#125;</div><div class="line">bool Interval_Jiao(Interval l1,Interval l2)&#123;</div><div class="line">	return l1.In_Interval(l2.l)||l1.In_Interval(l2.r)||l2.In_Interval(l1.l)||l2.In_Interval(l1.r);</div><div class="line">&#125;</div><div class="line">bool Judge(Circle c1,Circle c2,Circle c3)&#123;</div><div class="line">	Interval l1=Circle_Jiao(c1,c2);</div><div class="line">	Interval l2=Circle_Jiao(c1,c3);</div><div class="line">	if(Interval_Jiao(l1,l2)) return 1;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line">bool check(double mid)&#123;</div><div class="line">	Circle c1(A,mid);</div><div class="line">	Circle c2(B,L1-mid);</div><div class="line">	Circle c3(C,L2-Lenth(B-C)-mid);</div><div class="line">	if(Separate(c1,c2)||Separate(c1,c3)||Separate(c2,c3)) return 0;</div><div class="line">	if(Contain(c1,c2)||Contain(c1,c3)||Contain(c2,c3))  return 1;</div><div class="line">	if(Judge(c1,c2,c3)||Judge(c2,c1,c3)||Judge(c3,c1,c2)) return 1;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line">void solve()&#123;</div><div class="line">	double l=0,r=min(L1,L2-Lenth(B-C));</div><div class="line">	while(l+eps&lt;r)&#123;</div><div class="line">		double mid=(l+r)/2;</div><div class="line">		if(check(mid)) l=mid;</div><div class="line">		else r=mid;</div><div class="line">	&#125;</div><div class="line">	printf("%.10lf\n",check(r)?r:l);</div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line">	freopen(FILE".in","r",stdin);</div><div class="line">	freopen(FILE".out","w",stdout);</div><div class="line">	scanf("%lf%lf",&amp;t2,&amp;t1);</div><div class="line">	A.read();  B.read();  C.read();</div><div class="line">	L1=t1+Lenth(A-B);</div><div class="line">	L2=t2+Lenth(A-C)+Lenth(B-C);</div><div class="line">	if(L1&gt;=Lenth(A-C)+Lenth(B-C)) printf("%.10lf\n",min(L1,L2));</div><div class="line">	else solve();</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/28/CF-8D/">【CF#8D】Two Friends</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 chty 的个人博客">chty</a></p>
+        <p><span>发布时间:</span>2017年05月28日 - 21时21分</p>
+        <p><span>最后更新:</span>2017年05月28日 - 21时36分</p>
+        <!--
+		<p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/28/CF-8D/" title="【CF#8D】Two Friends">http://yoursite.com/2017/05/28/CF-8D/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/28/CF-8D/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+		-->
+        <p>
+             <span>许可协议:</span></a>本文为博主原创，未经许可不得转载。
+        </p>
+		
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/05/28/1027/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          【bzoj1027】合金
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/28/3630/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【bzoj3630】镜面通道</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<!--
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+-->
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/05/28/CF-8D/" data-title="【CF#8D】Two Friends" data-url="http://yoursite.com/2017/05/28/CF-8D/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chty"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/28/1027/" title="上一篇: 【bzoj1027】合金">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/05/28/3630/" title="下一篇: 【bzoj3630】镜面通道">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2100/01/16/111/">${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛</a></li><li class="post-list-item"><a class="post-list-link" href="/2040/04/26/HAOI2017游记/">${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$HAOI2017游记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/1027/">【bzoj1027】合金</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/CF-8D/">【CF#8D】Two Friends</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/3630/">【bzoj3630】镜面通道</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/3671/">【NOI2014】随机数生成器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/28/【Codeforces】Rand416解题报告/">【Codeforces】Rand#416解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/27/7/">【NOI2014】购票</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/1804/">【51nod1804】小C的多边形</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/164/">【清华集训2015】V</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/1518/">【tyvj1518】CPU监控</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/26/5306/">【HDU5306】优美的序列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/【算法笔记】计算几何题目总结/">【算法笔记】计算几何题目总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/【算法笔记】计算几何基础/">【算法笔记】漫话计算几何</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/11/4464/">【bzoj4464】旅行时的困惑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/11/1143/">【bzoj1143】祭祀river</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/【算法笔记】多项式快速算法——FFT-NTT的应用/">【算法笔记】多项式快速算法——FFT/NTT的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/">【算法笔记】多项式快速算法——快速傅里叶变换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/02/SHOI2017解题报告/">【SHOI2017】解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/30/【算法笔记】回文自动机/">【算法笔记】回文自动机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/29/【算法笔记】KD-Tree/">【算法笔记】KD_Tree</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/198/">【CTSC2016】时空旅行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/201/">【CTSC2016】单调上升路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/24/【算法笔记】上下界网络流/">【算法笔记】上下界网络流</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/1693/">【51nod1693】水群</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/1486/">【51nod1486】大大走格子</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/1587/">【51nod1587】半现串</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/20/3331/">【bzoj3331】压力</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/20/1123/">【bzoj1123】BLO</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/20/1469/">【51nod1469】淋漓尽致子串</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/20/CF-526D/">【CF#526D/51nod1554】欧姆诺姆和项链</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/【算法笔记】KMP算法/">【算法笔记】KMP算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/1292/">【51nod1292】字符串中的最大值</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/3306/">【bzoj3306】树</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/12/【51nod】序列求和v1-v5解题报告/">【51nod】序列求和v1~v5解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/【算法笔记】时间复杂度分析初探/">【算法笔记】时间复杂度分析初探</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/4816/">【bzoj4816】数字表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/4818/">【bzoj4818】序列计数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/4817/">【bzoj4817】树点涂色</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/1070/">【bzoj1070】修车</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/出题翻车，身败名裂/">jzyz互测出题总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/1084/">【bzoj1084】最大子矩阵</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/1492/">【bzoj1492】货币兑换</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/1855/">【bzoj1855】股票交易</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/09/3688/">【bzoj3688】折线统计</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/4327/">【bzoj4327】玄武密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/07/CDC分治/">【日常小测】CDC分治</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/3203/">【bzoj3203】保护出题人</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/06/二维数组/">【日常小测】二维数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/05/2442/">【bzoj2442】修剪草坪</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/05/4035/">【bzoj4035】数组操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/02/平衡数/">【hdu3709】Balanced Number</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/02/1799/">【bzoj1799】同类分布</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/02/numbers/">【CF#55D】beautiful numbers</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/2563/">【bzoj2563】阿狸和桃子的游戏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/4518/">【bzoj4518】征途</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/1088/">【bzoj1088】扫雷Mine</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/2734/">【bzoj2734】集合选数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/【NOI2001】炮兵阵地/">【NOI2001】炮兵阵地</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/3745/">【bzoj3745】Norma</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/28/2096/">【bzoj2096】Pilots</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/26/【湖南省队集训】IQ测试/">【湖南省队集训】IQ测试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/25/Legacy/">【CF#786B】Legacy</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/24/Berzerk/">【CF786#A】Berzerk</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/24/【湖南省队集训】C/">【湖南省队集训】C</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/23/4316/">【bzoj4316】小C的独立集</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/4439/">【bzoj4439】Landscaping</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/20/1365/">【HAOI2013】软件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/1023/">【bzoj1023】cactus仙人掌图</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/2659/">【bzoj2659】算不出的算式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/3996/">【暂时保密】</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/3993/">【bzoj3993】星际战争</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/4435/">【bzoj4435】Juice Junctions</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/4519/">【bzoj4519】不同的最小割</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/2229/">【bzoj2229】最小割</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/4443/">【bzoj4443】小凸玩矩阵</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/4543/">【bzoj4543】Hotel加强版</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/2160/">【bzoj2160】拉拉队排练</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/1517/">【bzoj1517】Met</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/3926/">【bzoj3926】诸神眷顾的幻想乡</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/4516/">【bzoj4516】生成魔咒</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/2748/">【bzoj2748】音量调节</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/1044/">【bzoj1044】木棍分割</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/1042/">【bzoj1042】硬币购物</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/4720/">【bzoj4720/uoj#262】换教室</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/3270/">【bzoj3270】博物馆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/1778/">【bzoj1778】驱逐猪猡</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/3143/">【bzoj3143】游走</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/2419/">【bzoj2419】电阻</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/10/1013/">【bzoj1013】球形空间产生器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/4455/">【bzoj4455/uoj#185】小星星</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/4710/">【bzoj4710】分特产</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/【算法笔记】后缀自动机研究总结/">【算法笔记】后缀自动机研究总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/CF235-C/">【CF#235C】Cyclical Quest</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/3998/">【bzoj3998】弦论</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/4199/">【bzoj4199/uoj#131】品酒大会</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/08/CF-163E/">【CF#163E】E-Government</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/3172/">【bzoj3172】单词</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/2434/">【bzoj2434】阿狸的打字机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/1823/">【bzoj1823】满汉全席</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/4276/">【bzoj4276】Bajtman i Okrągły Robin</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/3218/">【bzoj3218/uoj#77】a+b Problem</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/1930/">【bzoj1930】吃豆豆</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/1457/">【bzoj1457】棋盘游戏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/1188/">【bzoj1188】分裂游戏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/1874/">【bzoj1874】取石子游戏</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/1115/">【bzoj1115】石子游戏Kam</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/2693/">【bzoj2693】jzptab</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/2154/">【bzoj2154】Crash的数字表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/0228考试总结/">0228考试总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/3529/">【bzoj3529】数表</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/【算法笔记】莫比乌斯反演详解/">【算法笔记】莫比乌斯反演详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/【bzoj2820】/">【bzoj2820】YY的GCD</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/【bzoj2301】/">【bzoj2301】Problem b</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/【bzoj2440】完全平方数/">【bzoj2440】完全平方数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/2034/">【bzoj2034】K大数查询</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/1901/">【bzoj1901】Dynamic Rankings</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 chty
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a> 
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >神犇到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
