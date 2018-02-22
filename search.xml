@@ -122,6 +122,34 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【bzoj1876】最大公约数]]></title>
+      <url>/2018/02/22/1621/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1876" target="_blank" rel="external">AC通道</a></p>
+<p>用同余原理的话，高精度取模会爆掉（我说的是代码复杂度</p>
+<p>这里介绍更相减损术算法：</p>
+<p>（1）若$a$为奇数，$b$为偶数，则$gcd(a,b)=gcd(a,\frac{b}{2})$</p>
+<p>（2）若$a$为偶数，$b$为奇数，则$gcd(a,b)=gcd(\frac{a}{2},b)$</p>
+<p>（3）若$a,b$都为偶数，则$gcd(a,b)=2gcd(\frac{a}{2},\frac{b}{2})$</p>
+<p>（4）若$a,b$都为奇数，则$gcd(a,b)=gcd(a-b,b)$</p>
+<p>巧妙避开了高精度除法，至于除2的运算，借位就可以了，代码十分简单</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1255</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll BASE=<span class="number">1e8</span>,WIDTH=<span class="number">8</span>;</div><div class="line"><span class="keyword">char</span> readin[MAXN*<span class="number">8</span>];</div><div class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line"><span class="keyword">struct</span> bigint&#123;</div><div class="line">	ll s[MAXN],len;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;<span class="built_in">memset</span>(s,<span class="number">0</span>,<span class="keyword">sizeof</span>(s));len=<span class="number">0</span>;&#125;</div><div class="line">	bigint <span class="keyword">operator</span> =(ll num)&#123;init();<span class="keyword">while</span>(num)&#123;s[++len]=num%BASE;num/=BASE;&#125;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</div><div class="line">	bigint <span class="keyword">operator</span> =(<span class="keyword">char</span> *str)&#123;</div><div class="line">		init();</div><div class="line">		ll numlen=<span class="built_in">strlen</span>(str);len=(numlen+WIDTH<span class="number">-1</span>)/WIDTH;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=numlen<span class="number">-1</span>,t=<span class="number">0</span>,w;i&gt;=<span class="number">0</span>;--i,w*=<span class="number">10</span>)&#123;</div><div class="line">			<span class="keyword">if</span>((numlen-i<span class="number">-1</span>)%WIDTH==<span class="number">0</span>) &#123;w=<span class="number">1</span>;++t;&#125;</div><div class="line">			s[t]+=(str[i]<span class="number">-48</span>)*w;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> bigint &amp;b)<span class="keyword">const</span>&#123;</div><div class="line">		<span class="keyword">if</span>(b.len!=len) <span class="keyword">return</span> len&lt;b.len;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=b.len;i&gt;=<span class="number">1</span>;--i)<span class="keyword">if</span>(s[i]!=b.s[i])<span class="keyword">return</span> s[i]&lt;b.s[i];</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> ==(<span class="keyword">const</span> bigint &amp;b)<span class="keyword">const</span>&#123;<span class="keyword">return</span> !(b&lt;*<span class="keyword">this</span>)&amp;&amp;!(*<span class="keyword">this</span>&lt;b);&#125;</div><div class="line">	bigint <span class="keyword">operator</span> +(<span class="keyword">const</span> bigint &amp;b)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i)&#123;</div><div class="line">			s[i]+=b.s[i];</div><div class="line">			<span class="keyword">if</span>(s[i]&gt;=BASE)  &#123;s[i]-=BASE; ++s[i+<span class="number">1</span>];&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>(s[len+<span class="number">1</span>]) ++len;</div><div class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line">	bigint <span class="keyword">operator</span> -(<span class="keyword">const</span> bigint &amp;b)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i)&#123;</div><div class="line">			s[i]-=b.s[i];</div><div class="line">			<span class="keyword">if</span>(s[i]&lt;<span class="number">0</span>) &#123;s[i]+=BASE; --s[i+<span class="number">1</span>];&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>(!s[len]&amp;&amp;len) --len;</div><div class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">MUL2</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i) s[i]*=<span class="number">2</span>; len+=<span class="number">5</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i)&#123;</div><div class="line">			s[i+<span class="number">1</span>]+=s[i]/BASE;</div><div class="line">			s[i]%=BASE;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>(!s[len]&amp;&amp;len) --len;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">DIV2</span><span class="params">()</span></span>&#123;</div><div class="line">		len+=<span class="number">5</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=len;i&gt;=<span class="number">1</span>;--i)&#123;</div><div class="line">			<span class="keyword">if</span>(s[i]&amp;<span class="number">1</span>)s[i<span class="number">-1</span>]+=BASE;</div><div class="line">			s[i]&gt;&gt;=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>(!s[len]&amp;&amp;len) --len;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">MOD2</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(len==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">return</span> s[<span class="number">1</span>]%<span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">()</span></span>&#123;<span class="built_in">scanf</span>(<span class="string">"%s"</span>,readin);*<span class="keyword">this</span>=readin;&#125;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(len==<span class="number">0</span>) <span class="built_in">puts</span>(<span class="string">"0"</span>);</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%lld"</span>,s[len]);</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;=<span class="number">1</span>;--i)</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"%08lld"</span>,s[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;A,B,C;</div><div class="line"><span class="function">bigint <span class="title">GCD</span><span class="params">(bigint A,bigint B)</span></span>&#123;</div><div class="line">	<span class="keyword">while</span>(!(A==B))&#123;</div><div class="line">		<span class="keyword">if</span>(A&lt;B) swap(A,B);</div><div class="line">		<span class="keyword">if</span>(!A.MOD2()&amp;&amp;B.MOD2())  	  A.DIV2();</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(A.MOD2()&amp;&amp;!B.MOD2())  B.DIV2();</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(!A.MOD2()&amp;&amp;!B.MOD2())   ++cnt,A.DIV2(),B.DIV2();</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(A.MOD2()&amp;&amp;B.MOD2()) A=A-B;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> A;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	A.read();  B.read();  C=GCD(A,B);</div><div class="line">	<span class="keyword">while</span>(cnt--)  C.MUL2();</div><div class="line">	C.print();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 高精度 </tag>
+            
+            <tag> 更相减损术 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【游记】湖南省队集训总结]]></title>
       <url>/2017/07/10/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91%E6%B9%96%E5%8D%97%E7%9C%81%E9%98%9F%E9%9B%86%E8%AE%AD%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<ul>
@@ -2549,9 +2577,9 @@
         
         <tags>
             
-            <tag> uoj </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> uoj </tag>
             
         </tags>
         
@@ -4462,9 +4490,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -4489,9 +4517,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> uoj </tag>
-            
             <tag> 最短路 </tag>
+            
+            <tag> uoj </tag>
             
             <tag> 概率dp </tag>
             
@@ -5617,9 +5645,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
