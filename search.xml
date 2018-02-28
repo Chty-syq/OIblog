@@ -122,6 +122,61 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【51nod1056】最长等差数列V2]]></title>
+      <url>/2018/02/28/1056/</url>
+      <content type="html"><![CDATA[<ul>
+<li>哈希大法好，怒斩9级算法题</li>
+</ul>
+<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<p><a href="http://www.51nod.com/onlineJudge/questionCode.html#!problemId=1056" target="_blank" rel="external">AC通道</a></p>
+<p>正解我也看不懂，只好硬着头皮暴力水了</p>
+<p>$n^2$枚举前两项，然后$hash$判断后面的项是否存在即可</p>
+<p>注意公差为0的情况要特判就好了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e7</span>;</div><div class="line"><span class="keyword">int</span> n,ans,maxx,minn,a[MAXN],hash[mod+<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Special_check</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">1</span>;  sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(a[i]==a[i<span class="number">-1</span>]) ++ret;</div><div class="line">		<span class="keyword">else</span> cmax(ans,ret),ret=<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Hash</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> pos=x%mod; <span class="keyword">if</span>(!pos) pos=mod;</div><div class="line">	<span class="keyword">while</span>(hash[pos]&amp;&amp;hash[pos]!=x) pos=pos%mod+<span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> pos;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> hash[Hash(x)]==x;&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read();  minn=<span class="number">2e9</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) a[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		cmax(maxx,a[i]);</div><div class="line">		cmin(minn,a[i]);</div><div class="line">	&#125;</div><div class="line">	Special_check();<span class="comment">//特判公差为0的情况</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) hash[Hash(a[i])]=a[i];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;++j)&#123;</div><div class="line">		<span class="keyword">int</span> D=a[j]-a[i],cur=<span class="number">2</span>,ret=a[j];</div><div class="line">		<span class="keyword">if</span>((ll)a[i]+(ll)ans*D&gt;maxx) <span class="keyword">continue</span>;</div><div class="line">		<span class="keyword">while</span>(find(ret+D)) ++cur,ret+=D;</div><div class="line">		cmax(ans,cur);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(ans&lt;<span class="number">200</span>) <span class="built_in">puts</span>(<span class="string">"No Solution"</span>);</div><div class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="comment">//printf("%d\n",clock());</span></div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 51nod </tag>
+            
+            <tag> 哈希 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【51nod1055】最长等差数列]]></title>
+      <url>/2018/02/28/1055/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<p><a href="http://www.51nod.com/onlineJudge/questionCode.html#problemId=1055&amp;noticeId=422351" target="_blank" rel="external">AC通道</a></p>
+<p>好久没有做dp题了</p>
+<p>这题的状态转移也是挺妙的</p>
+<p>$f[i][j]$表示以数列第$i$项$a[i]$和第$j$项$a[j]$为前两项的最长等差数列的长度</p>
+<p>那么考虑若$a[k]$可以作为等差数列的第三项那么$f[i][j]=f[j][k]+1$</p>
+<p>这里应该满足$a[j]*2=a[i]+a[k]$</p>
+<p>我们每次枚举$j$的值，由于单调性，可以用两个指针$i,k$扫过去，从后往前转移</p>
+<p>这样可以做到$O(n^2)$的复杂度</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">short</span> <span class="keyword">int</span> Int;</div><div class="line"><span class="keyword">int</span> n,a[MAXN];</div><div class="line">Int ans,f[MAXN][MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function">Int <span class="title">max</span><span class="params">(Int a,Int b)</span></span>&#123;<span class="keyword">return</span> a&gt;b?a:b;&#125;</div><div class="line"><span class="function">Int <span class="title">min</span><span class="params">(Int a,Int b)</span></span>&#123;<span class="keyword">return</span> a&lt;b?a:b;&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) a[i]=read();</div><div class="line">	sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;++j)f[i][j]=<span class="number">2</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=n;j&gt;=<span class="number">1</span>;--j)&#123;</div><div class="line">		<span class="keyword">int</span> i=j<span class="number">-1</span>,k=j+<span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span>(i&gt;<span class="number">0</span>&amp;&amp;k&lt;=n)&#123;</div><div class="line">			<span class="keyword">if</span>(a[i]+a[k]&lt;<span class="number">2</span>*a[j]) ++k;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(a[i]+a[k]&gt;<span class="number">2</span>*a[j])  --i;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(a[i]+a[k]==<span class="number">2</span>*a[j])&#123;</div><div class="line">				cmax(f[i][j],f[j][k]+<span class="number">1</span>);</div><div class="line">				cmax(ans,f[i][j]);--i;++k;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 51nod </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【bzoj1876】最大公约数]]></title>
       <url>/2018/02/22/1621/</url>
       <content type="html"><![CDATA[<ul>
@@ -140,6 +195,8 @@
       
         
         <tags>
+            
+            <tag> bzoj </tag>
             
             <tag> 高精度 </tag>
             
@@ -338,9 +395,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -366,9 +423,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2265,11 +2322,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3007,9 +3064,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> LCT </tag>
             
@@ -3232,9 +3289,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> LCT </tag>
             
@@ -4155,11 +4212,11 @@
             
             <tag> bzoj </tag>
             
+            <tag> 哈希 </tag>
+            
             <tag> 最小割 </tag>
             
             <tag> 分治 </tag>
-            
-            <tag> 哈希 </tag>
             
         </tags>
         
@@ -4290,9 +4347,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -4691,9 +4748,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -4981,9 +5038,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -5131,9 +5188,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -5670,9 +5727,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
