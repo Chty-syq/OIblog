@@ -122,6 +122,61 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【bzoj2759】一个动态树好题]]></title>
+      <url>/2018/03/22/2759/</url>
+      <content type="html"><![CDATA[<ul>
+<li>恭喜你发现了一道真·动态树好题！<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2759" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>显然，根据P的关系完成建图之后，我们得到了一个外向环基森林，其中每个节点都与父亲满足一个线性关系</p>
+<p>按照环基树的处理方法，拆掉环上一条边，将其置为$special_father$（简称$spf$），用$link_cut_tree$维护森林即可</p>
+<p>如下图所示：</p>
+<p><center><img src="/img/04.png" alt=""></center></p>
+<hr>
+<p>接下来我们考虑两个节点的合并：</p>
+<p>$x_1 \equiv k_1 x_2+b_1　(mod 10007)$</p>
+<p>$x_2 \equiv k_2 x_3+b_2　(mod 10007)$</p>
+<p>合并得到：$x_1 \equiv k_1 k_2 x_3+k_1 b_2+b_1　(mod 10007)$</p>
+<p>所以$access(x),splay(x)$即可得到$x$与$Spf$的线性关系</p>
+<p>然后$access(s),splay(s)$得到$Spf$与自身的线性关系</p>
+<p>注意：一步合并操作之后得到的是该节点的父亲与该节点的线性关系</p>
+<p>核心操作：$updata(x):sum[x]=sum[son[x][0]]+v[x]+sum[son[x][1]]$（这里的$’+’$指的是合并）</p>
+<p>故操作完成后我们得到的是$Spf$节点与自身的线性关系：形如$x \equiv kx+b　(mod 10007)$</p>
+<p>(1)若$k=1$,则$b=0$时有无数个解，$b=1$时无解</p>
+<p>(2)若$k=0$,解即为$b$</p>
+<p>(3)否则，$x \equiv -b(k-1)^(-1)$，乘法逆元求解即可</p>
+<p>求解出$Spf$的答案之后，带入$x$节点与$Spf$的线性关系式即可得到$x$节点的解</p>
+<hr>
+<p>信息修改操作：$modify(x,k,p,b)$</p>
+<p>修改$k,b$的话，只需要$access(x),splay(x)$提取树链直接修改</p>
+<p>修改父亲比较麻烦：</p>
+<p>(1)若$x$节点在环上，将确定$Spf$时删掉的边连上，然后将$x$的父边删掉，此时$x$暂时变成了根</p>
+<p>　　(i)若$x,p$位于同一树中，直接更新$Spf$即可</p>
+<p>　　(ii)否则,$spf[x]=0$,同时把该边连上：$linkk(x,p)$</p>
+<p>(2)若$x$节点不在环上，删掉父边之后，$x$作为根将子树分离了出来，处理方法同上</p>
+<hr>
+<p>由于此题模数较小，使用习惯性的取模方法跑的非常慢，反而直接取模跑的很快</p>
+<p>有图为证：</p>
+<p><img src="/img/05.png" alt=""></p>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 30010</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">10007</span>;</div><div class="line"><span class="keyword">int</span> n,Q,K[MAXN],B[MAXN],f[MAXN],dfn[MAXN],vis[MAXN],spf[MAXN],Ni[MAXN],son[MAXN][<span class="number">2</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a+b)%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a-b)%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a*b)%mod;&#125;</div><div class="line"><span class="keyword">struct</span> <span class="keyword">complex</span>&#123;</div><div class="line">	<span class="keyword">int</span> k,b;</div><div class="line">	<span class="keyword">complex</span>(<span class="keyword">int</span> k=<span class="number">0</span>,<span class="keyword">int</span> b=<span class="number">0</span>):k(k),b(b)&#123;&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">complex</span> &amp;y)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">complex</span>(mul(k,y.k),add(mul(b,y.k),y.b));</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> add(mul(k,x),b);&#125;</div><div class="line">&#125;v[MAXN],sum[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">power</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">ret</span><span class="params">(<span class="number">1</span>)</span></span>;</div><div class="line">	<span class="keyword">while</span>(b)&#123;</div><div class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)  ret=mul(ret,a);</div><div class="line">		a=mul(a,a);  b&gt;&gt;=<span class="number">1</span>;</div><div class="line">	&#125;<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="keyword">class</span> Link_Cut_Tree&#123;</div><div class="line">	<span class="keyword">private</span>:</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> son[f[x]][<span class="number">1</span>]==x;&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isroot</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> son[f[x]][<span class="number">0</span>]!=x&amp;&amp;son[f[x]][<span class="number">1</span>]!=x;&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			sum[x]=v[x];</div><div class="line">			<span class="keyword">if</span>(son[x][<span class="number">0</span>])  sum[x]=sum[son[x][<span class="number">0</span>]]+v[x];</div><div class="line">			<span class="keyword">if</span>(son[x][<span class="number">1</span>])  sum[x]=sum[x]+sum[son[x][<span class="number">1</span>]];</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="keyword">int</span> y=f[x],z=f[y],which=get(x);</div><div class="line">			<span class="keyword">if</span>(!isroot(y))  son[z][son[z][<span class="number">1</span>]==y]=x;</div><div class="line">			son[y][which]=son[x][which^<span class="number">1</span>];  f[son[x][which^<span class="number">1</span>]]=y;</div><div class="line">			son[x][which^<span class="number">1</span>]=y;  f[y]=x;  f[x]=z;</div><div class="line">			updata(y);  updata(x);</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> y=f[x];!isroot(x);rotate(x),y=f[x])</div><div class="line">				<span class="keyword">if</span>(!isroot(y))  rotate(get(x)==get(y)?y:x);</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="function"><span class="keyword">int</span> <span class="title">last</span><span class="params">(<span class="number">0</span>)</span></span>;</div><div class="line">			<span class="keyword">while</span>(x)&#123;</div><div class="line">				splay(x);</div><div class="line">				son[x][<span class="number">1</span>]=last;</div><div class="line">				updata(x);</div><div class="line">				last=x; x=f[x];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">linkk</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">			access(x);  splay(x);  f[x]=y;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">cut</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			access(x);  splay(x);  f[son[x][<span class="number">0</span>]]=<span class="number">0</span>;  son[x][<span class="number">0</span>]=<span class="number">0</span>;  updata(x);</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			access(x);  splay(x);  </div><div class="line">			<span class="keyword">while</span>(son[x][<span class="number">0</span>])  x=son[x][<span class="number">0</span>];  </div><div class="line">			splay(x);</div><div class="line">			<span class="keyword">return</span> x;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">On_Circle</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> root)</span></span>&#123;</div><div class="line">			<span class="keyword">int</span> f=spf[root];</div><div class="line">			<span class="keyword">if</span>(f==x)  <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			access(f);  splay(f);  splay(x);</div><div class="line">			<span class="keyword">return</span> !isroot(f);</div><div class="line">		&#125;</div><div class="line">	<span class="keyword">public</span>:</div><div class="line">		<span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			access(x);  splay(x);  <span class="keyword">complex</span> v1=sum[x];</div><div class="line">			<span class="keyword">int</span> root=find(x),f=spf[root];</div><div class="line">			access(f);  splay(f);  <span class="keyword">complex</span> v2=sum[f];</div><div class="line">			<span class="keyword">if</span>(v2.k==<span class="number">1</span>)  <span class="keyword">return</span> v2.b?<span class="number">-1</span>:<span class="number">-2</span>;</div><div class="line">			<span class="keyword">if</span>(v2.k==<span class="number">0</span>)  <span class="keyword">return</span> v1.calc(v2.b);</div><div class="line">			<span class="keyword">return</span> v1.calc(sub(mod,mul(v2.b,Ni[v2.k<span class="number">-1</span>])));</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> k,<span class="keyword">int</span> p,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">			access(x);  splay(x);  v[x]=sum[x]=<span class="keyword">complex</span>(k,b); updata(x);</div><div class="line">			<span class="keyword">int</span> root1=find(x);</div><div class="line">			<span class="keyword">if</span>(x==root1)&#123;</div><div class="line">				<span class="keyword">if</span>(find(p)==x)  spf[x]=p;</div><div class="line">				<span class="keyword">else</span> spf[x]=<span class="number">0</span>,linkk(x,p);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(On_Circle(x,root1))&#123;</div><div class="line">				cut(x);  linkk(root1,spf[root1]);  spf[root1]=<span class="number">0</span>;</div><div class="line">				<span class="keyword">if</span>(find(p)==x)  spf[x]=p;</div><div class="line">				<span class="keyword">else</span> linkk(x,p);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				cut(x);</div><div class="line">				<span class="keyword">if</span>(find(p)==x)  spf[x]=p;</div><div class="line">				<span class="keyword">else</span> linkk(x,p);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">&#125;Tree;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> y=f[x];  dfn[x]=vis[x]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(dfn[y])  spf[x]=y,f[x]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(!vis[y])  dfs(f[x]);</div><div class="line">	dfn[x]=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  K[i]=read(),f[i]=read(),B[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  v[i]=sum[i]=<span class="keyword">complex</span>(K[i],B[i]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  <span class="keyword">if</span>(!vis[i])  dfs(i);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  Ni[i]=power(i,mod<span class="number">-2</span>);</div><div class="line">	Q=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;++i)&#123;</div><div class="line">		<span class="keyword">char</span> ch[<span class="number">5</span>];  <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ch);</div><div class="line">		<span class="keyword">if</span>(ch[<span class="number">0</span>]==<span class="string">'A'</span>)&#123;</div><div class="line">			<span class="keyword">int</span> x=read();</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Tree.query(x));</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ch[<span class="number">0</span>]==<span class="string">'C'</span>)&#123;</div><div class="line">			<span class="keyword">int</span> a=read(),k=read(),p=read(),b=read();</div><div class="line">			Tree.solve(a,k,p,b);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 动态树 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【hdu5716】带可选字符的多字符串匹配]]></title>
       <url>/2018/03/02/5716/</url>
       <content type="html"><![CDATA[<ul>
@@ -434,9 +489,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -462,9 +517,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -521,7 +576,7 @@
             
             <tag> uoj </tag>
             
-            <tag> LCT </tag>
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -550,7 +605,7 @@
             
             <tag> uoj </tag>
             
-            <tag> LCT </tag>
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -580,9 +635,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> LCT </tag>
-            
             <tag> 启发式合并 </tag>
+            
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -609,7 +664,7 @@
             
             <tag> bzoj </tag>
             
-            <tag> LCT </tag>
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -986,7 +1041,7 @@
         
         <tags>
             
-            <tag> LCT </tag>
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -1379,9 +1434,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -1476,9 +1531,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -2410,11 +2465,11 @@
         
         <tags>
             
+            <tag> bzoj </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
-            
-            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3169,11 +3224,11 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
             
-            <tag> LCT </tag>
+            <tag> 线段树 </tag>
+            
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -3403,11 +3458,11 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
             
-            <tag> LCT </tag>
+            <tag> 线段树 </tag>
+            
+            <tag> 动态树 </tag>
             
         </tags>
         
@@ -4558,9 +4613,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -4780,9 +4835,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 容斥原理 </tag>
             
         </tags>
         
@@ -5005,9 +5060,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -5316,9 +5371,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -5479,9 +5534,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 费用流 </tag>
             
@@ -5825,9 +5880,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 莫比乌斯反演 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
@@ -6045,9 +6100,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -6072,9 +6127,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 整体二分 </tag>
             
@@ -6102,9 +6157,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 整体二分 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
