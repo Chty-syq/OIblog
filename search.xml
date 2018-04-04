@@ -122,6 +122,86 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【算法笔记】手动开平方]]></title>
+      <url>/2018/04/03/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E6%89%8B%E5%8A%A8%E5%BC%80%E5%B9%B3%E6%96%B9/</url>
+      <content type="html"><![CDATA[<ul>
+<li>终于可以摆脱计算器了！</li>
+</ul>
+<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<hr>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>（1）设要开方的数为$A$，将两两分组，如$7586$写成$75’86$，而$78965$写成$7’89’65$</p>
+<p>（2）将第一位开方：即计算$x_1^2&lt;=A_1$，如$75’86$就是要计算$x_1^2&lt;=75$的最大的$x_1$，也就是$8$</p>
+<p>然后将$A_1^2$，也就是$64$写下来，相减抄下去，如图所示：</p>
+<p><center><img src="/img/08.png" alt=""></center></p>
+<p>（3）下移两位（普通的除法是下移一位，但在这里需要移两位），然后将当前商乘以$20$，计算$(20x_1+x_2)x_2&lt;=A_2$</p>
+<p>如上例中，就是把$8$乘以$20$，然后计算$16A \times A &lt;=1168$，解得$A_max=6$</p>
+<p>将$166\times6$的结果写下来相减，如图所示：</p>
+<p><center><img src="/img/09.png" alt=""></center></p>
+<p>（4）重复（3）过程即可，只要你想，你可以不断开下去，当然你可能发现了，越往后计算越复杂</p>
+<p>如图所示：</p>
+<p><center><img src="/img/10.png" alt=""></center></p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>我们假设结果是$$P=\sum_{i=0}^{n}10^ia_i $$</p>
+<p>那么我们尝试把$P$平方，即$$P^2=\sum_{i=0}^{n} (10^{2i} a^{2i}+ 2\times10^i a_i \sum_{j=i+1}^{n}10^ja_j )$$</p>
+<p>$$P^2=\sum_{i=0}^{n} 10^i a^i(10^i a^i + 2 \sum_{j=i+1}^{n}10^ja_j )$$</p>
+<p>接下来我们考虑各项的意义：</p>
+<p>$10^i a^i$就是当前位置的数</p>
+<p>$2 \sum_{j=i+1}^{n}10^ja_j$就是当前位前面的位的累加和乘以2的结果</p>
+<p>我们的思想是逐位确定</p>
+<p>首先确定第一位，方法是显然的</p>
+<p>然后假设后面的位都是$0$，然后按照上面的式子求解最小的符合条件的当前位的值</p>
+<p>这样不断地逐位进行确定就可以实现手动开平方</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 算法笔记 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【bzoj2286】消耗战]]></title>
+      <url>/2018/03/27/2286/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载</li>
+</ul>
+<ul>
+<li>虚树系列第一题<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2286" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>首先考虑一般的做法：</p>
+<p>设$f[x]$表示以$x$为根子树中所有资源点不能到达根的最小代价，$minn[x]$表示$x$到根路径上的最小边权</p>
+<p>那么显然有：$f[x]=min(minn[x],\sum y) $　　（$y$是$x$的儿子）</p>
+<p>然后我们发现所有的$K$之和不超过$500000$，那么做法就很显然了：</p>
+<p>每次把所有的资源点拿出了建一颗虚树，然后在虚树上$dp$就可以了</p>
+<p>需要注意的是：建虚树时只用考虑离根最近的关键点，也就是说如果关键点$x$在关键点$y$的子树中，那么$x$可以忽略</p>
+<p>这是因为如果$y$是关键点，那么$y$到$root$的路径上不然会切掉一条边，这时$x,z$到$root$就不通了</p>
+<p>而且如果不忽略的话，答案会出错（考虑$dp$转移的过程就知道为什么会出错了</p>
+<p>另外：这题需要用$longlong$（被坑了好久</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 250010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll INF=<span class="number">1e18</span>;</div><div class="line"><span class="keyword">struct</span> node&#123;<span class="keyword">int</span> y,next;ll v;&#125;e[MAXN&lt;&lt;<span class="number">1</span>];</div><div class="line"><span class="keyword">int</span> n,m,len,dfs_clock,Link[MAXN],dfn[MAXN],deep[MAXN],h[MAXN],sta[MAXN],anc[MAXN][<span class="number">25</span>];</div><div class="line">ll minn[MAXN],f[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">mycmp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;<span class="keyword">return</span> dfn[x]&lt;dfn[y];&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span></span>&#123;</div><div class="line">	e[++len].next=Link[x];Link[x]=len;e[len].y=y;e[len].v=v;</div><div class="line">	e[++len].next=Link[y];Link[y]=len;e[len].y=x;e[len].v=v;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span>;</div><div class="line">	e[++len].next=Link[x];Link[x]=len;e[len].y=y;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">	dfn[x]=++dfs_clock;  anc[x][<span class="number">0</span>]=fa;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">20</span>;++i) anc[x][i]=anc[anc[x][i<span class="number">-1</span>]][i<span class="number">-1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=fa)&#123;</div><div class="line">		minn[e[i].y]=min(minn[x],e[i].v);</div><div class="line">		deep[e[i].y]=deep[x]+<span class="number">1</span>;</div><div class="line">		dfs(e[i].y,x);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(deep[x]&lt;deep[y])  swap(x,y);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;--i) <span class="keyword">if</span>(deep[anc[x][i]]&gt;=deep[y]) x=anc[x][i];</div><div class="line">	<span class="keyword">if</span>(x==y)  <span class="keyword">return</span> x;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;--i) <span class="keyword">if</span>(anc[x][i]!=anc[y][i])  x=anc[x][i],y=anc[y][i];</div><div class="line">	<span class="keyword">return</span> anc[x][<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	ll ret=<span class="number">0</span>;  f[x]=minn[x];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)&#123;</div><div class="line">		dp(e[i].y);</div><div class="line">		ret+=f[e[i].y];</div><div class="line">	&#125;Link[x]=<span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(ret) cmin(f[x],ret);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> K=read(),top=<span class="number">0</span>;  len=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=K;++i)  h[i]=read();</div><div class="line">	sort(h+<span class="number">1</span>,h+K+<span class="number">1</span>,mycmp); </div><div class="line">	<span class="keyword">int</span> tot=<span class="number">0</span>;  h[++tot]=h[<span class="number">1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=K;i++)  <span class="keyword">if</span>(LCA(h[tot],h[i])!=h[tot])h[++tot]=h[i];<span class="comment">//精妙的操作</span></div><div class="line">	sta[++top]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;++i)&#123;</div><div class="line">		<span class="keyword">int</span> x=h[i],lca=LCA(x,sta[top]);</div><div class="line">		<span class="keyword">if</span>(lca==sta[top])  sta[++top]=x;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">while</span>(top&gt;=<span class="number">1</span>&amp;&amp;deep[sta[top<span class="number">-1</span>]]&gt;=deep[lca])</div><div class="line">				Insert(sta[top<span class="number">-1</span>],sta[top]),--top;</div><div class="line">			<span class="keyword">if</span>(sta[top]!=lca)&#123;</div><div class="line">				Insert(lca,sta[top--]);</div><div class="line">				sta[++top]=lca;  </div><div class="line">			&#125;</div><div class="line">			sta[++top]=x;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;top;++i) Insert(sta[i],sta[i+<span class="number">1</span>]);</div><div class="line">	dp(<span class="number">1</span>);  <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[<span class="number">1</span>]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();  deep[<span class="number">1</span>]=<span class="number">1</span>;  minn[<span class="number">1</span>]=INF;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</div><div class="line">		<span class="keyword">int</span> x=read(),y=read(),v=read();</div><div class="line">		insert(x,y,v);</div><div class="line">	&#125;</div><div class="line">	dfs(<span class="number">1</span>,<span class="number">0</span>); m=read();  </div><div class="line">	<span class="built_in">memset</span>(Link,<span class="number">0</span>,<span class="keyword">sizeof</span>(Link));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i) solve();</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,clock());</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 虚树 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【bzoj2759】一个动态树好题]]></title>
       <url>/2018/03/22/2759/</url>
       <content type="html"><![CDATA[<ul>
@@ -259,9 +339,9 @@
         
         <tags>
             
-            <tag> dp </tag>
-            
             <tag> 51nod </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -635,9 +715,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 启发式合并 </tag>
-            
             <tag> 动态树 </tag>
+            
+            <tag> 启发式合并 </tag>
             
         </tags>
         
@@ -1297,9 +1377,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> 仙人掌 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> uoj </tag>
             
@@ -1434,9 +1514,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 博弈论 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 博弈论 </tag>
             
             <tag> 搜索 </tag>
             
@@ -4835,9 +4915,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -6100,9 +6180,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
