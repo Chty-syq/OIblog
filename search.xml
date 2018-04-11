@@ -122,6 +122,47 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【高考数学】2015全国I卷导数题分析]]></title>
+      <url>/2018/04/11/%E3%80%90%E9%AB%98%E8%80%83%E6%95%B0%E5%AD%A6%E3%80%912015%E5%85%A8%E5%9B%BDI%E5%8D%B7%E5%AF%BC%E6%95%B0%E9%A2%98%E5%88%86%E6%9E%90/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li>2015年高考数学新课标I卷（理科）压轴题（第21题）</li>
+</ul>
+<hr>
+<p>已知函数$f(x)=x^3+ax+\frac{1}{4},g(x)=-\ln x$</p>
+<p>(1)当$a$为何值时，$x$轴为曲线$y=f(x)$的切线;</p>
+<p>(2)用$min${$m,n$}表示$m,n$中的最小值，设函数$h(x)=min${$f(x),g(x)$}$(x&gt;0)$，讨论h(x)的零点个数.</p>
+<hr>
+<p><b>解：</b>  （1）$a=-\frac{3}{4}$，略</p>
+<p>（2）<font color="yellow"><b>引理：$min${$m,n$}$=\frac{1}{2}(m+n-|m-n|)$</b></font></p>
+<blockquote>
+<p>证明：$当m\geqslant n时，min${$m,n$}$=\frac{1}{2}(m+n-m+n)=n$</p>
+<p>　　　$当m     &lt;    n时，min${$m,n$}$=\frac{1}{2}(m+n+m-n)=m$</p>
+</blockquote>
+<p>故</p>
+<center>$h(x)=min${$f(x),g(x)$}$=\frac{1}{2}[f(x)+g(x)-|f(x)-g(x)|]=0$</center>
+
+<p>$f(x)+g(x)=|f(x)-g(x)|$</p>
+<p>即$f(x)g(x)=0且f(x)+g(x)\geqslant 0$</p>
+<font color="red"><b>情形一</b></font>  $g(x)=0$<br><br>显然当且仅当$x=1$时，$g(1)=0$，此时需要满足$f(1)+g(1)=a+\frac{5}{4} \geqslant 0$，即$a\geqslant -\frac{5}{4}$<br><br>故当$a \in [-\frac{5}{4},+\infty)$时，$g(x)$在$x=1$处有$1$个零点<br><br><font color="red"><b>情形二</b></font> $f(x)=0$<br><br>设$f(x_0)=0$，此时有$x_0 ^3 +ax_0+\frac{1}{4}=0$，需满足$f(x_0)+g(x_0)\geqslant 0$ 即$x_0 \leqslant 1$<br><br>$此时有a=-\frac{\frac{1}{4}+x_0 ^3}{x_0}$<br><br>$令\phi(x)=-\frac{\frac{1}{4}+x^3}{x}$<br><br>$则\phi’(x)=\frac{\frac{1}{4}-2x^3}{x^2}$<br><br>故$\phi(x)在(0,\frac{1}{2})$上单调递增，在$(\frac{1}{2},1]$上单调递减<br><br>而$\phi(0)\rightarrow -\infty ，\phi(\frac{1}{2})=-\frac{3}{4}，\phi(1)=-\frac{5}{4}$<br><br>可大致画出$\phi(x)$的图像<br><br>当$a \in (-\infty ,-\frac{5}{4})$时，$h(x)$有$1$个零点<br><br>当$4a \in (-\frac{5}{4},-\frac{3}{4})$时，h(x)有$2$个零点<br><br>当$a=-\frac{3}{4}$时，$h(x)$有$1$个零点<br><br>当$a=-\frac{5}{4}$时，$h(x)$有$2$个零点，其中一个零点为$x=1$<br><br><font color="red"><b>综上所述</b></font>
+
+<p>当$a \in (-\infty,-\frac{5}{4})\bigcup (-\frac{3}{4})$时，h(x)有1个零点</p>
+<p>当$a \in (-\frac{5}{4},-\frac{3}{4})$时，$h(x)$有$3$个零点</p>
+<p>当$a =-\frac{4}{3}或-\frac{5}{4}$时，$h(x)$有$2$个零点</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 高考数学 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【算法笔记】手动开平方]]></title>
       <url>/2018/04/03/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E6%89%8B%E5%8A%A8%E5%BC%80%E5%B9%B3%E6%96%B9/</url>
       <content type="html"><![CDATA[<ul>
@@ -339,9 +380,9 @@
         
         <tags>
             
-            <tag> 51nod </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 51nod </tag>
             
         </tags>
         
@@ -569,9 +610,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -597,9 +638,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1377,9 +1418,9 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 仙人掌 </tag>
             
             <tag> uoj </tag>
             
@@ -1514,9 +1555,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -1611,9 +1652,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -2545,11 +2586,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3304,9 +3345,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -3538,9 +3579,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4693,9 +4734,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5140,9 +5181,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -5451,9 +5492,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -5614,9 +5655,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -5960,9 +6001,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 莫比乌斯反演 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
             
         </tags>
         
@@ -6207,9 +6248,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
@@ -6237,9 +6278,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 整体二分 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 整体二分 </tag>
             
         </tags>
         
