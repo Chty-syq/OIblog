@@ -122,6 +122,216 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【算法笔记】高斯整数与平方和问题]]></title>
+      <url>/2018/05/17/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E9%AB%98%E6%96%AF%E6%95%B4%E6%95%B0%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<ul>
+<li>【HAOI2008】圆上的整点 终于完美解决了</li>
+</ul>
+<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<hr>
+<h2 id="高斯整数"><a href="#高斯整数" class="headerlink" title="高斯整数"></a>高斯整数</h2><h3 id="Definition-1-1"><a href="#Definition-1-1" class="headerlink" title="Definition 1.1"></a>Definition 1.1</h3><p>高斯整数是定义在复数域上的，实部和虚部均为整数的复数集，遵循复数运算法则</p>
+<p>形式化的，我们把满足$z=a+bi,其中a,b\in Z$的复数$z$称为<font color="yellow">高斯整数（Guassian Integers）</font></p>
+<p>　　</p>
+<h3 id="Definition-1-2"><a href="#Definition-1-2" class="headerlink" title="Definition 1.2"></a>Definition 1.2</h3><p>定义高斯整数$z=a+bi$的<font color="yellow">$norm$</font>为$N(z)=a^2+b^2$</p>
+<p>特别地，定义$norm$等于$1$的高斯整数为<font color="yellow">$unit$</font>，即<font color="yellow">单位元</font></p>
+<p>　　</p>
+<h3 id="Definition-1-3"><a href="#Definition-1-3" class="headerlink" title="Definition 1.3"></a>Definition 1.3</h3><p>对于高斯整数$x,y$，若存在高斯整数$z$使得$ax=y$，则称$x$为$y$的因子，记作$x|y$</p>
+<p>　　</p>
+<h3 id="Lemma-1-1"><a href="#Lemma-1-1" class="headerlink" title="Lemma 1.1"></a>Lemma 1.1</h3><blockquote>
+<p>对于高斯整数$a,b$，$N(ab)=N(a)N(b)$</p>
+</blockquote>
+<p>证明：设$a=a_1+a_2 i,b=b_1+b_2 i$，则</p>
+<p>$LHS=(a_1 b_1 -a_2 b_2)^2+(a_1 b_2+a_2 b_1)^2=a_1^2 b_1^2+a_1^2 b_2^2+a_2^2 b_1^2+a_2^2 b_2^2$</p>
+<p>$RHS=(a_1^2+a_2^2)(b_1^2+b_2^2)=a_1^2 b_1^2+a_1^2 b_2^2+a_2^2 b_1^2+a_2^2 b_2^2$</p>
+<p>故$LHS=RHS$，引理成立</p>
+<font color="33FFFF"><br>注：上述证明中，形如$(a^2+b^2)(c^2+d^2)=(ac+bd)^2-(ac-bd)^2$的式子称为<font color="yellow">斐波那契恒等式</font>
+
+<p>根据该恒等式可以得到柯西不等式及其取等条件<br></p></font><p></p>
+<p>　　</p>
+<h3 id="Lemma-1-2"><a href="#Lemma-1-2" class="headerlink" title="Lemma 1.2"></a>Lemma 1.2</h3><blockquote>
+<p>对于高斯整数$a,b$，若$a|b$，则$N(a)|N(b)$，且逆命题不成立</p>
+</blockquote>
+<p>证明：</p>
+<p>（1）若$a|b$，设$b=az$，则$N(b)=N(az)=N(a)N(z)$，故$N(a)|N(b)$，命题成立</p>
+<p>（2）若$N(a)|N(b)$，设$zN(a)=N(b)$，而$z$不一定能表示成$N(z)$的形式，故逆命题不成立</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="高斯素数"><a href="#高斯素数" class="headerlink" title="高斯素数"></a>高斯素数</h2><h3 id="Definition-2-1"><a href="#Definition-2-1" class="headerlink" title="Definition 2.1"></a>Definition 2.1</h3><p>若高斯整数$z$不是单位元，且除自身及单位元外没有其他因子，则称$z$为<font color="yellow">高斯素数（Guassian Prime Integers）</font></p>
+<p>比如说$2=(1+i)(1-i)$，故$2$不是高斯素数，而$3$不能继续分解，是高斯素数</p>
+<p>　　</p>
+<h3 id="Theorem-2-1"><a href="#Theorem-2-1" class="headerlink" title="Theorem 2.1"></a>Theorem 2.1</h3><blockquote>
+<p>若素数$P$满足丢番图方程$x^2+y^2=P$无解，则$P$为高斯素数</p>
+</blockquote>
+<p>（1）证明充分性：若$P$为素数且$(a,b)$是丢番图方程$x^2+y^2=P$的一组解</p>
+<p>则$P=a^2+b^2=(a+bi)(a-bi)$，$P$不是高斯素数</p>
+<p>（2）证明必要性：若$P$不是高斯素数，设$P=(x+yi)(a+bi)=ax-by+(bx+ay)i$</p>
+<p>由于$P$是整数，故$ax-by=P$且$bx+ay=0$，得到$(a^2+b^2)x=aP$</p>
+<p>由于$a+bi$不是单位元，$a^2+b^2\neq 1$，且P为素数，故$a^2+b^2=P$</p>
+<p>故$P$不是高斯素数时，上述方程有解</p>
+<p>　　</p>
+<h3 id="Lemma-2-1"><a href="#Lemma-2-1" class="headerlink" title="Lemma 2.1"></a>Lemma 2.1</h3><blockquote>
+<p>若高斯整数z满足N(z)是素数，则z是高斯素数</p>
+</blockquote>
+<p>证明：若$z$不是高斯整数，则存在非单位元$a,b$满足$z=ab$</p>
+<p>则$N(z)=N(ab)=N(a)N(b)$，故$N(z)$不是素数</p>
+<font color="33FFFF"><br>注：引理2.1和定理2.1都是采用证明逆否命题的方式间接证明原命题<br></font>
+
+<p>　　</p>
+<h3 id="Theorem-2-2"><a href="#Theorem-2-2" class="headerlink" title="Theorem 2.2"></a>Theorem 2.2</h3><p>高斯整数的代数基本定理（Fundermental Theorem of Arithmetic for Guassian Integers）</p>
+<blockquote>
+<p>若$z$是高斯整数，<font color="33FFFF">不考虑单位元的影响</font>，存在唯一的高斯素数分解方式使得$z=\prod z_i^{q_i}$</p>
+</blockquote>
+<p>证明：根据代数基本定理，$N(z)=\prod N(z_i)^{q_i}$是唯一的，故$z=\prod z_i^{q_i}$是唯一的</p>
+<font color="33FFFF"><br>注：在代数基本定理中$10=2\times5$，若考虑$-1$的话$10=(-2)\times(-5)$，分解不唯一<br>所以在代数基本定理中不考虑$-1$的影响，类似的，这里也不考虑单位元的影响<br></font>
+
+<p>　　</p>
+<h3 id="Lemma-2-2"><a href="#Lemma-2-2" class="headerlink" title="Lemma 2.2"></a>Lemma 2.2</h3><blockquote>
+<p>$a^2+b^2\equiv 3(mod 4)$恒不成立</p>
+</blockquote>
+<p>证明：（1）若$4|a^2$，则$a^2\equiv 0(mod 4)$</p>
+<p>（2）若$4$不是$a^2$的因子，设$a=\prod p_i^{q_i}$，则$a^2=\prod p_i^{2q_i}$</p>
+<p>由欧拉定理得$a^2\equiv \prod pi^{2q_i\%\phi(4)}\equiv \prod pi^{2q_i\%2}\equiv 1(mod 4)$</p>
+<p>故$a^2 \equiv 0或1(mod 4)$，$a^2+b^2\equiv 0或1或2(mod 4)$</p>
+<p>　　</p>
+<h3 id="Lemma-2-3"><a href="#Lemma-2-3" class="headerlink" title="Lemma 2.3"></a>Lemma 2.3</h3><blockquote>
+<p>若$q$是素数，且$q\equiv 3(mod 4)$，则$q$为高斯素数</p>
+</blockquote>
+<p>证明：设$q=z_1 z_2$，且$z_1=a+bi$，则</p>
+<p>$N(q)=q^2=N(z_1)N(z_2)$，而$N(z_1)=a^2+b^2\not\equiv 3(mod 4)$</p>
+<p>故$N(z_1)\neq q$，因此必然有$N(z_1)=1$或$N(z_2)=1$</p>
+<p>　　</p>
+<h3 id="Lemma-2-4"><a href="#Lemma-2-4" class="headerlink" title="Lemma 2.4"></a>Lemma 2.4</h3><blockquote>
+<p>若$q$为素数，且$q\equiv 1(mod 4)$，则存在高斯素数$z$使得$q=z\overline{z}$</p>
+</blockquote>
+<p>证明：由于$q\equiv 1(mod 4)$，所以$(-1)^{\frac{q-1}{2}}=1$，故$-1$是模$q$意义下的二次剩余</p>
+<p>故存在整数$c$满足$c^2\equiv -1(mod q)$，因此$q|(c+i)(c-i)$</p>
+<p>但$(c+i)$和$(c-i)$都不能整除$q$，故$q$不是高斯素数，因此存在$z_1,z_2$，使得$q=z_1 z_2$</p>
+<p>而$N(q)=q^2=N(z_1)N(z_2)$，故$N(z_1)=N(z_2)=q$，所以$z_1,z_2$互为共轭</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="平方和问题"><a href="#平方和问题" class="headerlink" title="平方和问题"></a>平方和问题</h2><h3 id="Problem-3-1"><a href="#Problem-3-1" class="headerlink" title="Problem 3.1"></a>Problem 3.1</h3><blockquote>
+<p>求丢番图方程$a^2+b^2=n$的整数解$(a,b)$的个数</p>
+</blockquote>
+<p>设$z=a+bi$，则$z\overline{z}=a^2+b^2=n$，所以问题就变成了求乘积为$n$的共轭高斯整数的数目</p>
+<p>我们把$n$按照如下方式分解：$n=2^a \prod p_i^{q_i} \prod p_j^{q_j}$，其中$p_i \equiv 1(mod4)$，$p_j \equiv 3(mod 4)$</p>
+<p>那么我们只需要把这些因子划分成两部分使得这两部分乘积的$norm$相等，划分的方案数就是答案</p>
+<p>由Lemma2.3可知，$p_j$已经是高斯素数，不能继续分解</p>
+<p>只能均分到这两部分，显然如果存在$q_j$是偶数，则方程无解</p>
+<p>由Lemma2.4可知，$p_i$可以继续分解为两个共轭高斯整数</p>
+<p>设$p_i=z\overline{z}$，则$p_i^{q_i}=z^{q_i}\overline{z}^{q_i}$</p>
+<p>而复数相乘满足$norm$相乘，辐角相加，故分配时$z$与$\overline{z}$对两边模长的贡献是相同的</p>
+<p>所以只需要保证两边分配的$z$和$\overline{z}$的总数相同即可</p>
+<p>例如$5^2=(2+i)^2 (2-i)^2$，则分配方案如下：</p>
+<p>（1）左边：$(2+i)(2+i)$　　右边：$(2-i)(2-i)$</p>
+<p>（2）左边：$(2+i)(2-i)$　　右边：$(2-i)(2+i)$</p>
+<p>（3）左边：$(2-i)(2-i)$　　右边：$(2+i)(2+i)$</p>
+<p>可以看出，$p_i^{q_i}$项共有$(q_i+1)$种分配方案，所以$\prod p_i^{q_i}$的贡献就是$\prod(q_i+1)$</p>
+<p>而在Theorem2.2中，我们提到高斯整数分解时可以通过乘以单位元得到不同的分解方案</p>
+<p>例如$5=(2+i)(2-i)=(-2-i)(-2+i)=(-1+2i)(-1-2i)=(1-2i)(1+2i)$</p>
+<p>在考虑单位元的情况下，高斯整数就有4种分解方案，所以答案应该是$4\prod(q_i+1)$</p>
+<p>最后我们再考虑$2^a$项的问题，注意到$2=(1+i)(1-i)=i(1-i)^2$</p>
+<p>所以只能把$(1-i)$均等分配到两边，而$i$作为单位元不影响答案，故$2^a$只有一种分配方案</p>
+<p>问题至此完美解决，最终的答案就是$4\prod(p_i+1)$</p>
+<p>　　</p>
+<h3 id="圆上的整点"><a href="#圆上的整点" class="headerlink" title="圆上的整点"></a>圆上的整点</h3><ul>
+<li>【bzoj1041】圆上的整点<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1041" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<blockquote>
+<p>求方程$x^2+y^2=R^2$的整数解个数</p>
+</blockquote>
+<p>这里右边是$R^2$，设$R=2^a \prod p_i^{q_i} \prod p_i^{q_i}$，其中$p_i \equiv 1(mod 4)$，$p_j \equiv 3(mod 4)$</p>
+<p>则$R^2=2^{2a}\prod p_i^{2q_i}\prod p_j^{2q_j}$，因为$2q_j$为偶数，所以这一项不会导致无解</p>
+<p>而$2^{2a}以及\prod p_j^{2q_j}$对答案无影响，所以答案就是$4\prod (2q_i+1)$</p>
+<p>具体做法就是分解质因数，找到形如$4k+1$的质因子，计算次数即可，时间复杂度$O(sqrt n)$</p>
+<p>　　</p>
+<p>　　</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><hr>
+<ul>
+<li>《隐藏在素数规律中的π》——3Blue1Brown<a href="https://www.bilibili.com/video/av12131743" target="_blank" rel="external">【传送门】</a></li>
+<li>《从【bzoj1041】说开去》——LCA大佬博客<a href="https://blog.csdn.net/liu_cheng_ao/article/details/69296100" target="_blank" rel="external">【传送门】</a></li>
+<li>《Gaussian Integers》<a href="http://www.math.ucsd.edu/~jverstra/Gaussian1.pdf" target="_blank" rel="external">【传送门】</a></li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 数论 </tag>
+            
+            <tag> 算法笔记 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【算法笔记】多项式快速算法——卡常FFT]]></title>
+      <url>/2018/05/13/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%8D%A1%E5%B8%B8FFT/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文纯属理性的愉悦，除非出题人松松松</li>
+</ul>
+<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<hr>
+<h3 id="共轭对称"><a href="#共轭对称" class="headerlink" title="共轭对称"></a>共轭对称</h3><p>在离散傅里叶变换（DFT）中，我们有如下公式：</p>
+<blockquote>
+<p>$X(n)=\sum_{k=0}^{N-1}x_k w_{N}^{nk}$</p>
+</blockquote>
+<p>其中$n\in [0,n-1]$，$X(n)$表示第$n$个单位根的点值表达</p>
+<p>我们用$\overline{X(n)}$表示$X(n)$的共轭复数，则：</p>
+<blockquote>
+<p>$\overline{X(n)}=\sum_{k=0}^{N-1}\overline{x_k}w_{N}^{-nk}=\sum_{k=0}^{N-1}x_k w_{N}^{(N-n)k}=X(N-n)$</p>
+</blockquote>
+<p>所以我们说离散傅里叶变换$DFT[x(n)]$是<font color="yellow">共轭对称</font>的</p>
+<p>　　</p>
+<h3 id="构造离散复数"><a href="#构造离散复数" class="headerlink" title="构造离散复数"></a>构造离散复数</h3><p>回想我们原先方法：先把$x(n),y(n)$做$DFT$，然后点值相乘后插值回来，一共做了三次$FFT$</p>
+<p>接下来我们考虑构造复数$z(n)=x(n)+iy(n)$，如果能把$z(n)$做$DFT$，然后通过计算得到乘积，然后插值回去</p>
+<p>那么我们就能只做$2$次$FFT$，成功卡掉$\frac{1}{3}$的常数</p>
+<p>接下来就是推式子的愉(du)悦(liu)时间了</p>
+<blockquote>
+<p>$Z(n)=DFT[x(n)+iy(n)]=X(n)+iY(n)$</p>
+</blockquote>
+<p>注意这里的$X(n),Y(n)$都不是实数，所以它们并不是$Z(n)$的实部和虚部</p>
+<p>设$Z(n)$的实部和虚部分别为$A(n),B(n)$，那么有</p>
+<blockquote>
+<p>$Z(n)=\overline{Z(N-n)}=\overline{X(N-n)+iY(N-n)}=\overline{A(N-n)+iB(N-n)}$</p>
+<p>$X(n)-iY(n)=A(N-n)-iB(N-n)$</p>
+<p>$X(n)+iY(n)=A(n)+iB(n)$</p>
+</blockquote>
+<p>可以得到：</p>
+<blockquote>
+<p>$X(n)=\frac{A(n)+A(N-n)+i[B(n)-B(N-n)]}{2}$</p>
+<p>$Y(n)=\frac{B(n)+B(N-n)-i[A(n)-A(N-n)]}{2}$</p>
+</blockquote>
+<p>这样我们就完成了离散值$X(n),Y(n)$的计算，后面的步骤和普通FFT是一样的</p>
+<p>　　</p>
+<h3 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h3><ul>
+<li><a href="http://uoj.ac/problem/34" target="_blank" rel="external">【UOJ#34】多项式乘法</a></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300010</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi=<span class="built_in">acos</span>(<span class="number">-1</span>);</div><div class="line"><span class="keyword">int</span> n,m,R[MAXN];</div><div class="line"><span class="keyword">namespace</span> INIT&#123;</div><div class="line">	<span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">		<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">		<span class="keyword">return</span> x*f;</div><div class="line">	&#125;</div><div class="line">&#125;<span class="keyword">using</span> <span class="keyword">namespace</span> INIT;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> OUT=<span class="number">500000</span>;</div><div class="line"><span class="keyword">char</span> Out[OUT],*ou=Out;<span class="keyword">int</span> Outn[<span class="number">30</span>],Outcnt;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(!x)*ou++=<span class="number">48</span>;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="keyword">for</span>(Outcnt=<span class="number">0</span>;x;x/=<span class="number">10</span>)</div><div class="line">			Outn[++Outcnt]=x%<span class="number">10</span>+<span class="number">48</span>;</div><div class="line">		<span class="keyword">while</span>(Outcnt)*ou++=Outn[Outcnt--];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">struct</span> <span class="keyword">complex</span>&#123;</div><div class="line">	<span class="keyword">double</span> r,v;</div><div class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> a=<span class="number">0</span>,<span class="keyword">double</span> b=<span class="number">0</span>):r(a),v(b)&#123;&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span> +(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r+b.r,v+b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span> -(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r-b.r,v-b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span> *(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r*b.r-v*b.v,r*b.v+v*b.r);&#125;</div><div class="line">&#125;A[MAXN],B[MAXN],w[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">complex</span> &amp;a,<span class="keyword">complex</span> &amp;b)</span></span>&#123;<span class="function"><span class="keyword">complex</span> <span class="title">t</span><span class="params">(a)</span></span>;a=b;b=t;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(<span class="keyword">complex</span> *a,<span class="keyword">int</span> L,<span class="keyword">int</span> f)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  <span class="keyword">if</span>(i&lt;R[i])  swap(a[i],a[R[i]]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=L;len&lt;&lt;=<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">int</span> l=(len&gt;&gt;<span class="number">1</span>);  <span class="comment">//complex wn(cos(pi/l),f*sin(pi/l));</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;l;++i)  w[i]=w[i<span class="number">-1</span>]*wn;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;L;st+=len)<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;l;++k)&#123;</div><div class="line">			<span class="keyword">complex</span> x=a[st+k],y=w[k]*a[st+k+l];</div><div class="line">			a[st+k]=x+y;  a[st+k+l]=x-y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> L=<span class="number">1</span>,H=<span class="number">0</span>;  <span class="keyword">while</span>(L&lt;n+m)  L&lt;&lt;=<span class="number">1</span>,++H; w[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  R[i]=(R[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(H<span class="number">-1</span>));</div><div class="line">	FFT(A,L,<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;L;++i)&#123;</div><div class="line">		<span class="keyword">double</span> x1=A[i].r,x2=A[L-i].r;</div><div class="line">		<span class="keyword">double</span> y1=A[i].v,y2=A[L-i].v;</div><div class="line">		<span class="comment">//complex a((x1+x2)*0.5,(y1-y2)*0.5);</span></div><div class="line">		<span class="comment">//complex b((y1+y2)*0.5,(x2-x1)*0.5);</span></div><div class="line">		<span class="comment">//为了代码高亮不得不注释掉</span></div><div class="line">		B[i]=a*b;</div><div class="line">	&#125;B[<span class="number">0</span>]=A[<span class="number">0</span>].v*A[<span class="number">0</span>].r;</div><div class="line">	FFT(B,L,<span class="number">-1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n+m<span class="number">-1</span>;++i)  write(<span class="keyword">int</span>(B[i].r/L+<span class="number">0.5</span>)),*ou++=<span class="number">32</span>;</div><div class="line">	fwrite(Out,<span class="number">1</span>,ou-Out,<span class="built_in">stdout</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n+m<span class="number">-1</span>;++i)&#123;</div><div class="line">		<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=i;++j) ret+=A[j].r*A[i-j].v;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>,ret);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read()+<span class="number">1</span>;  m=read()+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)  A[i].r=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;++i)  A[i].v=read();</div><div class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">8</span>&amp;&amp;m&lt;=<span class="number">8</span>)  &#123;solve2(); <span class="keyword">return</span> <span class="number">0</span>;&#125;</div><div class="line">	solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>优化的效果也是显而易见的：</p>
+<p><img src="/img/17.png" alt=""></p>
+<p>　　</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ul>
+<li>《实序列离散傅里叶变换的快速算法》——Miskcoo<a href="http://blog.miskcoo.com/tag/fft" target="_blank" rel="external">传送门</a></li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 多项式 </tag>
+            
+            <tag> 算法笔记 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【HAOI2018】染色]]></title>
       <url>/2018/05/07/%E3%80%90HAOI2018%E3%80%91%E6%9F%93%E8%89%B2/</url>
       <content type="html"><![CDATA[<ul>
@@ -304,9 +514,9 @@
         
         <tags>
             
-            <tag> 算法笔记 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 算法笔记 </tag>
             
         </tags>
         
@@ -801,9 +1011,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -829,9 +1039,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1746,9 +1956,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2785,11 +2995,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3097,9 +3307,9 @@
         
         <tags>
             
-            <tag> uoj </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> uoj </tag>
             
         </tags>
         
@@ -3398,9 +3608,9 @@
             
             <tag> kmp </tag>
             
-            <tag> CF </tag>
-            
             <tag> 公式推导 </tag>
+            
+            <tag> CF </tag>
             
         </tags>
         
@@ -3544,9 +3754,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -3778,9 +3988,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4933,9 +5143,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5155,9 +5365,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -5380,9 +5590,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -5691,9 +5901,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -5854,9 +6064,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -6200,9 +6410,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 莫比乌斯反演 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
             
         </tags>
         
@@ -6420,9 +6630,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -6447,9 +6657,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
