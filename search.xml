@@ -122,6 +122,94 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【bzoj4176】Lucas的数论]]></title>
+      <url>/2018/05/24/4176/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4443" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<ul>
+<li>和<a href="/2018/05/19/CF-235E/">这道题</a>有点像</li>
+</ul>
+<p>利用上面那道题的结论就有：</p>
+<p>$\sum_{i=1}^{n}\sum_{j=1}^{n}d(ij)=\sum_{i=1}^{n}\sum_{j=1}^{n}\left \lfloor \frac{n}{i} \right \rfloor \left \lfloor \frac{n}{j} \right \rfloor [gcd(i,j)==1]=\sum_{d=1}^{n}\mu(d) (\sum_{i=1}^{\left \lfloor \frac{n}{d} \right \rfloor}\left \lfloor \frac{n}{di} \right \rfloor)^2$</p>
+<p>莫比乌斯函数的前缀和杜教筛即可</p>
+<p>时间复杂度$O(n^\frac{3}{4})$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000100</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cadd(a,b) a=add(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> csub(a,b) a=sub(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmul(a,b) a=mul(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"><span class="keyword">int</span> n,N,cnt,ans,check[MAXN],prime[MAXN],mu[MAXN],vis[MAXN],value[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a+=b)&gt;=mod?a-mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a-=b)&lt;<span class="number">0</span>?a+mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1L</span>L*a*b%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">fac</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;<span class="keyword">return</span> mul(a,a);&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	N=<span class="number">1000000</span>;  mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=sub(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;mu[i*prime[j]]=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> mu[i*prime[j]]=sub(<span class="number">0</span>,mu[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i)  cadd(mu[i],mu[i<span class="number">-1</span>]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> pos=n/x;</div><div class="line">	<span class="keyword">if</span>(x&lt;=N) <span class="keyword">return</span> mu[x];</div><div class="line">	<span class="keyword">if</span>(vis[pos])  <span class="keyword">return</span> value[pos];</div><div class="line">	vis[pos]=<span class="number">1</span>;  value[pos]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>,last=<span class="number">0</span>;i&lt;=x;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=x/(x/i);</div><div class="line">		csub(value[pos],mul(last-i+<span class="number">1</span>,solve(x/i)));</div><div class="line">	&#125;<span class="keyword">return</span> value[pos];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=n/(n/i);</div><div class="line">		cadd(ret,mul(last-i+<span class="number">1</span>,(n/i)));</div><div class="line">	&#125;<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);  Init();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=n/(n/i);</div><div class="line">		cadd(ans,mul(sub(solve(last),solve(i<span class="number">-1</span>)),fac(calc(n/i))));</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
+            
+            <tag> 杜教筛 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【bzoj3994】约数个数和]]></title>
+      <url>/2018/05/21/3994/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3994" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>直接上图片</p>
+<p><img src="/img/19.png" alt=""><br><img src="/img/20.png" alt=""><br><img src="/img/21.png" alt=""></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">int</span> n,m,cnt,prime[MAXN],check[MAXN],D[MAXN],num[MAXN],mu[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> N=<span class="number">50000</span>;  D[<span class="number">1</span>]=num[<span class="number">1</span>]=mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,D[i]=<span class="number">2</span>,num[i]=<span class="number">1</span>,mu[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)&#123;</div><div class="line">				D[prime[j]*i]=D[i]/(num[i]+<span class="number">1</span>)*(num[i]+<span class="number">2</span>);</div><div class="line">				num[prime[j]*i]=num[i]+<span class="number">1</span>;</div><div class="line">				mu[prime[j]*i]=<span class="number">0</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span>&#123;</div><div class="line">				D[prime[j]*i]=D[i]*<span class="number">2</span>;</div><div class="line">				num[prime[j]*i]=<span class="number">1</span>;</div><div class="line">				mu[prime[j]*i]=-mu[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i) D[i]+=D[i<span class="number">-1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i) mu[i]+=mu[i<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	n=read();  m=read();  ll ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(n&gt;m)  swap(n,m);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=min(n/(n/i),m/(m/i));</div><div class="line">		ans+=<span class="number">1L</span>L*(mu[last]-mu[i<span class="number">-1</span>])*D[n/i]*D[m/i];</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	Init(); <span class="keyword">int</span> T=read(); <span class="keyword">while</span>(T--) solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【CF#235E】Number Challenge]]></title>
+      <url>/2018/05/19/CF-235E/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://codeforces.com/contest/235/problem/E" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>首先有一个结论：</p>
+<p><img src="/img/06.png" alt=""></p>
+<p>证明略，接下来开始推式子：</p>
+<p><img src="/img/18.png" alt=""></p>
+<p>配合记忆化预处理GCD，时间复杂度：$O(n^2 log n)$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 5050</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cadd(a,b) a=add(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> csub(a,b) a=sub(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmul(a,b) a=mul(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1073741824</span>;</div><div class="line"><span class="keyword">int</span> A,B,C,N,cnt,ans,check[MAXN],prime[MAXN],mu[MAXN],GCD[MAXN][MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a+=b)&gt;=mod?a-mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a-=b)&lt;<span class="number">0</span>?a+mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1L</span>L*a*b%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(GCD[a][b]) <span class="keyword">return</span> GCD[a][b];</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> !b?a:gcd(b,a%b);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;  N=<span class="number">5000</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;mu[prime[j]*i]=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> mu[prime[j]*i]=-mu[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=N;++j)</div><div class="line">		GCD[i][j]=GCD[j][i]=gcd(i,j);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> A,<span class="keyword">int</span> d,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=(A/d);++i)</div><div class="line">		<span class="keyword">if</span>(GCD[d*i][k]==<span class="number">1</span>) cadd(ret,A/(d*i));</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;A,&amp;B,&amp;C);  Init();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=C;++k)&#123;</div><div class="line">		<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> d=<span class="number">1</span>;d&lt;=min(A,B);++d)<span class="keyword">if</span>(mu[d])</div><div class="line">			cadd(ret,mul(mu[d],mul(calc(A,d,k),calc(B,d,k))));</div><div class="line">		cmul(ret,C/k);  cadd(ans,ret);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,clock());</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 莫比乌斯反演 </tag>
+            
+            <tag> CF </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【算法笔记】高斯整数与平方和问题]]></title>
       <url>/2018/05/17/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E9%AB%98%E6%96%AF%E6%95%B4%E6%95%B0%E4%B8%8E%E5%B9%B3%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98/</url>
       <content type="html"><![CDATA[<ul>
@@ -1011,9 +1099,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -1039,9 +1127,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -1956,9 +2044,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 博弈论 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 博弈论 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2995,19 +3083,19 @@
         
         <tags>
             
+            <tag> bzoj </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
-            
-            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
             <tag> 三分 </tag>
             
-            <tag> 概率dp </tag>
-            
             <tag> 矩阵乘法 </tag>
+            
+            <tag> 概率dp </tag>
             
             <tag> 数论 </tag>
             
@@ -3754,9 +3842,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态树 </tag>
             
@@ -3988,9 +4076,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态树 </tag>
             
@@ -5143,9 +5231,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5395,9 +5483,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> uoj </tag>
-            
             <tag> 最短路 </tag>
+            
+            <tag> uoj </tag>
             
             <tag> 概率dp </tag>
             
@@ -5590,9 +5678,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -5901,9 +5989,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6064,9 +6152,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 费用流 </tag>
             
@@ -6657,9 +6745,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 整体二分 </tag>
             
@@ -6687,9 +6775,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 整体二分 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 整体二分 </tag>
             
         </tags>
         
