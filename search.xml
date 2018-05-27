@@ -122,6 +122,117 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【AOJ#166】等比数列计数]]></title>
+      <url>/2018/05/27/166/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://pingce.ayyz.cn:8001/problem/166" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>问题转化一下就是求$\sum_{d=1}^{n}[2\sum_{i=1}^{\left \lfloor \sqrt{\left \lfloor \frac{n}{d} \right \rfloor}\right\rfloor}\phi(i)-1]$</p>
+<p>这里主要说一下下底分块右端点的确定：</p>
+<p>设$k=\left\lfloor\sqrt{\left \lfloor \frac{n}{d} \right \rfloor}\right\rfloor$，则$\sqrt{\left\lfloor\frac{n}{d}\right\rfloor}=k+r_1$，其中$r_1\in[0,1)$</p>
+<p>$\left\lfloor\frac{n}{d}\right\rfloor=(k+r_1)^2$，$\frac{n}{d}=(k+r_1)^2+r_2$，其中$r_2\in[0,1)$</p>
+<p>$d=\frac{n}{(k+r_1)^2+r_2}$，故$d\in(\left\lceil\frac{n}{(k+1)^2+1}\right\rceil,\left\lfloor\frac{n}{k^2}\right\rfloor]$</p>
+<p>所以对于给定的$d$，其分块的右端点就是$\left\lfloor\frac{n}{k^2}\right\rfloor$</p>
+<p>另外这道题的加(ka)强(chang)版：（太过毒瘤留坑）</p>
+<ul>
+<li><a href="https://loj.ac/problem/509" target="_blank" rel="external">【LOJ#509】动态几何问题</a> 　<a href="https://loj.ac/article/87" target="_blank" rel="external">膜拜题解</a></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">int</span> cnt,prime[MAXN/<span class="number">10</span>];</div><div class="line">ll n,ans,phi[MAXN];</div><div class="line"><span class="keyword">bool</span> check[MAXN];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> N=<span class="built_in">sqrt</span>(n);  phi[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,phi[i]=i<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;phi[i*prime[j]]=phi[i]*prime[j]; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> phi[prime[j]*i]=phi[i]*phi[prime[j]];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i)  phi[i]+=phi[i<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;n);  Init();</div><div class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">int</span> k=<span class="built_in">sqrt</span>(n/i);  last=n/k/k;</div><div class="line">		ans+=(<span class="number">2</span>*phi[k]<span class="number">-1</span>)*(last-i+<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> AOJ </tag>
+            
+            <tag> 欧拉函数 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【bzoj4804】欧拉心算]]></title>
+      <url>/2018/05/25/4804/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3561" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>首先推一波式子可以得到：</p>
+<p>$LHS=\sum_{T=1}^{n}\left\lfloor\frac{n}{T}\right\rfloor\left\lfloor\frac{n}{T}\right\rfloor\sum_{d|T}\mu(d)\phi(\frac{T}{d})$</p>
+<p>设$g(T)=\sum_{d|T}\mu(d)\phi(\frac{T}{d})=\mu\times\phi$，所以$g(T)$是积性函数，考虑线筛</p>
+<p>（1）$g(1)=\mu(1)\phi(1)=1$</p>
+<p>（2）当$i$为质数时，$g(i)=\mu(1)\phi(i)+\mu(i)\phi(1)=i-2$</p>
+<p>（3）当$i\%prime[j] \neq 0$时，$g(i\times prime[j])=g(i)\times g(prime[j])$</p>
+<p>（4）当$i\%prime[j]=0$时，下面重点讨论（下式中$prime[j]$简写为$p_j$）：</p>
+<p>设$i=p_j^a \prod p_c^{q_c}$，根据$g(i)$的积性有</p>
+<p>$g(i)=g(p_j^a)\prod g(p_c^{q_c})$</p>
+<p>$g(i\times p_j)=g(p_j^{a+1})\prod g(p_c^{q_c})$</p>
+<p>故有$\frac{g(i\times p_j)}{g(i)}=\frac{g(p_j^{a+1})}{g(p_j^a)}=\frac{\mu(1)\phi(p_j^{a+1})+\mu(p_j)\phi(p_j^a)}{\mu(1)\phi(p_j^{a})+\mu(p_j)\phi(p_j^{a-1})}=\frac{\phi(p_j^{a+1})-\phi(p_j^a)}{\phi(p_j^a)-\phi(p_j^{a-1})}$</p>
+<p>①当$a&gt;1$时，$LHS=\frac{p_j^{a+1}\times \frac{p_j-1}{p_j}-p_j^{a}\times \frac{p_j-1}{p_j}}{p_j^{a}\times \frac{p_j-1}{p_j}-p_j^{a-1}\times \frac{p_j-1}{p_j}}=p_j$，即$g(i\times primej)=prime[j]\times g(i)$</p>
+<p>②当$a=1$时，$LHS=\frac{\phi(p_j^2)-\phi(p_j)}{\phi(p_j)-\phi(1)}=\frac{(p_j-1)^2}{p_j-2}$</p>
+<p>注意到这个式子和①中的不一样，这是因为按照定义式计算欧拉函数值得话$\phi(1)=0$，但实际上$\phi(1)=1$</p>
+<p>由于分母变成了$p_j-2$导致$p_j=2$的情况无法处理，我们考虑另一种思路：</p>
+<p>显然根据积性有$g(i\times p_j)=g(\frac{i}{p_j})\times g(p_j^2)=g(\frac{i}{p_j})\times (\mu(1)\phi(p_j^2)+\mu(p_j)\phi(p_j))=g(\frac{i}{p_j})\times (p_j-1)^2$</p>
+<p>这样就完美解决了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000100</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">int</span> cnt,prime[MAXN/<span class="number">10</span>],check[MAXN];ll g[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> N=<span class="number">10000000</span>;  g[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,g[i]=i<span class="number">-2</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)&#123;</div><div class="line">				<span class="keyword">if</span>((i/prime[j])%prime[j]==<span class="number">0</span>)  g[prime[j]*i]=g[i]*prime[j];</div><div class="line">				<span class="keyword">else</span> g[prime[j]*i]=g[i/prime[j]]*(prime[j]<span class="number">-1</span>)*(prime[j]<span class="number">-1</span>);</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> g[prime[j]*i]=g[i]*g[prime[j]];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i)  g[i]+=g[i<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n=read();  ll ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=(n/(n/i));</div><div class="line">		ans+=<span class="number">1L</span>L*(n/i)*(n/i)*(g[last]-g[i<span class="number">-1</span>]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	Init();  <span class="keyword">int</span> T=read();  <span class="keyword">while</span>(T--)  solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<p>然而看了题解，我才发现我SB了</p>
+<p>题上给的两个求和号上界都是$n$不是白给的，按照仪仗队那道题做就行了</p>
+<p>$LHS=\sum_{k=1}^{n}\phi(k)\sum_{i=1}^{\left\lfloor\frac{n}{k}\right\rfloor}\sum_{j=1}^{\left\lfloor\frac{n}{k}\right\rfloor}[gcd(i,j)==1]$</p>
+<p>$=\sum_{k=1}^{n}\phi(k)[\sum_{i=1}^{\left\lfloor\frac{n}{k}\right\rfloor}2\phi(i)-1]$</p>
+<p>$=2\sum_{k=1}^{n}\phi(k)Sum(\left\lfloor\frac{n}{k}\right\rfloor)-sum(n)$（其中$sum$是$\phi$的前缀和）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10000010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">int</span> cnt,prime[MAXN/<span class="number">10</span>],check[MAXN];ll phi[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> N=<span class="number">10000000</span>;  phi[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,phi[i]=i<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;phi[prime[j]*i]=phi[i]*prime[j]; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> phi[prime[j]*i]=phi[i]*phi[prime[j]];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i)  phi[i]+=phi[i<span class="number">-1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n=read(); ll ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,last;i&lt;=n;i=last+<span class="number">1</span>)&#123;</div><div class="line">		last=(n/(n/i));</div><div class="line">		cadd(ans,phi[n/i]*(phi[last]-phi[i<span class="number">-1</span>]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans*<span class="number">2</span>-phi[n]);</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> main()&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	Init();  <span class="keyword">int</span> T=read();  <span class="keyword">while</span>(T--)  solve();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 欧拉函数 </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[【bzoj3561】DZY Loves Math VI]]></title>
+      <url>/2018/05/25/3561/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=3561" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>大力推一波：</p>
+<p><img src="/img/22.png" alt=""></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 500100</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cadd(a,b) a=add(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> csub(a,b) a=sub(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmul(a,b) a=mul(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"><span class="keyword">int</span> n,m,ans,cnt,check[MAXN],prime[MAXN],mu[MAXN],val[MAXN],sum[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a+=b)&gt;=mod?a-mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a-=b)&lt;<span class="number">0</span>?a+mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1L</span>L*a*b%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">power</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(b)&#123;</div><div class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)  cmul(ret,a);</div><div class="line">		cmul(a,a);  b&gt;&gt;=<span class="number">1</span>;</div><div class="line">	&#125;<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> N=<span class="number">500000</span>;  mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=sub(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) &#123;mu[prime[j]*i]=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> mu[prime[j]*i]=sub(<span class="number">0</span>,mu[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;m,&amp;n);  <span class="keyword">if</span>(n&lt;m)  swap(n,m);  Init();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) val[i]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;++k)&#123;</div><div class="line">		<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=(n/k);++i)&#123;</div><div class="line">			val[i]=mul(val[i],i);<span class="comment">//val[i]表示i^k</span></div><div class="line">			sum[i]=add(sum[i<span class="number">-1</span>],val[i]);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> d=<span class="number">1</span>;d&lt;=(n/k);++d)</div><div class="line">			cadd(ret,mul(sum[n/(k*d)],mul(sum[m/(k*d)],mul(mu[d],mul(val[d],val[d])))));</div><div class="line">		cadd(ans,mul(ret,power(k,k)));</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【bzoj4176】Lucas的数论]]></title>
       <url>/2018/05/24/4176/</url>
       <content type="html"><![CDATA[<ul>
@@ -332,7 +443,7 @@
 <p>这里右边是$R^2$，设$R=2^a \prod p_i^{q_i} \prod p_i^{q_i}$，其中$p_i \equiv 1(mod 4)$，$p_j \equiv 3(mod 4)$</p>
 <p>则$R^2=2^{2a}\prod p_i^{2q_i}\prod p_j^{2q_j}$，因为$2q_j$为偶数，所以这一项不会导致无解</p>
 <p>而$2^{2a}以及\prod p_j^{2q_j}$对答案无影响，所以答案就是$4\prod (2q_i+1)$</p>
-<p>具体做法就是分解质因数，找到形如$4k+1$的质因子，计算次数即可，时间复杂度$O(sqrt n)$</p>
+<p>具体做法就是分解质因数，找到形如$4k+1$的质因子，计算次数即可，时间复杂度$O(\sqrt n)$</p>
 <p>　　</p>
 <p>　　</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><hr>
@@ -1099,9 +1210,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1127,9 +1238,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2141,9 +2252,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -3083,19 +3194,19 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
             <tag> 三分 </tag>
             
-            <tag> 矩阵乘法 </tag>
-            
             <tag> 概率dp </tag>
+            
+            <tag> 矩阵乘法 </tag>
             
             <tag> 数论 </tag>
             
@@ -3395,9 +3506,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> uoj </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -3842,9 +3953,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4076,9 +4187,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5231,9 +5342,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5483,9 +5594,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> uoj </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
@@ -5678,9 +5789,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -5989,9 +6100,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6152,9 +6263,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -6745,9 +6856,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
