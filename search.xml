@@ -385,7 +385,7 @@
 <h3 id="Definition-1-2"><a href="#Definition-1-2" class="headerlink" title="Definition 1.2"></a>Definition 1.2</h3><p>定义高斯整数$z=a+bi$的<font color="yellow">$norm$</font>为$N(z)=a^2+b^2$</p>
 <p>特别地，定义$norm$等于$1$的高斯整数为<font color="yellow">$unit$</font>，即<font color="yellow">单位元</font></p>
 <p>　　</p>
-<h3 id="Definition-1-3"><a href="#Definition-1-3" class="headerlink" title="Definition 1.3"></a>Definition 1.3</h3><p>对于高斯整数$x,y$，若存在高斯整数$z$使得$ax=y$，则称$x$为$y$的因子，记作$x|y$</p>
+<h3 id="Definition-1-3"><a href="#Definition-1-3" class="headerlink" title="Definition 1.3"></a>Definition 1.3</h3><p>对于高斯整数$x,y$，若存在高斯整数$a$使得$ax=y$，则称$x$为$y$的因子，记作$x|y$</p>
 <p>　　</p>
 <h3 id="Lemma-1-1"><a href="#Lemma-1-1" class="headerlink" title="Lemma 1.1"></a>Lemma 1.1</h3><blockquote>
 <p>对于高斯整数$a,b$，$N(ab)=N(a)N(b)$</p>
@@ -394,7 +394,7 @@
 <p>$LHS=(a_1 b_1 -a_2 b_2)^2+(a_1 b_2+a_2 b_1)^2=a_1^2 b_1^2+a_1^2 b_2^2+a_2^2 b_1^2+a_2^2 b_2^2$</p>
 <p>$RHS=(a_1^2+a_2^2)(b_1^2+b_2^2)=a_1^2 b_1^2+a_1^2 b_2^2+a_2^2 b_1^2+a_2^2 b_2^2$</p>
 <p>故$LHS=RHS$，引理成立</p>
-<font color="33FFFF"><br>注：上述证明中，形如$(a^2+b^2)(c^2+d^2)=(ac+bd)^2-(ac-bd)^2$的式子称为<font color="yellow">斐波那契恒等式</font>
+<font color="33FFFF"><br>注：上述证明中，形如$(a^2+b^2)(c^2+d^2)=(ac+bd)^2+(ad-bc)^2$的式子称为<font color="yellow">斐波那契恒等式</font>
 
 <p>根据该恒等式可以得到柯西不等式及其取等条件<br></p></font><p></p>
 <p>　　</p>
@@ -427,7 +427,8 @@
 <font color="33FFFF"><br>注：引理2.1和定理2.1都是采用证明逆否命题的方式间接证明原命题<br></font>
 
 <p>　　</p>
-<h3 id="Theorem-2-2"><a href="#Theorem-2-2" class="headerlink" title="Theorem 2.2"></a>Theorem 2.2</h3><p>高斯整数的代数基本定理（Fundermental Theorem of Arithmetic for Guassian Integers）</p>
+<h3 id="Theorem-2-2"><a href="#Theorem-2-2" class="headerlink" title="Theorem 2.2"></a>Theorem 2.2</h3><font color="yellow">高斯整数的代数基本定理（Fundermental Theorem of Arithmetic for Guassian Integers）</font>
+
 <blockquote>
 <p>若$z$是高斯整数，<font color="33FFFF">不考虑单位元的影响</font>，存在唯一的高斯素数分解方式使得$z=\prod z_i^{q_i}$</p>
 </blockquote>
@@ -1204,7 +1205,7 @@
             
             <tag> 线段树 </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -1232,7 +1233,7 @@
         
         <tags>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 线性基 </tag>
             
@@ -1259,9 +1260,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1287,9 +1288,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1344,7 +1345,7 @@
         
         <tags>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 动态树 </tag>
             
@@ -1353,7 +1354,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[【uoj#207】共价大爷游长沙]]></title>
+      <title><![CDATA[【UOJ#207】共价大爷游长沙]]></title>
       <url>/2017/07/01/207/</url>
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
@@ -1373,7 +1374,7 @@
         
         <tags>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 动态树 </tag>
             
@@ -1972,7 +1973,7 @@
             
             <tag> dp </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -2002,9 +2003,9 @@
         
         <tags>
             
-            <tag> 哈希 </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> 哈希 </tag>
             
         </tags>
         
@@ -2067,18 +2068,18 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
             
-            <tag> uoj </tag>
+            <tag> 仙人掌 </tag>
+            
+            <tag> UOJ </tag>
             
         </tags>
         
     </entry>
     
     <entry>
-      <title><![CDATA[【uoj#228】基础数据结构练习题]]></title>
+      <title><![CDATA[【UOJ#228】基础数据结构练习题]]></title>
       <url>/2017/06/05/228/</url>
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
@@ -2103,7 +2104,7 @@
             
             <tag> 线段树 </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -2301,9 +2302,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -2362,7 +2363,7 @@
         
         <tags>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 贪心 </tag>
             
@@ -2410,11 +2411,11 @@
         
         <tags>
             
+            <tag> 线段树 </tag>
+            
             <tag> dp </tag>
             
             <tag> 模拟 </tag>
-            
-            <tag> 线段树 </tag>
             
             <tag> CF </tag>
             
@@ -2448,6 +2449,8 @@
         <tags>
             
             <tag> 斜率优化 </tag>
+            
+            <tag> UOJ </tag>
             
             <tag> 凸包 </tag>
             
@@ -2513,7 +2516,7 @@
             
             <tag> 线段树 </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -3243,13 +3246,13 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
-            <tag> 网络流 </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 网络流 </tag>
             
             <tag> 三分 </tag>
             
@@ -3458,7 +3461,7 @@
             
             <tag> 线段树 </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 凸包 </tag>
             
@@ -3555,7 +3558,7 @@
         
         <tags>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 构造 </tag>
             
@@ -4002,9 +4005,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4236,9 +4239,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5391,9 +5394,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5613,16 +5616,16 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
     </entry>
     
     <entry>
-      <title><![CDATA[【bzoj4720/uoj#262】换教室]]></title>
+      <title><![CDATA[【bzoj4720/UOJ#262】换教室]]></title>
       <url>/2017/03/12/4720/</url>
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
@@ -5643,7 +5646,7 @@
             
             <tag> bzoj </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 最短路 </tag>
             
@@ -5817,7 +5820,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[【bzoj4455/uoj#185】小星星]]></title>
+      <title><![CDATA[【bzoj4455/UOJ#185】小星星]]></title>
       <url>/2017/03/09/4455/</url>
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
@@ -5838,13 +5841,13 @@
         
         <tags>
             
+            <tag> 树形dp </tag>
+            
             <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
-            <tag> 树形dp </tag>
-            
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -6129,7 +6132,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[【bzoj4199/uoj#131】品酒大会]]></title>
+      <title><![CDATA[【bzoj4199/UOJ#131】品酒大会]]></title>
       <url>/2017/03/08/4199/</url>
       <content type="html"><![CDATA[<ul>
 <li>后缀自动机重修系列第一题<a id="more"></a></li>
@@ -6149,13 +6152,13 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -6312,18 +6315,18 @@
         
         <tags>
             
+            <tag> 线段树 </tag>
+            
             <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
-            
-            <tag> 线段树 </tag>
             
         </tags>
         
     </entry>
     
     <entry>
-      <title><![CDATA[【bzoj3218/uoj#77】a+b Problem]]></title>
+      <title><![CDATA[【bzoj3218/UOJ#77】a+b Problem]]></title>
       <url>/2017/03/02/3218/</url>
       <content type="html"><![CDATA[<ul>
 <li>用主席树优化网络流真是一颗赛艇<a id="more"></a></li>
@@ -6347,7 +6350,7 @@
             
             <tag> bzoj </tag>
             
-            <tag> uoj </tag>
+            <tag> UOJ </tag>
             
             <tag> 最小割 </tag>
             
@@ -6617,9 +6620,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 考试总结 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 乘法逆元 </tag>
             
@@ -6878,9 +6881,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -6905,9 +6908,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
