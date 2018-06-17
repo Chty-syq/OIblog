@@ -3,67 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛]]></title>
-      <url>/2100/01/16/OIer%E7%9A%84%E4%BC%A4%E4%B8%8E%E7%97%9B/</url>
-      <content type="html"><![CDATA[<ul>
-<li>日期年份为人工置顶，请不要吐槽</li>
-</ul>
-<ul>
-<li>本文为Menci在WC2017上的倾情歌唱，这是所有OIer共同的伤与痛<a id="more"></a> </li>
-</ul>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="600" height="86" src="//music.163.com/outchain/player?type=2&id=459434585&auto=1&height=66"></iframe>
-
-<hr>
-<p><center><br>屏幕在深夜微微发亮</center></p>
-<p><center><br>思想在那虚树路径上彷徨</center></p>
-<p><center><br>平面的向量交错生长</center></p>
-<p><center><br>织成，忧伤的网</center></p>
-<p><center><br>剪枝剪去我们的疯狂</center></p>
-<p><center><br>SPFA告诉我前途在何方</center></p>
-<p><center><br>01背包装下了忧伤</center></p>
-<p><center><br>笑颜，洋溢脸庞</center></p>
-<p><center><br>键盘微凉，鼠标微凉</center></p>
-<p><center><br>指尖流淌，代码千行</center></p>
-<p><center><br>凸包周长，直径多长</center></p>
-<p><center><br>一进考场，全都忘光</center></p>
-<p><center><br>你在OJ上提交了千百遍</center></p>
-<p><center><br>却依然不能卡进那时限</center></p>
-<p><center><br>双手敲尽代码也敲尽岁月</center></p>
-<p><center><br>只有我一人写的题解</center></p>
-<p><center><br>凋零在OJ里面</center></p>
-<p><center><br>Tarjan陪伴强连通分量</center></p>
-<p><center><br>生成树完成后思路才闪光</center></p>
-<p><center><br>欧拉跑过的七桥古塘</center></p>
-<p><center><br>让你，心驰神往</center></p>
-<p><center><br>队列进出图上的方向</center></p>
-<p><center><br>线段树区间修改求出总量</center></p>
-<p><center><br>可持久化留下的迹象</center></p>
-<p><center><br>我们，伏身欣赏</center></p>
-<p><center><br>数论算法，图论算法</center></p>
-<p><center><br>高斯费马，树上开花</center></p>
-<p><center><br>线性规划，动态规划</center></p>
-<p><center><br>时间爆炸，如何优化</center></p>
-<p><center><br>我在OI中辗转了千百天</center></p>
-<p><center><br>却不让我看AK最后一眼</center></p>
-<p><center><br>我用空间换回超限的时间</center></p>
-<p><center><br>随重新编译，测完样例</center></p>
-<p><center><br>才发现漏洞满篇</center></p>
-<p><center><br>原来CE是因选错语言</center></p>
-<p><center><br>其实爆零，只因忘写文件</center></p>
-<p><center><br>如果标算太难请坚定信念</center></p>
-<p><center><br>不如回头再看一眼题面</center></p>
-<p><center><br>以那暴力模拟向正解吊唁</center></p>
-<p><center><br>蒟蒻的蜕变，神犇出现</center></p>
-<p><center><br>终将与Au擦肩</center></p>
-<p><center><br>屏幕在深夜微微发亮</center></p>
-<p><center><br>我心在考场</center></p>
-<hr>
-]]></content>
-      
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$NOI2017退役总结]]></title>
       <url>/2050/07/24/NOI2017%E9%80%80%E5%BD%B9%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<ul>
@@ -116,6 +55,229 @@
 <p>　　</p>
 <p>　　</p>
 <h2 id="gdb调试"><a href="#gdb调试" class="headerlink" title="gdb调试"></a>gdb调试</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在终端里运行：</span></div><div class="line">$ gdb 文件名.exe</div><div class="line">$ b <span class="number">13</span>    <span class="comment">//在13行设置断点</span></div><div class="line">$ r       <span class="comment">//运行至断点</span></div><div class="line">$ n       <span class="comment">//单步跟踪</span></div><div class="line">$ s       <span class="comment">//进入函数</span></div><div class="line">$ p a     <span class="comment">//输出变量a的值</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$动漫欣赏记录]]></title>
+      <url>/2018/06/17/%E5%8A%A8%E6%BC%AB%E6%AC%A3%E8%B5%8F%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<ul>
+<li>日期年份为人工置顶，请不要吐槽</li>
+</ul>
+<ul>
+<li>纪念那些年我们一起追过的动漫<a id="more"></a></li>
+</ul>
+<hr>
+<h2 id="新番追番表"><a href="#新番追番表" class="headerlink" title="新番追番表"></a>新番追番表</h2><h3 id="2018年7月新番"><a href="#2018年7月新番" class="headerlink" title="2018年7月新番"></a>2018年7月新番</h3><table>
+<thead>
+<tr>
+<th><center><strong>番名</strong></center></th>
+<th><center><strong>类型</strong></center></th>
+<th><center><strong>备注</strong></center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>后街女孩</td>
+<td>爆笑</td>
+<td>三名黑道成员由于做错事被组织送到泰国做变性手术，然后出道成为偶像一炮而红的故事</td>
+</tr>
+<tr>
+<td>碧蓝之海</td>
+<td>校园日常</td>
+<td>恋爱+颜艺+神经病</td>
+</tr>
+<tr>
+<td>杀戮天使</td>
+<td>恐怖冒险</td>
+<td>含血腥成分，尺度略大，声优很棒</td>
+</tr>
+<tr>
+<td>Happy Sugar Life</td>
+<td>黑暗百合</td>
+<td>“为了守护这份爱，欺骗也好，犯法也好，抢夺也好，杀害也好，都是没有问题的”</td>
+</tr>
+<tr>
+<td>汤摇庄的幽奈同学</td>
+<td>后宫肉番</td>
+<td>卖肉不解释</td>
+</tr>
+<tr>
+<td>Island</td>
+<td>悬疑</td>
+<td>16年galgame改编</td>
+</tr>
+</tbody>
+</table>
+<p>　　</p>
+<h3 id="2018年4月新番"><a href="#2018年4月新番" class="headerlink" title="2018年4月新番"></a>2018年4月新番</h3><table>
+<thead>
+<tr>
+<th><center><strong>番名</strong></center></th>
+<th><center><strong>类型</strong></center></th>
+<th><center><strong>备注</strong></center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>超能力女儿</td>
+<td>日常搞笑</td>
+<td>与黑道相关，我tm吹爆</td>
+</tr>
+<tr>
+<td>宅男腐女恋爱真难</td>
+<td>恋爱日常</td>
+<td>“宅(shuai)男(ge)”“腐(mei)女”发狗粮</td>
+</tr>
+<tr>
+<td>我家大师兄脑子有坑</td>
+<td>修仙搞笑</td>
+<td>良心国漫，每集不超过5分钟</td>
+</tr>
+<tr>
+<td>我的逆天神器</td>
+<td>中二战斗</td>
+<td>我是冲着ED才追的，剧情辣鸡，但OPED贼好听</td>
+</tr>
+<tr>
+<td>全职高手特别篇</td>
+<td>网游激战</td>
+<td>一叶知秋赛高</td>
+</tr>
+</tbody>
+</table>
+<p>　　</p>
+<h3 id="2018年1月新番"><a href="#2018年1月新番" class="headerlink" title="2018年1月新番"></a>2018年1月新番</h3><table>
+<thead>
+<tr>
+<th><center><strong>番名</strong></center></th>
+<th><center><strong>类型</strong></center></th>
+<th><center><strong>备注</strong></center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>魔卡少女樱透明牌篇</td>
+<td>魔法治愈</td>
+<td>有生之年系列，情怀满满</td>
+</tr>
+<tr>
+<td>Citrus柑橘味香气</td>
+<td>百合</td>
+<td>硬核百合，画面良好，橘里橘气，芽衣老婆预定</td>
+</tr>
+<tr>
+<td>龙王的工作</td>
+<td>将棋</td>
+<td>八一老爷生前是个体面人</td>
+</tr>
+<tr>
+<td>紫罗兰永恒花园</td>
+<td>纯爱</td>
+<td>京紫巅峰画质，必看</td>
+</tr>
+</tbody>
+</table>
+<p>　　</p>
+<p>　　</p>
+<h2 id="番剧记录"><a href="#番剧记录" class="headerlink" title="番剧记录"></a>番剧记录</h2><table>
+<thead>
+<tr>
+<th><center><strong>时间</strong></center></th>
+<th><center><strong>番名</strong></center></th>
+<th><center><strong>备注</strong></center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1998年4月</td>
+<td>魔卡少女樱</td>
+<td>初三看完的人生第一部动漫</td>
+</tr>
+<tr>
+<td>2005年10月</td>
+<td>灼眼的夏娜</td>
+<td>钉宫四萌之一，夏娜高萌，画集已买齐</td>
+</tr>
+<tr>
+<td>2006年7月</td>
+<td>零之使魔</td>
+<td>钉宫四萌之一，感谢山口老师提供良心动漫</td>
+</tr>
+<tr>
+<td>2007年7月</td>
+<td>日在校园</td>
+<td>那是诚哥战斗过的地方</td>
+</tr>
+<tr>
+<td>2008年10月</td>
+<td>魔法禁书目录</td>
+<td>设定超赞，非常喜欢</td>
+</tr>
+<tr>
+<td>2009年10月</td>
+<td>某科学的超电磁炮</td>
+<td>B站镇站之宝，入坑神作，吾炮赛高</td>
+</tr>
+<tr>
+<td>2010年7月</td>
+<td>妄想学生会</td>
+<td>黄段子学生会</td>
+</tr>
+<tr>
+<td>2010年10月</td>
+<td>缘之空</td>
+<td>里番预警，我站悠穹</td>
+</tr>
+<tr>
+<td>2011年10月</td>
+<td>罪恶王冠</td>
+<td>日常黑王冠（1/1）</td>
+</tr>
+<tr>
+<td>2012年7月</td>
+<td>刀剑神域</td>
+<td>最爱结城明日奈<del>本子</del></td>
+</tr>
+<tr>
+<td>2013年4月</td>
+<td>约会大作战</td>
+<td>肥宅投以羡慕的目光</td>
+</tr>
+<tr>
+<td>2015年6月</td>
+<td>狐妖小红娘</td>
+<td>国漫巅峰，月红赛高</td>
+</tr>
+<tr>
+<td>2017年4月</td>
+<td>全职高手</td>
+<td>休息一年，然后回来</td>
+</tr>
+<tr>
+<td>2017年4月</td>
+<td>埃罗芒阿老师</td>
+<td>和泉纱雾不可能这么可爱，老婆预定</td>
+</tr>
+<tr>
+<td>2017年4月</td>
+<td>从零开始的魔法书</td>
+<td>Zero好漂亮，收入后宫</td>
+</tr>
+<tr>
+<td>2017年7月</td>
+<td>欢迎来到实力至上主义的教室</td>
+<td>给路哥打call</td>
+</tr>
+<tr>
+<td>2017年10月</td>
+<td>理想禁区</td>
+<td>非常现实，看完后感触很深的国漫</td>
+</tr>
+</tbody>
+</table>
 ]]></content>
       
         
@@ -1260,9 +1422,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -1288,9 +1450,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -2068,9 +2230,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> 仙人掌 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
@@ -2205,9 +2367,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2302,9 +2464,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -3246,11 +3408,11 @@
         
         <tags>
             
+            <tag> bzoj </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
-            
-            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3558,9 +3720,9 @@
         
         <tags>
             
-            <tag> UOJ </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -4005,9 +4167,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态树 </tag>
             
@@ -4239,9 +4401,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态树 </tag>
             
@@ -5394,9 +5556,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5646,9 +5808,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> UOJ </tag>
-            
             <tag> 最短路 </tag>
+            
+            <tag> UOJ </tag>
             
             <tag> 概率dp </tag>
             
@@ -5841,9 +6003,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -6152,9 +6314,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6315,9 +6477,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 费用流 </tag>
             
@@ -6908,9 +7070,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 整体二分 </tag>
             
@@ -6943,6 +7105,64 @@
             <tag> 整体二分 </tag>
             
         </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛]]></title>
+      <url>/2017/01/16/OIer%E7%9A%84%E4%BC%A4%E4%B8%8E%E7%97%9B/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为Menci在WC2017上的倾情歌唱，这是所有OIer共同的伤与痛<a id="more"></a> </li>
+</ul>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="600" height="86" src="//music.163.com/outchain/player?type=2&id=459434585&auto=1&height=66"></iframe>
+
+<hr>
+<p><center><br>屏幕在深夜微微发亮</center></p>
+<p><center><br>思想在那虚树路径上彷徨</center></p>
+<p><center><br>平面的向量交错生长</center></p>
+<p><center><br>织成，忧伤的网</center></p>
+<p><center><br>剪枝剪去我们的疯狂</center></p>
+<p><center><br>SPFA告诉我前途在何方</center></p>
+<p><center><br>01背包装下了忧伤</center></p>
+<p><center><br>笑颜，洋溢脸庞</center></p>
+<p><center><br>键盘微凉，鼠标微凉</center></p>
+<p><center><br>指尖流淌，代码千行</center></p>
+<p><center><br>凸包周长，直径多长</center></p>
+<p><center><br>一进考场，全都忘光</center></p>
+<p><center><br>你在OJ上提交了千百遍</center></p>
+<p><center><br>却依然不能卡进那时限</center></p>
+<p><center><br>双手敲尽代码也敲尽岁月</center></p>
+<p><center><br>只有我一人写的题解</center></p>
+<p><center><br>凋零在OJ里面</center></p>
+<p><center><br>Tarjan陪伴强连通分量</center></p>
+<p><center><br>生成树完成后思路才闪光</center></p>
+<p><center><br>欧拉跑过的七桥古塘</center></p>
+<p><center><br>让你，心驰神往</center></p>
+<p><center><br>队列进出图上的方向</center></p>
+<p><center><br>线段树区间修改求出总量</center></p>
+<p><center><br>可持久化留下的迹象</center></p>
+<p><center><br>我们，伏身欣赏</center></p>
+<p><center><br>数论算法，图论算法</center></p>
+<p><center><br>高斯费马，树上开花</center></p>
+<p><center><br>线性规划，动态规划</center></p>
+<p><center><br>时间爆炸，如何优化</center></p>
+<p><center><br>我在OI中辗转了千百天</center></p>
+<p><center><br>却不让我看AK最后一眼</center></p>
+<p><center><br>我用空间换回超限的时间</center></p>
+<p><center><br>随重新编译，测完样例</center></p>
+<p><center><br>才发现漏洞满篇</center></p>
+<p><center><br>原来CE是因选错语言</center></p>
+<p><center><br>其实爆零，只因忘写文件</center></p>
+<p><center><br>如果标算太难请坚定信念</center></p>
+<p><center><br>不如回头再看一眼题面</center></p>
+<p><center><br>以那暴力模拟向正解吊唁</center></p>
+<p><center><br>蒟蒻的蜕变，神犇出现</center></p>
+<p><center><br>终将与Au擦肩</center></p>
+<p><center><br>屏幕在深夜微微发亮</center></p>
+<p><center><br>我心在考场</center></p>
+<hr>
+]]></content>
+      
         
     </entry>
     
