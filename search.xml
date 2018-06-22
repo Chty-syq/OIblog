@@ -143,7 +143,7 @@
 </tr>
 <tr>
 <td>全职高手特别篇</td>
-<td>网游激战</td>
+<td>热血网游</td>
 <td>一叶知秋赛高</td>
 </tr>
 </tbody>
@@ -242,14 +242,34 @@
 <td>最爱结城明日奈<del>本子</del></td>
 </tr>
 <tr>
+<td>2013年1月</td>
+<td>Love Live! School Idol Project</td>
+<td>音乐番，一晚上刷完根本停不下来</td>
+</tr>
+<tr>
+<td>2013年4月</td>
+<td>我的青春恋爱物语果然有问题</td>
+<td>“看吧，没有人受伤的世界完成了”</td>
+</tr>
+<tr>
 <td>2013年4月</td>
 <td>约会大作战</td>
 <td>肥宅投以羡慕的目光</td>
 </tr>
 <tr>
+<td>2014年4月</td>
+<td>魔法科高校的劣等生</td>
+<td>德骨+装逼，观影体验极佳</td>
+</tr>
+<tr>
 <td>2015年6月</td>
 <td>狐妖小红娘</td>
 <td>国漫巅峰，月红赛高</td>
+</tr>
+<tr>
+<td>2016年4月</td>
+<td>在下坂本有何贵干</td>
+<td>可惜你帅不过坂本大佬</td>
 </tr>
 <tr>
 <td>2017年4月</td>
@@ -669,9 +689,9 @@
         
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
         
@@ -925,9 +945,9 @@
         
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
         
@@ -1422,9 +1442,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1450,9 +1470,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2230,9 +2250,9 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 仙人掌 </tag>
             
             <tag> UOJ </tag>
             
@@ -2365,11 +2385,11 @@
         
         <tags>
             
-            <tag> 二分 </tag>
+            <tag> 模拟 </tag>
             
             <tag> 博弈论 </tag>
             
-            <tag> 模拟 </tag>
+            <tag> 二分 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2497,9 +2517,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 网络流 </tag>
+            
+            <tag> 计算几何 </tag>
             
         </tags>
         
@@ -3408,11 +3428,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3720,9 +3740,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -4167,9 +4187,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4401,9 +4421,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5556,9 +5576,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -5778,9 +5798,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 容斥原理 </tag>
             
         </tags>
         
@@ -5808,9 +5828,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
@@ -6003,9 +6023,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -6314,9 +6334,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6477,9 +6497,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -7070,9 +7090,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
@@ -7100,9 +7120,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 整体二分 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
