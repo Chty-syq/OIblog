@@ -684,9 +684,9 @@
         
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
         
@@ -940,9 +940,9 @@
         
         <tags>
             
-            <tag> 数论 </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> 数论 </tag>
             
         </tags>
         
@@ -1336,9 +1336,11 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/y.zip">数据下载</a></li>
+</ul>
 <hr>
 <p><img src="/img/02.png" alt=""></p>
-<hr>
 <p>分析：</p>
 <p>首先考虑如何计算答案：把左区间视为左括号，右区间视为右括号，设$x_i$表示第$i$个右括号左边左括号的数量</p>
 <p>那么答案就是$\sum_{i=1}^{S}(x_i-i+1)$   （仔细考虑为什么</p>
@@ -2380,11 +2382,11 @@
         
         <tags>
             
+            <tag> 二分 </tag>
+            
             <tag> 模拟 </tag>
             
             <tag> 博弈论 </tag>
-            
-            <tag> 二分 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2479,9 +2481,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -3735,9 +3737,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -3917,9 +3919,9 @@
             
             <tag> 51nod </tag>
             
-            <tag> AC自动机 </tag>
-            
             <tag> 数位dp </tag>
+            
+            <tag> AC自动机 </tag>
             
         </tags>
         
@@ -5393,9 +5395,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 网络流 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 网络流 </tag>
             
         </tags>
         
