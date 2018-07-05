@@ -684,9 +684,9 @@
         
         <tags>
             
-            <tag> 算法笔记 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 算法笔记 </tag>
             
         </tags>
         
@@ -940,9 +940,9 @@
         
         <tags>
             
-            <tag> 算法笔记 </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> 算法笔记 </tag>
             
         </tags>
         
@@ -1357,6 +1357,8 @@
             
             <tag> 主席树 </tag>
             
+            <tag> 日常小测 </tag>
+            
             <tag> 分块 </tag>
             
         </tags>
@@ -1701,6 +1703,8 @@
             
             <tag> 矩阵乘法 </tag>
             
+            <tag> 日常小测 </tag>
+            
         </tags>
         
     </entry>
@@ -1726,6 +1730,8 @@
         <tags>
             
             <tag> 树形dp </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -1813,9 +1819,11 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/forgive.zip">数据下载</a></li>
+</ul>
 <hr>
-<p><img src="http://i4.piimg.com/591838/8d16669c654bb73d.png"></p>
-<hr>
+<p><img src="/img/7.png" alt=""></p>
 <p>分析：</p>
 <p>首先考虑神秘数的求法：</p>
 <p>初始时神秘数为1，然后往里面添加元素</p>
@@ -1839,6 +1847,8 @@
             
             <tag> 主席树 </tag>
             
+            <tag> 日常小测 </tag>
+            
         </tags>
         
     </entry>
@@ -1852,9 +1862,11 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/fan.zip">数据下载</a></li>
+</ul>
 <hr>
-<p><img src="http://i4.piimg.com/591838/497e17a09e825ab3.png"></p>
-<hr>
+<p><img src="/img/23.png" alt=""></p>
 <p>分析：首先有一些性质：</p>
 <p>DDD每走一步，YJQ最多放一个墙</p>
 <p>如果YJQ要放墙，一定放在DDD下面</p>
@@ -1874,6 +1886,8 @@
             
             <tag> dp </tag>
             
+            <tag> 日常小测 </tag>
+            
         </tags>
         
     </entry>
@@ -1887,9 +1901,11 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/gymnastics.zip">数据下载</a></li>
+</ul>
 <hr>
-<p><img src="http://i4.piimg.com/591838/21f6fbf96101cd17.png"></p>
-<hr>
+<p><img src="/img/24.png" alt=""></p>
 <p>分析：考虑一个图，想办法把它拆成两个图</p>
 <p>只需要关注编号最小的点连出去的编号最大的点，就能计算出左边图的大小</p>
 <p>然后处理一下删边就行了</p>
@@ -1902,6 +1918,8 @@
         <tags>
             
             <tag> 分治 </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -1916,9 +1934,11 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/willow.zip">数据下载</a></li>
+</ul>
 <hr>
-<p><img src="http://i4.piimg.com/591838/51630da5709b4b7f.png"></p>
-<hr>
+<p><img src="/img/25.png" alt=""></p>
 <p>分析：我们发现棋子不能重叠这个限制是没有用的，因为我们总能调整走的顺序使得棋子不重叠</p>
 <p>所以只需要建立源点和汇点，源点连出发点，汇点连终点，然后能达到的格子连边跑费用流即可</p>
 <p>但是出题人特地卡了一下费用流做法，正解是转成二分图做最大权完美匹配，然而我并不会KM算法，精神AC吧</p>
@@ -1928,6 +1948,8 @@
         <tags>
             
             <tag> 费用流 </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -1942,8 +1964,12 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/String.zip">数据下载</a></li>
+</ul>
 <hr>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><img src="http://i4.piimg.com/591838/0aef6a3646af132f.png"></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串集合</p>
+<p>求有多少个串使得这个串可以被断成两部分，每部分都是字符串集合中某个串的前缀</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先把字符串集合建成AC自动机，那么如果不考虑重复的话，答案就是结点个数的平方，现在考虑去重问题</p>
 <p>为了避免重复去重，我们定义一个串是重复的当且仅当它的某个后缀可以切掉一个前缀移动到前面的划分</p>
 <p>这样我们就可以在AC自动机上跑，那么当前节点在fail树上的父亲所代表的串就是最长后缀</p>
@@ -1958,6 +1984,8 @@
             
             <tag> AC自动机 </tag>
             
+            <tag> 日常小测 </tag>
+            
         </tags>
         
     </entry>
@@ -1971,9 +1999,12 @@
 <ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/party.zip">数据下载</a></li>
+</ul>
 <hr>
-<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><img src="http://i4.piimg.com/591838/fce2638a8d5f1c1e.png"></p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>题目要求动态维护最大独立集</p>
+<p><img src="/img/26.png" alt=""></p>
+<p>题目要求动态维护最大独立集</p>
 <p>我们给每个点黑白染色：</p>
 <p>（1）叶子是黑色的</p>
 <p>（2）若一个点是黑色的，则它的父亲是白色的</p>
@@ -1992,6 +2023,8 @@
         <tags>
             
             <tag> 动态树 </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -2164,9 +2197,11 @@
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/sheet.zip">数据下载</a></li>
+</ul>
 <hr>
-<p><img src="http://i1.buimg.com/591838/5a8e516863ba74aa.png"></p>
-<hr>
+<p><img src="/img/31.png" alt=""></p>
 <p>分析：</p>
 <p>首先我们发现题目给出的n是没有用的，于是大力离散一波暴力分就到手了</p>
 <p>然后考虑如果本质可以相同怎么做</p>
@@ -2186,6 +2221,8 @@
             
             <tag> 哈希 </tag>
             
+            <tag> 日常小测 </tag>
+            
         </tags>
         
     </entry>
@@ -2196,9 +2233,11 @@
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/three.zip">数据下载</a></li>
+</ul>
 <hr>
-<p><img src="http://i1.buimg.com/591838/ba2107f9c458bcdd.png"></p>
-<hr>
+<p><img src="/img/30.png" alt=""></p>
 <p>分析：</p>
 <p>设f[i][j][k]表示最近的0在位置i，1在位置j，2在位置k</p>
 <p>然后大力讨论当前位置上的数字进行转移就行了</p>
@@ -2210,6 +2249,8 @@
         <tags>
             
             <tag> dp </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -2481,9 +2522,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -3919,9 +3960,9 @@
             
             <tag> 51nod </tag>
             
-            <tag> 数位dp </tag>
-            
             <tag> AC自动机 </tag>
+            
+            <tag> 数位dp </tag>
             
         </tags>
         
@@ -4647,6 +4688,11 @@
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
+<ul>
+<li><a href="/file/cdc.zip">数据下载</a></li>
+</ul>
+<hr>
+<p><img src="/img/29.png" alt=""></p>
 <p>首先我们注意到所有的必达点一定不在环上，或者是环上的割点，所以我们用BCC算法将图缩成树</p>
 <p>至于在树上求这个东西，需要大力推一波公式，具体参考特教的理性愉悦一题</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN (int)2e6+5</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">struct</span> node&#123;<span class="keyword">int</span> y,next;&#125;e[MAXN&lt;&lt;<span class="number">1</span>];</div><div class="line"><span class="keyword">int</span> n,m,Q,cnt,len,top,bcnt,dfs_clock,sta[MAXN],Link[MAXN],deep[MAXN],dfn[MAXN],low[MAXN],anc[MAXN][<span class="number">25</span>];</div><div class="line">ll ans,v[MAXN],sumv[MAXN],sumvd[MAXN],sumvdd[MAXN];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;bcc[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	e[++len].next=Link[x];Link[x]=len;e[len].y=y;</div><div class="line">	e[++len].next=Link[y];Link[y]=len;e[len].y=x;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	dfn[x]=low[x]=++dfs_clock;  sta[++top]=x;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(!dfn[e[i].y])&#123;</div><div class="line">		tarjan(e[i].y);  cmin(low[x],low[e[i].y]);</div><div class="line">		<span class="keyword">if</span>(low[e[i].y]&gt;=dfn[x])&#123;</div><div class="line">			bcnt++;  <span class="keyword">int</span> y;</div><div class="line">			<span class="keyword">do</span>&#123;</div><div class="line">				y=sta[top--];</div><div class="line">				bcc[bcnt].push_back(y);</div><div class="line">			&#125;<span class="keyword">while</span>(y!=e[i].y);</div><div class="line">			bcc[bcnt].push_back(x);</div><div class="line">		&#125;</div><div class="line">	&#125;<span class="keyword">else</span> cmin(low[x],dfn[e[i].y]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> flag=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=fa&amp;&amp;e[i].y)&#123;</div><div class="line">		deep[e[i].y]=deep[x]+<span class="number">1</span>; anc[e[i].y][<span class="number">0</span>]=x;</div><div class="line">		sumv[e[i].y]=sumv[x]+v[e[i].y];</div><div class="line">		sumvd[e[i].y]=sumvd[x]+v[e[i].y]*deep[e[i].y];</div><div class="line">		sumvdd[e[i].y]=sumvdd[x]+v[e[i].y]*deep[e[i].y]*deep[e[i].y];</div><div class="line">		dfs(e[i].y,x);  flag=<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(!flag)&#123;<span class="comment">//叶子结点则新建方点</span></div><div class="line">		insert(x,++cnt); deep[cnt]=deep[x]+<span class="number">1</span>; anc[cnt][<span class="number">0</span>]=x;</div><div class="line">		sumv[cnt]=sumv[x]; sumvd[cnt]=sumvd[x]; sumvdd[cnt]=sumvdd[x];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(deep[x]&lt;deep[y])  swap(x,y);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;--i)  <span class="keyword">if</span>(deep[anc[x][i]]&gt;=deep[y])  x=anc[x][i];</div><div class="line">	<span class="keyword">if</span>(x==y)  <span class="keyword">return</span> x;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;--i)  <span class="keyword">if</span>(anc[x][i]!=anc[y][i])  x=anc[x][i],y=anc[y][i];</div><div class="line">	<span class="keyword">return</span> anc[x][<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"><span class="function">ll <span class="title">get</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> lca,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">	ll temp1=(sumv[x]-sumv[lca])*(k-deep[lca])*(deep[x]+<span class="number">1</span>);</div><div class="line">	ll temp2=(sumvd[x]-sumvd[lca])*(deep[x]+<span class="number">1</span>-k+deep[lca]);</div><div class="line">	ll temp3=sumvdd[x]-sumvdd[lca];</div><div class="line">	<span class="keyword">return</span> temp1+temp2-temp3;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="keyword">int</span> __size__=<span class="number">256</span>&lt;&lt;<span class="number">20</span>;</div><div class="line">	<span class="keyword">char</span> *__p__=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>(__size__)+__size__;</div><div class="line">	__asm__(<span class="string">"movl %0, %%esp\n"</span>::<span class="string">"r"</span>(__p__));</div><div class="line">	n=cnt=read(); m=read(); Q=read(); deep[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)  v[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;<span class="keyword">int</span> x=read(),y=read();insert(x,y);&#125;</div><div class="line">	tarjan(<span class="number">1</span>);  <span class="built_in">memset</span>(Link,<span class="number">0</span>,<span class="keyword">sizeof</span>(Link));  len=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=bcnt;++i)&#123;</div><div class="line">		++cnt; <span class="keyword">int</span> size=bcc[i].size();</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=size<span class="number">-1</span>;j&gt;=<span class="number">0</span>;--j)</div><div class="line">			insert(cnt,bcc[i][j]);</div><div class="line">	&#125;</div><div class="line">	sumv[<span class="number">1</span>]=sumvd[<span class="number">1</span>]=sumvdd[<span class="number">1</span>]=v[<span class="number">1</span>];</div><div class="line">	dfs(<span class="number">1</span>,<span class="number">0</span>);  anc[<span class="number">1</span>][<span class="number">0</span>]=++cnt;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">20</span>;++i)<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">1</span>;x&lt;=cnt;++x)</div><div class="line">		anc[x][i]=anc[anc[x][i<span class="number">-1</span>]][i<span class="number">-1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> T=<span class="number">1</span>;T&lt;=Q;++T)&#123;</div><div class="line">		<span class="keyword">int</span> x=read(),y=read(),lca=LCA(x,y);</div><div class="line">		<span class="keyword">if</span>(x==lca)  x=anc[x][<span class="number">0</span>];</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=anc[x][<span class="number">0</span>]&amp;&amp;e[i].y)&#123;x=e[i].y;<span class="keyword">break</span>;&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span>(y==lca)  y=anc[y][<span class="number">0</span>];</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[y];i;i=e[i].next)<span class="keyword">if</span>(e[i].y!=anc[y][<span class="number">0</span>]&amp;&amp;e[i].y)&#123;y=e[i].y;<span class="keyword">break</span>;&#125;</div><div class="line">		&#125;</div><div class="line">		lca=LCA(x,y);</div><div class="line">		<span class="keyword">int</span> k1=deep[y]-deep[lca]+<span class="number">1</span>,k2=deep[x]-deep[lca]+<span class="number">1</span>;</div><div class="line">		ans=get(x,lca,k1)+get(y,lca,k2)+v[lca]*k1*k2;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans&gt;&gt;<span class="number">2</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -4658,6 +4704,8 @@
             <tag> tarjan </tag>
             
             <tag> 公式推导 </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -4705,12 +4753,12 @@
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<h2 id="题面描述"><a href="#题面描述" class="headerlink" title="题面描述"></a>题面描述</h2><p>在坐标系下，有n个矩形，每个矩形的长宽均为奇数。</p>
-<p>第i个矩形的左下角的坐标为$(a_i,b_i)$，右上角的坐标为(c_i,d_i)。</p>
-<p>两个矩形是相邻的当且仅当它们有至少一个公共点。</p>
-<p>你需要4种颜色来给坐标系上的每个矩形染色。</p>
-<p>我们称一种染色方案是合法的，当且仅当不存在两个相邻的矩形颜色相同，你需要输出一种合法的方案。</p>
-<h2 id="题解及吐槽"><a href="#题解及吐槽" class="headerlink" title="题解及吐槽"></a>题解及吐槽</h2><p>测试时，我的想法是把相邻的矩形之间连一条边，然后在图上做四分图染色</p>
+<ul>
+<li><a href="/file/map.zip">数据下载</a></li>
+</ul>
+<hr>
+<p><img src="/img/28.png" alt=""></p>
+<p>测试时，我的想法是把相邻的矩形之间连一条边，然后在图上做四分图染色</p>
 <p>但是四分图染色不是NPC问题吗？</p>
 <p>然后我就gg了</p>
 <p>其实我注意到了矩形的长宽都是奇数，但没有想出怎么用这个条件</p>
@@ -4721,6 +4769,8 @@
         <tags>
             
             <tag> 构造 </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -5082,7 +5132,10 @@
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2083" target="_blank" rel="external">AC通道</a></p>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2083" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
 <p>这是bzoj2083的原题</p>
 <p>考试时我居然写的是AC自动机。。。。。。</p>
 <p>这道题让我对邻接链表的理解加深了不少</p>
@@ -5093,6 +5146,8 @@
         <tags>
             
             <tag> bzoj </tag>
+            
+            <tag> 日常小测 </tag>
             
             <tag> 链表 </tag>
             
@@ -5175,16 +5230,12 @@
       <content type="html"><![CDATA[<ul>
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
-<p><a href="http://pan.baidu.com/s/1o8lXqau" target="_blank" rel="external">数据</a></p>
-<p><a href="http://pan.baidu.com/s/1eRUC7Hw" target="_blank" rel="external">官方题解</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一棵n个结点的无根树，树上的每个点有一个非负点权。</p>
-<p>定义一条路径的价值为：路径上的点权和-路径上的点权最大值。</p>
-<p>给定参数P，我们想知道，有多少不同的树上简单路径，满足它的价值是P的倍数。</p>
-<p>注意：单点算作一个路径，u≠v时，(u,v)和(v,u)只算一次。</p>
-<p>n&lt;=1e5, P&lt;=1e7</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>5 2<br>1 2<br>1 3<br>2 4<br>3 5<br>1 3 3 1 2</p>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>9</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>点分治，统计子树答案时记录路径上的最大点权，然后从小到大更新答案即可。</p>
+<ul>
+<li><a href="/file/c.zip">数据下载</a></li>
+</ul>
+<hr>
+<p><img src="/img/27.png" alt=""></p>
+<p>点分治，统计子树答案时记录路径上的最大点权，然后从小到大更新答案即可。</p>
 <p>这样做保证了路径上的最大点权在当前的路径上。</p>
 <p>注意：最后要把单点的情况加上。</p>
 <p>PS：在测试时，我没能想到用这样的方法保证路径的合法性，也算是收获了一些人生的经验吧。</p>
@@ -5195,6 +5246,8 @@
         <tags>
             
             <tag> 点分治 </tag>
+            
+            <tag> 日常小测 </tag>
             
         </tags>
         
@@ -5825,9 +5878,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
