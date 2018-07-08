@@ -1441,9 +1441,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1469,9 +1469,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2425,9 +2425,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -3466,11 +3466,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -4225,9 +4225,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4459,9 +4459,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5626,9 +5626,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -6073,9 +6073,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -6136,7 +6136,7 @@
 <h3 id="朴素状态后缀自动机"><a href="#朴素状态后缀自动机" class="headerlink" title="朴素状态后缀自动机"></a>朴素状态后缀自动机</h3><p>给定字符串$S$,$S$的后缀自动机($SAM$，以下简称$SAM$)是一个能识别$S$的所有后缀的自动机</p>
 <p>即$SAM(x)=true$，当且仅当$x$是$S$的后缀</p>
 <p>考虑字符串aabbabd，我们可以讲该字符串的所有后缀插入一个$Trie$树中，就像下图那样。</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/chty/960092/o_%e5%9b%be%e7%89%871.png" alt=""></p>
+<p><img src="/img/32.png" alt=""></p>
 <p>那么初始状态就是根，状态转移函数就是这颗树的边，结束状态集合就是所有的叶子</p>
 <p>这样我们就得到了一个$S$的朴素状态后缀自动机</p>
 <p>我们发现它的节点数和边数都是$O(n^2)$的，时间和空间上都无法承受</p>
@@ -6189,7 +6189,7 @@
 <p>所以就有如下结论：任意两个状态的$Right$集合要么不想交，要么一个是另一个的真子集</p>
 </blockquote>
 <p>事实上，所有状态的$Right$集合构成了一个树形结构，如下图</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/chty/960092/o_QQ%e5%9b%be%e7%89%8720170308222410.png" alt=""></p>
+<p><img src="/img/33.png" alt=""></p>
 <blockquote>
 <p>我们把这棵树称为$parent$树</p>
 <p>在这颗树中，叶子结点有$n$个，内部结点至少有$2$个儿子，所以结点个数最多为$2n$个</p>
@@ -6249,8 +6249,8 @@
 <p>我们注意到$L+1$对$trans(init,q)$的转移是没有影响的，所以可以直接把$q$的信息赋值给$nq$</p>
 <p>然后对于$trans(v,x)=q$的结点$v$，由于已经插入了$x$，把$trans(v,x)$设为$nq$即可</p>
 <p>整个过程如下图所示：</p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/chty/960092/o_4.png" alt=""></p>
-<p><img src="http://images.cnblogs.com/cnblogs_com/chty/960092/o_5.png" alt=""></p>
+<p><img src="/img/34.png" alt=""></p>
+<p><img src="/img/35.png" alt=""></p>
 <p>在很多时候，我们需要用到Right集的大小，如何求Right集的大小呢？</p>
 <p>我们发现构建好的SAM是个有向无环图，我们对它进行拓扑排序，parent树上叶子节点|Right|设为1，然后按照拓扑序更新parent即可</p>
 <p>　　</p>
@@ -6384,9 +6384,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6547,9 +6547,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -7140,9 +7140,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
@@ -7170,9 +7170,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 整体二分 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
