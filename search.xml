@@ -435,9 +435,9 @@
         
         <tags>
             
-            <tag> AOJ </tag>
-            
             <tag> 欧拉函数 </tag>
+            
+            <tag> AOJ </tag>
             
         </tags>
         
@@ -486,9 +486,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 欧拉函数 </tag>
-            
             <tag> 莫比乌斯反演 </tag>
+            
+            <tag> 欧拉函数 </tag>
             
         </tags>
         
@@ -1269,9 +1269,9 @@
         
         <tags>
             
-            <tag> 51nod </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 51nod </tag>
             
         </tags>
         
@@ -2487,9 +2487,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 博弈论 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 博弈论 </tag>
             
             <tag> 搜索 </tag>
             
@@ -3427,7 +3427,7 @@
 <ul>
 <li>【UOJ#34】多项式乘法<a href="http://uoj.ac/problem/34" target="_blank" rel="external">AC传送门</a></li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi=<span class="built_in">acos</span>(<span class="number">-1</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300010</span></div><div class="line"><span class="keyword">int</span> n,m,H(<span class="number">0</span>),L(<span class="number">1</span>),R[MAXN];</div><div class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">struct</span> <span class="keyword">complex</span>&#123;</div><div class="line">	<span class="keyword">double</span> r,v;</div><div class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> a=<span class="number">0</span>,<span class="keyword">double</span> b=<span class="number">0</span>):r(a),v(b)&#123;&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r+b.r,v+b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r-b.r,v-b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r*b.r-v*b.v,r*b.v+v*b.r);&#125;</div><div class="line">&#125;a[MAXN],b[MAXN],w[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">complex</span> &amp;a,<span class="keyword">complex</span> &amp;b)</span></span>&#123;<span class="function"><span class="keyword">complex</span> <span class="title">t</span><span class="params">(a)</span></span>;a=b;b=t;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(<span class="keyword">complex</span> *a,<span class="keyword">int</span> f)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  <span class="keyword">if</span>(i&lt;R[i])  swap(a[i],a[R[i]]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=L;len&lt;&lt;=<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">int</span> l=len&gt;&gt;<span class="number">1</span>;  <span class="comment">//complex wn(cos(pi/l),f*sin(pi/l));  </span></div><div class="line">		<span class="comment">//因为本博客的代码高亮问题，所以不得不注释掉这句代码</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;l;i++)  w[i]=w[i<span class="number">-1</span>]*wn;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;L;st+=len) <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;l;++k)&#123;</div><div class="line">			<span class="keyword">complex</span> x=a[st+k],y=w[k]*a[st+k+l];</div><div class="line">			a[st+k]=x+y;  a[st+k+l]=x-y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	n=read()+<span class="number">1</span>,m=read()+<span class="number">1</span>,w[<span class="number">0</span>].r=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)  a[i].r=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;++i)  b[i].r=read();</div><div class="line">	<span class="keyword">while</span>(L&lt;n+m) L&lt;&lt;=<span class="number">1</span>,++H;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  R[i]=(R[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(H<span class="number">-1</span>));</div><div class="line">	FFT(a,<span class="number">1</span>);  FFT(b,<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i) a[i]=a[i]*b[i];</div><div class="line">	FFT(a,<span class="number">-1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n+m<span class="number">-1</span>;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,(<span class="keyword">int</span>)(a[i].r+<span class="number">0.5</span>));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi=<span class="built_in">acos</span>(<span class="number">-1</span>);</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 300010</span></div><div class="line"><span class="keyword">int</span> n,m,H(<span class="number">0</span>),L(<span class="number">1</span>),R[MAXN];</div><div class="line"><span class="keyword">char</span> buf[<span class="number">1</span>&lt;&lt;<span class="number">15</span>],*fs,*ft;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span> <span class="title">getc</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> (fs==ft&amp;&amp;(ft=(fs=buf)+fread(buf,<span class="number">1</span>,<span class="number">1</span>&lt;&lt;<span class="number">15</span>,<span class="built_in">stdin</span>),fs==ft))?<span class="number">0</span>:*fs++;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getc();</div><div class="line">	<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getc();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">struct</span> <span class="keyword">complex</span>&#123;</div><div class="line">	<span class="keyword">double</span> r,v;</div><div class="line">	<span class="keyword">complex</span>(<span class="keyword">double</span> a=<span class="number">0</span>,<span class="keyword">double</span> b=<span class="number">0</span>):r(a),v(b)&#123;&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r+b.r,v+b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r-b.r,v-b.v);&#125;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">complex</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="keyword">complex</span> &amp;b)&#123;<span class="keyword">return</span> <span class="keyword">complex</span>(r*b.r-v*b.v,r*b.v+v*b.r);&#125;</div><div class="line">&#125;a[MAXN],b[MAXN],w[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">complex</span> &amp;a,<span class="keyword">complex</span> &amp;b)</span></span>&#123;<span class="function"><span class="keyword">complex</span> <span class="title">t</span><span class="params">(a)</span></span>;a=b;b=t;&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FFT</span><span class="params">(<span class="keyword">complex</span> *a,<span class="keyword">int</span> f)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  <span class="keyword">if</span>(i&lt;R[i])  swap(a[i],a[R[i]]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>;len&lt;=L;len&lt;&lt;=<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">int</span> l=len&gt;&gt;<span class="number">1</span>;  <span class="comment">//complex wn(cos(pi/l),f*sin(pi/l));  </span></div><div class="line">		<span class="comment">//因为本博客的代码高亮问题，所以不得不注释掉这句代码</span></div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;l;i++)  w[i]=w[i<span class="number">-1</span>]*wn;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> st=<span class="number">0</span>;st&lt;L;st+=len) <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;l;++k)&#123;</div><div class="line">			<span class="keyword">complex</span> x=a[st+k],y=w[k]*a[st+k+l];</div><div class="line">			a[st+k]=x+y;  a[st+k+l]=x-y;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(f==<span class="number">-1</span>) <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  a[i].r/=L;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	n=read()+<span class="number">1</span>,m=read()+<span class="number">1</span>,w[<span class="number">0</span>].r=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)  a[i].r=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;++i)  b[i].r=read();</div><div class="line">	<span class="keyword">while</span>(L&lt;n+m) L&lt;&lt;=<span class="number">1</span>,++H;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i)  R[i]=(R[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)&lt;&lt;(H<span class="number">-1</span>));</div><div class="line">	FFT(a,<span class="number">1</span>);  FFT(b,<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;L;++i) a[i]=a[i]*b[i];</div><div class="line">	FFT(a,<span class="number">-1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n+m<span class="number">-1</span>;++i)  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,(<span class="keyword">int</span>)(a[i].r+<span class="number">0.5</span>));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>　　</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><hr>
 <ul>
@@ -3544,9 +3544,9 @@
             
             <tag> 三分 </tag>
             
-            <tag> 概率dp </tag>
-            
             <tag> 矩阵乘法 </tag>
+            
+            <tag> 概率dp </tag>
             
             <tag> 数论 </tag>
             
@@ -3671,9 +3671,9 @@
         
         <tags>
             
-            <tag> KDTree </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> KDTree </tag>
             
         </tags>
         
@@ -3850,9 +3850,9 @@
         
         <tags>
             
-            <tag> UOJ </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -5954,9 +5954,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> UOJ </tag>
-            
             <tag> 最短路 </tag>
+            
+            <tag> UOJ </tag>
             
             <tag> 概率dp </tag>
             
