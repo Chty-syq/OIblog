@@ -8,16 +8,16 @@
   <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【CF#235E】Number Challenge">
-<meta property="og:url" content="http://chty.coding.me/blog/2018/05/19/CF-235E/index.html">
+<meta property="og:url" content="/blog/2018/05/19/CF-235E/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:image" content="http://chty.coding.me/blog/img/06.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/18.png">
-<meta property="og:updated_time" content="2018-05-24T14:15:00.000Z">
+<meta property="og:image" content="/blog/blog/img/06.png">
+<meta property="og:image" content="/blog/blog/img/18.png">
+<meta property="og:updated_time" content="2018-07-25T13:21:18.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【CF#235E】Number Challenge">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
-<meta name="twitter:image" content="http://chty.coding.me/blog/img/06.png">
+<meta name="twitter:image" content="/blog/blog/img/06.png">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -305,9 +305,9 @@
 </ul>
 <hr>
 <p>首先有一个结论：</p>
-<p><img src="/img/06.png" alt=""></p>
+<p><img src="/blog/img/06.png" alt=""></p>
 <p>证明略，接下来开始推式子：</p>
-<p><img src="/img/18.png" alt=""></p>
+<p><img src="/blog/img/18.png" alt=""></p>
 <p>配合记忆化预处理GCD，时间复杂度：$O(n^2 log n)$</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 5050</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cadd(a,b) a=add(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> csub(a,b) a=sub(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmul(a,b) a=mul(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1073741824</span>;</div><div class="line"><span class="keyword">int</span> A,B,C,N,cnt,ans,check[MAXN],prime[MAXN],mu[MAXN],GCD[MAXN][MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a+=b)&gt;=mod?a-mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a-=b)&lt;<span class="number">0</span>?a+mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1L</span>L*a*b%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(GCD[a][b]) <span class="keyword">return</span> GCD[a][b];</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> !b?a:gcd(b,a%b);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	mu[<span class="number">1</span>]=<span class="number">1</span>;  N=<span class="number">5000</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i])  prime[++cnt]=i,mu[i]=<span class="number">-1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)  &#123;mu[prime[j]*i]=<span class="number">0</span>; <span class="keyword">break</span>;&#125;</div><div class="line">			<span class="keyword">else</span> mu[prime[j]*i]=-mu[i];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;=N;++j)</div><div class="line">		GCD[i][j]=GCD[j][i]=gcd(i,j);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> A,<span class="keyword">int</span> d,<span class="keyword">int</span> k)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=(A/d);++i)</div><div class="line">		<span class="keyword">if</span>(GCD[d*i][k]==<span class="number">1</span>) cadd(ret,A/(d*i));</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;A,&amp;B,&amp;C);  Init();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=C;++k)&#123;</div><div class="line">		<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> d=<span class="number">1</span>;d&lt;=min(A,B);++d)<span class="keyword">if</span>(mu[d])</div><div class="line">			cadd(ret,mul(mu[d],mul(calc(A,d,k),calc(B,d,k))));</div><div class="line">		cmul(ret,C/k);  cadd(ans,ret);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,clock());</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -321,11 +321,11 @@
         <p><span>本文标题:</span><a href="/blog/2018/05/19/CF-235E/">【CF#235E】Number Challenge</a></p>
         <p><span>文章作者:</span><a href="/blog/" title="访问 chty 的个人博客">chty</a></p>
         <p><span>发布时间:</span>2018年05月19日 - 10时36分</p>
-        <p><span>最后更新:</span>2018年05月24日 - 22时15分</p>
+        <p><span>最后更新:</span>2018年07月25日 - 21时21分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/blog/2018/05/19/CF-235E/" title="【CF#235E】Number Challenge">http://chty.coding.me/blog/blog/2018/05/19/CF-235E/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://chty.coding.me/blog/blog/2018/05/19/CF-235E/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/blog/2018/05/19/CF-235E/" title="【CF#235E】Number Challenge">/blog/blog/2018/05/19/CF-235E/</a>
+            <span class="copy-path" data-clipboard-text="原文: /blog/blog/2018/05/19/CF-235E/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/blog/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -411,7 +411,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2018/05/19/CF-235E/" data-title="【CF#235E】Number Challenge" data-url="http://chty.coding.me/blog/blog/2018/05/19/CF-235E/"></div>
+    <div class="ds-thread" data-thread-key="2018/05/19/CF-235E/" data-title="【CF#235E】Number Challenge" data-url="/blog/blog/2018/05/19/CF-235E/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

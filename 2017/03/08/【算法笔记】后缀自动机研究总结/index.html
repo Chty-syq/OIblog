@@ -8,18 +8,18 @@
   <meta name="description" content="本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法笔记】后缀自动机研究总结">
-<meta property="og:url" content="http://chty.coding.me/blog/2017/03/08/【算法笔记】后缀自动机研究总结/index.html">
+<meta property="og:url" content="/blog/2017/03/08/【算法笔记】后缀自动机研究总结/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="本文为博主原创，未经许可不得转载">
-<meta property="og:image" content="http://chty.coding.me/blog/img/32.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/33.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/34.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/35.png">
-<meta property="og:updated_time" content="2018-07-08T01:01:24.333Z">
+<meta property="og:image" content="/blog/blog/img/32.png">
+<meta property="og:image" content="/blog/blog/img/33.png">
+<meta property="og:image" content="/blog/blog/img/34.png">
+<meta property="og:image" content="/blog/blog/img/35.png">
+<meta property="og:updated_time" content="2018-07-25T13:27:20.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法笔记】后缀自动机研究总结">
 <meta name="twitter:description" content="本文为博主原创，未经许可不得转载">
-<meta name="twitter:image" content="http://chty.coding.me/blog/img/32.png">
+<meta name="twitter:image" content="/blog/blog/img/32.png">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -319,7 +319,7 @@
 <h3 id="朴素状态后缀自动机"><a href="#朴素状态后缀自动机" class="headerlink" title="朴素状态后缀自动机"></a>朴素状态后缀自动机</h3><p>给定字符串$S$,$S$的后缀自动机($SAM$，以下简称$SAM$)是一个能识别$S$的所有后缀的自动机</p>
 <p>即$SAM(x)=true$，当且仅当$x$是$S$的后缀</p>
 <p>考虑字符串aabbabd，我们可以讲该字符串的所有后缀插入一个$Trie$树中，就像下图那样。</p>
-<p><img src="/img/32.png" alt=""></p>
+<p><img src="/blog/img/32.png" alt=""></p>
 <p>那么初始状态就是根，状态转移函数就是这颗树的边，结束状态集合就是所有的叶子</p>
 <p>这样我们就得到了一个$S$的朴素状态后缀自动机</p>
 <p>我们发现它的节点数和边数都是$O(n^2)$的，时间和空间上都无法承受</p>
@@ -372,7 +372,7 @@
 <p>所以就有如下结论：任意两个状态的$Right$集合要么不想交，要么一个是另一个的真子集</p>
 </blockquote>
 <p>事实上，所有状态的$Right$集合构成了一个树形结构，如下图</p>
-<p><img src="/img/33.png" alt=""></p>
+<p><img src="/blog/img/33.png" alt=""></p>
 <blockquote>
 <p>我们把这棵树称为$parent$树</p>
 <p>在这颗树中，叶子结点有$n$个，内部结点至少有$2$个儿子，所以结点个数最多为$2n$个</p>
@@ -432,8 +432,8 @@
 <p>我们注意到$L+1$对$trans(init,q)$的转移是没有影响的，所以可以直接把$q$的信息赋值给$nq$</p>
 <p>然后对于$trans(v,x)=q$的结点$v$，由于已经插入了$x$，把$trans(v,x)$设为$nq$即可</p>
 <p>整个过程如下图所示：</p>
-<p><img src="/img/34.png" alt=""></p>
-<p><img src="/img/35.png" alt=""></p>
+<p><img src="/blog/img/34.png" alt=""></p>
+<p><img src="/blog/img/35.png" alt=""></p>
 <p>在很多时候，我们需要用到Right集的大小，如何求Right集的大小呢？</p>
 <p>我们发现构建好的SAM是个有向无环图，我们对它进行拓扑排序，parent树上叶子节点|Right|设为1，然后按照拓扑序更新parent即可</p>
 <p>　　</p>
@@ -452,11 +452,11 @@
         <p><span>本文标题:</span><a href="/blog/2017/03/08/【算法笔记】后缀自动机研究总结/">【算法笔记】后缀自动机研究总结</a></p>
         <p><span>文章作者:</span><a href="/blog/" title="访问 chty 的个人博客">chty</a></p>
         <p><span>发布时间:</span>2017年03月08日 - 20时15分</p>
-        <p><span>最后更新:</span>2018年07月08日 - 09时01分</p>
+        <p><span>最后更新:</span>2018年07月25日 - 21时27分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/blog/2017/03/08/【算法笔记】后缀自动机研究总结/" title="【算法笔记】后缀自动机研究总结">http://chty.coding.me/blog/blog/2017/03/08/【算法笔记】后缀自动机研究总结/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://chty.coding.me/blog/blog/2017/03/08/【算法笔记】后缀自动机研究总结/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/blog/2017/03/08/【算法笔记】后缀自动机研究总结/" title="【算法笔记】后缀自动机研究总结">/blog/blog/2017/03/08/【算法笔记】后缀自动机研究总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: /blog/blog/2017/03/08/【算法笔记】后缀自动机研究总结/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/blog/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -542,7 +542,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/08/【算法笔记】后缀自动机研究总结/" data-title="【算法笔记】后缀自动机研究总结" data-url="http://chty.coding.me/blog/blog/2017/03/08/【算法笔记】后缀自动机研究总结/"></div>
+    <div class="ds-thread" data-thread-key="2017/03/08/【算法笔记】后缀自动机研究总结/" data-title="【算法笔记】后缀自动机研究总结" data-url="/blog/blog/2017/03/08/【算法笔记】后缀自动机研究总结/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

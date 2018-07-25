@@ -11,23 +11,23 @@
 本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法笔记】手动开平方">
-<meta property="og:url" content="http://chty.coding.me/blog/2018/04/03/【算法笔记】手动开平方/index.html">
+<meta property="og:url" content="/blog/2018/04/03/【算法笔记】手动开平方/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="终于可以摆脱计算器了！
 
 
 本文为博主原创，未经许可不得转载">
-<meta property="og:image" content="http://chty.coding.me/blog/img/08.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/09.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/10.png">
-<meta property="og:updated_time" content="2018-04-03T14:06:24.000Z">
+<meta property="og:image" content="/blog/blog/img/08.png">
+<meta property="og:image" content="/blog/blog/img/09.png">
+<meta property="og:image" content="/blog/blog/img/10.png">
+<meta property="og:updated_time" content="2018-07-25T13:26:48.164Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法笔记】手动开平方">
 <meta name="twitter:description" content="终于可以摆脱计算器了！
 
 
 本文为博主原创，未经许可不得转载">
-<meta name="twitter:image" content="http://chty.coding.me/blog/img/08.png">
+<meta name="twitter:image" content="/blog/blog/img/08.png">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -317,14 +317,14 @@
 <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>（1）设要开方的数为$A$，将两两分组，如$7586$写成$75’86$，而$78965$写成$7’89’65$</p>
 <p>（2）将第一位开方：即计算$x_1^2&lt;=A_1$，如$75’86$就是要计算$x_1^2&lt;=75$的最大的$x_1$，也就是$8$</p>
 <p>然后将$A_1^2$，也就是$64$写下来，相减抄下去，如图所示：</p>
-<p><center><img src="/img/08.png" alt=""></center></p>
+<p><center><img src="/blog/img/08.png" alt=""></center></p>
 <p>（3）下移两位（普通的除法是下移一位，但在这里需要移两位），然后将当前商乘以$20$，计算$(20x_1+x_2)x_2&lt;=A_2$</p>
 <p>如上例中，就是把$8$乘以$20$，然后计算$16A \times A &lt;=1168$，解得$A_max=6$</p>
 <p>将$166\times6$的结果写下来相减，如图所示：</p>
-<p><center><img src="/img/09.png" alt=""></center></p>
+<p><center><img src="/blog/img/09.png" alt=""></center></p>
 <p>（4）重复（3）过程即可，只要你想，你可以不断开下去，当然你可能发现了，越往后计算越复杂</p>
 <p>如图所示：</p>
-<p><center><img src="/img/10.png" alt=""></center></p>
+<p><center><img src="/blog/img/10.png" alt=""></center></p>
 <p>　　</p>
 <p>　　</p>
 <h2 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h2><p>我们假设结果是$$P=\sum_{i=0}^{n}10^ia_i $$</p>
@@ -348,11 +348,11 @@
         <p><span>本文标题:</span><a href="/blog/2018/04/03/【算法笔记】手动开平方/">【算法笔记】手动开平方</a></p>
         <p><span>文章作者:</span><a href="/blog/" title="访问 chty 的个人博客">chty</a></p>
         <p><span>发布时间:</span>2018年04月03日 - 21时23分</p>
-        <p><span>最后更新:</span>2018年04月03日 - 22时06分</p>
+        <p><span>最后更新:</span>2018年07月25日 - 21时26分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/blog/2018/04/03/【算法笔记】手动开平方/" title="【算法笔记】手动开平方">http://chty.coding.me/blog/blog/2018/04/03/【算法笔记】手动开平方/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://chty.coding.me/blog/blog/2018/04/03/【算法笔记】手动开平方/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/blog/2018/04/03/【算法笔记】手动开平方/" title="【算法笔记】手动开平方">/blog/blog/2018/04/03/【算法笔记】手动开平方/</a>
+            <span class="copy-path" data-clipboard-text="原文: /blog/blog/2018/04/03/【算法笔记】手动开平方/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/blog/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -438,7 +438,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2018/04/03/【算法笔记】手动开平方/" data-title="【算法笔记】手动开平方" data-url="http://chty.coding.me/blog/blog/2018/04/03/【算法笔记】手动开平方/"></div>
+    <div class="ds-thread" data-thread-key="2018/04/03/【算法笔记】手动开平方/" data-title="【算法笔记】手动开平方" data-url="/blog/blog/2018/04/03/【算法笔记】手动开平方/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">

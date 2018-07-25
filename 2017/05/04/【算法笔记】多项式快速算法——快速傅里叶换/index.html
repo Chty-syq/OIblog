@@ -11,26 +11,26 @@
 本文为博主原创，未经许可不得转载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法笔记】多项式快速算法——快速傅里叶变换">
-<meta property="og:url" content="http://chty.coding.me/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/index.html">
+<meta property="og:url" content="/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/index.html">
 <meta property="og:site_name" content="chty">
 <meta property="og:description" content="Upd：5/10/2018
 
 
 本文为博主原创，未经许可不得转载">
-<meta property="og:image" content="http://chty.coding.me/blog/img/12.png">
-<meta property="og:image" content="http://chty.coding.me/blog/\img\13.png">
-<meta property="og:image" content="http://chty.coding.me/blog/img/11.jpg">
-<meta property="og:image" content="http://chty.coding.me/blog/\img\14.png">
-<meta property="og:image" content="http://chty.coding.me/blog/\img\15.png">
-<meta property="og:image" content="http://chty.coding.me/blog/\img\16.png">
-<meta property="og:updated_time" content="2018-07-13T00:32:56.089Z">
+<meta property="og:image" content="/blog/blog/img/12.png">
+<meta property="og:image" content="/blog/blog/img/13.png">
+<meta property="og:image" content="/blog/blog/img/11.jpg">
+<meta property="og:image" content="/blog/blog/img/14.png">
+<meta property="og:image" content="/blog/blog/img/15.png">
+<meta property="og:image" content="/blog/blog/img/16.png">
+<meta property="og:updated_time" content="2018-07-25T13:29:49.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法笔记】多项式快速算法——快速傅里叶变换">
 <meta name="twitter:description" content="Upd：5/10/2018
 
 
 本文为博主原创，未经许可不得转载">
-<meta name="twitter:image" content="http://chty.coding.me/blog/img/12.png">
+<meta name="twitter:image" content="/blog/blog/img/12.png">
   
     <link rel="alternative" href="/atom.xml" title="chty" type="application/atom+xml">
   
@@ -340,7 +340,7 @@
 <h3 id="复数的三角形式"><a href="#复数的三角形式" class="headerlink" title="复数的三角形式"></a>复数的三角形式</h3><p>上面提到的$a+bi$称为复数的代数形式</p>
 <p>除此之外，复数还可以用三角函数的形式来表示</p>
 <p>如下图所示：</p>
-<p><img src="/img/12.png" alt=""></p>
+<p><img src="/blog/img/12.png" alt=""></p>
 <p>我们知道复数$a+bi$对应着复平面上的点$(a,b)$，也对应着复平面上的一个向量</p>
 <p>这个向量的长度叫作复数$a+bi$的模，记作|$a+bi$|,一般情况下用字母$r$表示</p>
 <p>这个向量与$x$轴正方向有一个夹角，称为辐角，一般情况下用希腊字母$\theta$表示</p>
@@ -412,7 +412,7 @@
 <p>这样我们的子问题就变成了求$\frac{n}{2}$个单位根的点值，规模缩小了一半，时间复杂度$O(n\log n)$</p>
 <p>这样的操作算法导论中称为<font color="yellow">蝶形变换</font></p>
 <p>中文伪代码如下：</p>
-<p><img src="\img\13.png" alt=""></p>
+<p><img src="/blog/img/13.png" alt=""></p>
 <p>　　</p>
 <p>　　</p>
 <h2 id="快速傅里叶逆变换"><a href="#快速傅里叶逆变换" class="headerlink" title="快速傅里叶逆变换"></a>快速傅里叶逆变换</h2><h3 id="求值与插值"><a href="#求值与插值" class="headerlink" title="求值与插值"></a>求值与插值</h3><p>对于一个多项式，如果知道它的系数表达式，我们很容易求出它的点值表达式，这一过程成为求值</p>
@@ -421,7 +421,7 @@
 <p>定理：当插值多项式的次数界等于已知点值对的数目时，插值才是明确的</p>
 </blockquote>
 <p>证明：$y_k=A(x_k)$等价于下式：</p>
-<p><img src="/img/11.jpg" alt=""></p>
+<p><img src="/blog/img/11.jpg" alt=""></p>
 <p>其中，左边的矩阵称为范德蒙矩阵，其行列式$Det=\prod_{0\leq j&lt;k\leq n-1}(x_k-x_j)$</p>
 <p>如果所有的$x_k$均不同，那么$Det\neq 0$，范德蒙矩阵可逆</p>
 <p>因此给定点值表达，能够唯一确定系数表达</p>
@@ -430,14 +430,14 @@
 <p>矩阵求逆的复杂度是$O(n^3)$的，范德蒙矩阵求逆可以优化至$O(n^2)$，但是复杂度依旧很高</p>
 <p>我们考虑构造一个现成的能算的东西进行优化</p>
 <h3 id="构造逆矩阵"><a href="#构造逆矩阵" class="headerlink" title="构造逆矩阵"></a>构造逆矩阵</h3><p>我们现在已经得到了这样的方程：</p>
-<p><img src="\img\14.png" alt=""></p>
+<p><img src="/blog/img/14.png" alt=""></p>
 <p>记系数矩阵为$V$，构造下面的矩阵：$d_{ij}=w_{n}^{-ij}$</p>
-<p><img src="\img\15.png" alt=""></p>
+<p><img src="/blog/img/15.png" alt=""></p>
 <p>它们相乘的结果$E=DV$满足$e_{ij}=\sum_{k=0}^{n-1}w_{n}^{k(j-i)}$</p>
 <p>当$i=j时$，$e_{ij}=n$</p>
 <p>当$i\neq j时$，$e_{ij}=\sum_{k=0}^{n-1}(w_{n}^{(j-i)})^k=0$（求和引理）</p>
 <p>所以$\frac{1}{n}D$就是我们需要的逆矩阵，如下图：</p>
-<p><img src="\img\16.png" alt=""></p>
+<p><img src="/blog/img/16.png" alt=""></p>
 <p>这就相当于我们把单位复数根$w_{n}^{k}$换成$w_{n}^{-k}$再做一遍离散傅里叶变换结果除以$n$就行了
 　　</p>
 <p>　　</p>
@@ -467,11 +467,11 @@
         <p><span>本文标题:</span><a href="/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/">【算法笔记】多项式快速算法——快速傅里叶变换</a></p>
         <p><span>文章作者:</span><a href="/blog/" title="访问 chty 的个人博客">chty</a></p>
         <p><span>发布时间:</span>2017年05月04日 - 15时18分</p>
-        <p><span>最后更新:</span>2018年07月13日 - 08时32分</p>
+        <p><span>最后更新:</span>2018年07月25日 - 21时29分</p>
         <!--
 		<p>
-            <span>原始链接:</span><a class="post-url" href="/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/" title="【算法笔记】多项式快速算法——快速傅里叶变换">http://chty.coding.me/blog/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://chty.coding.me/blog/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/" title="【算法笔记】多项式快速算法——快速傅里叶变换">/blog/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/</a>
+            <span class="copy-path" data-clipboard-text="原文: /blog/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/　　作者: chty" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/blog/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -557,7 +557,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/" data-title="【算法笔记】多项式快速算法——快速傅里叶变换" data-url="http://chty.coding.me/blog/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/"></div>
+    <div class="ds-thread" data-thread-key="2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/" data-title="【算法笔记】多项式快速算法——快速傅里叶变换" data-url="/blog/blog/2017/05/04/【算法笔记】多项式快速算法——快速傅里叶换/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
