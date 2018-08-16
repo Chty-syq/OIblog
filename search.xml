@@ -304,6 +304,163 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【算法笔记】指数提升定理]]></title>
+      <url>/blog/2018/08/12/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E6%8C%87%E6%95%B0%E6%8F%90%E5%8D%87%E5%AE%9A%E7%90%86/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文是《Lifting The Exponent》的翻译<a href="/blog/file/LiftingTheExponent.pdf">原文下载</a></li>
+</ul>
+<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><font color="yellow">指数提升定理（Lifting the exponent lemma）</font>是解决若干形如$n^{th}$的和差中某素因子的最大指数问题的有力工具</p>
+<p>这里有几个可以使用该定理解决的例题：</p>
+<ol>
+<li><p>设$n$是一个无平方因子整数，证明：不存在一对互质的$(x,y)$满足$(x+y)^3|(x^n+y^n)$</p>
+</li>
+<li><p>证明：对于任意的正整数$k$，$2$是模$3^k$意义下的一个原根</p>
+</li>
+<li><p>找到方程$3^n=x^k+y^k$的所有正整数解$(x,y)$，且$gcd(x,y)=1$，保证$k\geqslant 2$</p>
+</li>
+<li><p>设$a,b$是正实数且$a-b,a^2-b^2,a^3-b^3,…$都是正整数，证明：$a,b$都是正整数</p>
+</li>
+</ol>
+<p>　　</p>
+<p>　　</p>
+<h3 id="定理阐述"><a href="#定理阐述" class="headerlink" title="定理阐述"></a>定理阐述</h3><p>首先我们定义一个$v_p(n)$表示$n$中素因子$p$的指数，形式化的</p>
+<p>$$v_p(n)=k\Leftrightarrow p^k|n且p^{k+1}\nmid n$$</p>
+<blockquote>
+<p>设$p$为素数，$x,y$为整数，$n$为正整数，满足$p|(x-y)且p\nmid x,p\nmid y$，则：</p>
+<p>（1）若$p$为奇数，$v_p(x^n-y^n)=v_p(x-y)+v_p(n)$</p>
+<p>（2）若$p=2且n为偶数$，$v_2(x^n-y^n)=v_2(x-y)+v_2(n)+v_2(x+y)-1$</p>
+</blockquote>
+<p>注意到(1)中把$y$换成$-y$可以得到：$v_p(x^n+y^n)=v_p(x+y)+v_p(n)$</p>
+<p>举个栗子：求$5^{18}-2^{18}$的结果中因子$3$的指数</p>
+<p>显然由上述定理：$v_3(5^{18}-2^{18})=v_3(5-2)+v_3(18)=1+2=3$</p>
+<p>　　</p>
+<p>　　</p>
+<h3 id="定理证明"><a href="#定理证明" class="headerlink" title="定理证明"></a>定理证明</h3><p>我们先证明定理的(1)，(2)也是类似的，设$p|(x-y)且p\nmid x,p\nmid y$</p>
+<blockquote>
+<p><b>引理一</b>：若$p$不是$n$的约数，$v_p(x^n-y^n)=v_p(x-y)$</p>
+</blockquote>
+<p>证明：由$n$次方差公式可得$\frac{x^n-y^n}{x-y}=x^{n-1}+x^{n-2}y+…+y^{n-1}$</p>
+<p>由于$p|(x-y)且p不是x,y的约数$，故$x\equiv y(mod p)$，故$\frac{x^n-y^n}{x-y}\equiv nx^{n-1}(mod p)$</p>
+<p>由于$p\nmid n,p\nmid x$，所以$p$不是$\frac{x^n-y^n}{x-y}$的约数</p>
+<p>所以$v_p(x^n-y^n)=v_p(x-y)$</p>
+<p><font color="33FFFF">注：n次方差公式：$a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+a^{n-3}b^2+…+ab^{n-2}+b^{n-1})$</font></p>
+<p><font color="33FFFF">　　n次方和公式：$a^n+b^n=(a+b)(a^{n-1}-a^{n-2}b+a^{n-3}b^2+…-ab^{n-2}+b^{n-1})$</font></p>
+<blockquote>
+<p><b>引理二</b>：当$n=p$时定理成立，即$v_p(x^p-y^p)=v_p(x-y)+1$</p>
+</blockquote>
+<p>证明：由n次方差公式得到$x^p-y^p=(x-y)(x^{p-1}+x^{p-2}y+…+y^{p-1})$</p>
+<p>故$v_p(x^p-y^p)=v_p(x-y)+v_p(x^{p-1}+x^{p-2}y+…+y^{p-1})$</p>
+<p>所以只需要证明$v_p(x^{p-1}+x^{p-2}y+…+y^{p-1})=1$即可</p>
+<p>不妨设$y=x+kp$，则</p>
+<p>$x^{p-1}+x^{p-2}y+…+y^{p-1}$</p>
+<p>$\equiv x^{p-1}+(x^{p-1}+pkx^{p-2})+(x^{p-1}+2pkx^{p-2})+…+(x^{p-1}+(p-1)pkx^{p-2})(mod p^2)$</p>
+<p>$\equiv px^{p-1}+\frac{p(p-1)}{2}pkx^{p-2} (mod p^2)$</p>
+<p>$\equiv px^{p-1}(mod p^2)$</p>
+<p>故$x^{p-1}+x^{p-2}y+…+y^{p-1}$能被$p$整除，而不能被$p^2$整除</p>
+<p>故$v_p(x^{p-1}+x^{p-2}y+…+y^{p-1})=1$</p>
+<blockquote>
+<p><b>指数提升定理（1）</b>：$v_p(x^n-y^n)=v_p(x-y)+v_p(n)$</p>
+</blockquote>
+<p>证明：设$n=p^k a，其中a\nmid p$</p>
+<p>则$v_p(x^n-y^n)=v_p((x^{p^k})^a-(y^{p^k})^a)=v_p(x^{p^k}-y^{p^k})$（引理一）</p>
+<p>$=v_p((x^{p^{k-1}})^p-(y^{p^{k-1}})^p)=v_p(x^{p^{k-1}}-y^{p^{k-1}})+1$（引理二）</p>
+<p>$=v_p(x-y)+k=v_p(x-y)+v_p(n)$</p>
+<p>　　</p>
+<p>　　</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><blockquote>
+<p><b>例题一</b>　设$n$是一个无平方因子整数，证明：不存在一对互质的$(x,y)$满足$(x+y)^3|(x^n+y^n)$</p>
+</blockquote>
+<p>证明：假设存在一对互质的$(x,y)$满足$(x+y)^3|(x^n+y^n)$</p>
+<p><b>情形一</b>：$n$是偶数</p>
+<p>如果存在奇素数$p|(x+y)$，则$x^n+y^n\equiv x^n+(-x)^n\equiv 2x^n(mod p)$</p>
+<p>由于$p|(x+y)|(x+y)^3|(x^n+y^n)$，故$p|x,p|y$，$x,y$不互质，矛盾</p>
+<p>故不存在奇素数$p|(x+y)$，$(x+y)$是$2$的整次幂，由于$x,y$互质，它们都是奇数</p>
+<p>因为$n$是偶数，故$x^n\equiv 1(mod 8)且y^n\equiv 1(mod 8)$</p>
+<p><font color="33FFFF">注：由欧拉定理$x^n\equiv x^{n\%4}(mod 8)$，由于$n$是偶数，故指数只能是$0$或$2$，指数为$0$显然成立</font></p>
+<p><font color="33FFFF">指数为$2$时，$x\%8$的结果只可能是$1,3,5,7$，它们都是成立的</font></p>
+<p>故$x^n+y^n\equiv 2(mod 8)$，$v_2(x^n+y^n)=1$，而$v_2((x+y)^3)\geq 3$，矛盾</p>
+<p><b>情形二</b>：$n$是奇数</p>
+<p>如果存在奇素数$p|(x+y)$，则$3v_p(x+y)\leq v_p(x^n+y^n)$</p>
+<p>由指数提升定理$3v_p(x+y)\leq v_p(x^n+y^n)=v_p(x+y)\leq v_p(x+y)+1$（$n$是无平方因子数）</p>
+<p>故$v_p(x+y)\leq \frac{1}{2}$，而$p|(x+y)$，矛盾</p>
+<p>故不存在奇素数$p|(x+y)$，$(x+y)$是$2$的整次幂，在这种情况下，$n$是奇数，$v_2(n)=0$</p>
+<p>由指数提升定理$v_2(x^n+y^n)=v_2(x+y)$</p>
+<p>而$\frac{x^n+y^n}{x+y}=x^{n-1}-x^{n-2}y+…-xy^{n-2}+y^{n-1}$</p>
+<p>注意到右边有奇数项，每项都是奇数，故$v_2(x^{n-1}-x^{n-2}y+…-xy^{n-2}+y^{n-1})=0$</p>
+<p>而$v_2(\frac{x^n+y^n}{x+y})=1$，矛盾</p>
+<blockquote>
+<p><b>例题二</b>　证明：对于任意的正整数$k$，$2$是模$3^k$意义下的一个原根</p>
+</blockquote>
+<ul>
+<li><a href="/blog/2018/04/26/【算法笔记】原根/">次数原根了解一下</a></li>
+</ul>
+<p>我们需要找到最小的$n$满足$2^n \equiv 1(mod 3^k)$，即$3^k|(2^n-1)$，故$2^n\equiv 1(mod 3)$</p>
+<p>由欧拉定理，$2^n\equiv 2^{n\%2}\equiv 1(mod 3)$，故$n$为偶数，设$n=2m$，则$3^k|(4^m-1)$</p>
+<p>根据指数提升定理，$k\leq v_3(4^m-1^m)=v_3(4-1)+v_3(m)=1+v_3(m)$</p>
+<p>故$v_3(m)\geq k-1$，所以最小的$m=3^{k-1}$，对应的，最小的$n=2\times 3^{k-1}$，也就是$\phi(3^k)$</p>
+<p>故$2$必定是模$3^k$意义下的一个原根</p>
+<blockquote>
+<p><b>例题三</b>　找到方程$3^n=x^k+y^k$的所有正整数解$(x,y)$，且$gcd(x,y)=1$，保证$k\geqslant 2$</p>
+</blockquote>
+<p>若$x,y$中有一个能整除$3$，那么它们都能，这与$gcd(x,y)=1$矛盾，所以$x,y$均不能整除$3$</p>
+<p>若$k$是偶数，由欧拉定理$x^k\equiv 1(mod 3),y^k\equiv 1(mod 3),x^k+y^k\equiv 2(mod 3)$，原方程不可能成立，无解</p>
+<p>若$k$是奇数，若$n=0$，$x^k+y^k=1$，显然无解，所以$n\geq 1$且$3|(x+y)$</p>
+<p>由指数提升定理，$n=v_3(x^k+y^k)=v_3(x+y)+v_3(k)$</p>
+<p>故$x^k+y^k=3^n=3^{v_3(x+y)}3^{v_3(k)}=(x+y)k$</p>
+<p>不失一般性地，设$x&gt;y$，则$k=\frac{x^n+y^n}{x+y}=x^{k-1}-x^{k-2}y+…-xy^{k-2}+y^{k-1}$</p>
+<p>$k=(x-y)(x^{k-2}+x^{k-4}y^2+…+xy^{k-3})+y^{k-1}$</p>
+<p>由于$LHS\geq x^{k-2}$，$x^{k-2}\leq k$，故$\ln(x)\leq \frac{\ln(k)}{k-2}$，其中$k\geq 3,x\geq 2$</p>
+<p>根据导数分析，$f(k)=\frac{\ln(k)}{k-2}$在$[3,+\infty)$上单调递减，故$\ln(x)\leq \ln(3)$，$x\leq 3$</p>
+<p>而$x$不能整除$3$，故$x=2,y=1$</p>
+<p>这种情况下，$2^{k-2}&gt;k$仅在$k=3,4$时成立，$k$是奇数，故$k=3$</p>
+<p>经检验，$x=2,y=1,k=3$是原方程的解</p>
+<p>故当$k=3$时，方程的解为$(2,1)$或$(1,2)$，当$k\neq3$时，方程无解</p>
+<blockquote>
+<p><b>例题四</b>　设$a,b$是正实数且$a-b,a^2-b^2,a^3-b^3,…$都是正整数，证明：$a,b$都是正整数</p>
+</blockquote>
+<p>因为$(a-b)\in Z，(a^2-b^2)\in Z$，所以$a+b=\frac{a^2-b^2}{a-b}\in Q$</p>
+<p>所以$a=\frac{1}{2}(a+b)+\frac{1}{2}(a-b)$是有理数，同理$b=\frac{1}{2}(a+b)-\frac{1}{2}(a-b)$也是有理数</p>
+<p>不妨设$a=\frac{x}{z},b=\frac{y}{z}$，$x,y,z$均为正整数，且$z$尽可能小</p>
+<p>则由已知条件，$z^n|(x^n-y^n)$对于所有的$n$恒成立</p>
+<p>设素数$p|z$，由于$z|(x-y)$，$p|(x-y)$，若$p|x,p|y$，我们可以写出$a=\frac{\frac{x}{p}}{\frac{z}{p}},b=\frac{\frac{y}{p}}{\frac{z}{p}}$</p>
+<p>也就是说$z$可以更小，所以$p\nmid x,p\nmid y$，这样的话我们就可以应用指数提升定理：</p>
+<p>若$p$为奇数，$n\leq v_p(z^n)=v_p(x^n-y^n)=v_p(x-y)+v_p(n)$</p>
+<p>$p^n\leq (x-y)n$，$\frac{p^n}{n}\leq (x-y)$</p>
+<p>当$n\to +\infty$时，$f(n)=\frac{p^n}{n}\to \infty$，而$(x-y)$是一个定值，显然不可能恒成立</p>
+<p>若$p$为偶数，即$p=2$时，$n\leq v_2(z^n)=v_2(x^n-y^n)=v_2(x-y)+v_2(n)+v_2(x+y)-1$</p>
+<p>得到$\frac{2^{n+1}}{n}\leq (x-y)(x+y)$s，同样不可能恒成立</p>
+<p>故不存在素数$p|z$，即$z=1$，所以$a,b$均为正整数</p>
+<p>　　</p>
+<p>　　</p>
+<h3 id="练习题目"><a href="#练习题目" class="headerlink" title="练习题目"></a>练习题目</h3><p>1、求方程$3^x=2^xy+1$的正整数解$(x,y)$的个数</p>
+<p>2、求方程$p^x-y^p=1$的所有正整数解$(x,y,p)$，其中$p$为素数</p>
+<p>3、求所有正整数$a,b&gt;1$，使得$a^b|(b^a-1)$</p>
+<p>4、求方程$(n-1)!+1=n^m$的所有正整数解$(n,m)$</p>
+<p>5、是否存在正整数$n$使得$n|(2^n+1)$，且$n$有$10086$个素因子</p>
+<p>6、求所有正整数$n$，使得$n^2|2^n+1$</p>
+<p>7、已知$p$是一个奇素数，正整数$x,y,m&gt;1$，证明：如果$\frac{(x^p+y^p)}{2}=(\frac{x+y}{2})^m$，则$m=p$</p>
+<p>8、求$x^{2009}+y^{2009}=7^z$的所有正整数解$(x,y,z)$</p>
+<p>9、求所有正整数$a$使得对所有正整数$n$，$4(a^n+1)$是完全立方数</p>
+<p>10、给定正整数$u&gt;1$，证明：至多存在有限个三元正整数组$(n,a,b)$满足$n!=u^a-u^b$</p>
+<p>　　</p>
+<p>　　</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 算法笔记 </tag>
+            
+            <tag> 数论 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【算法笔记】普通平衡树的实现]]></title>
       <url>/blog/2018/07/09/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E6%99%AE%E9%80%9A%E5%B9%B3%E8%A1%A1%E6%A0%91%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
       <content type="html"><![CDATA[<ul>
@@ -1638,7 +1795,7 @@
 <p>要求动态维护树的重心</p>
 <p>考虑启发式合并做法：</p>
 <p>每次将size较小的子树接到大的子树中，每加入一个叶节点，就判断一下重心是否往叶节点所在子树移动</p>
-<p>至于子树大小的维护，见<a href="https://chty.coding.me/2017/06/30/4530/">bzoj4530</a></p>
+<p>至于子树大小的维护，见<a href="https://chty.coding.me/2017/06/30/4530/" target="_blank" rel="external">bzoj4530</a></p>
 <p>这道题启示我们在写lct时要注重考虑细节，时刻考虑当前的根的位置情况</p>
 <p>鸣谢chad_lzx大神帮忙查错</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200100</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,m,now;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;  <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)  &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>)  f=<span class="number">-1</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)  &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>;  ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="keyword">class</span> Link_Cut_Tree&#123;</div><div class="line">	<span class="keyword">struct</span> node&#123;<span class="keyword">int</span> y,next;&#125;e[MAXN&lt;&lt;<span class="number">1</span>];</div><div class="line">	<span class="keyword">int</span> len,Link[MAXN],f[MAXN],rev[MAXN],st[MAXN],size[MAXN],Vsize[MAXN],son[MAXN][<span class="number">2</span>];</div><div class="line">	<span class="keyword">private</span>:</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> son[f[x]][<span class="number">1</span>]==x;&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isroot</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> son[f[x]][<span class="number">0</span>]!=x&amp;&amp;son[f[x]][<span class="number">1</span>]!=x;&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">			e[++len].next=Link[x];Link[x]=len;e[len].y=y;</div><div class="line">			e[++len].next=Link[y];Link[y]=len;e[len].y=x;	</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			size[x]=Vsize[x]+<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(son[x][<span class="number">0</span>]) size[x]+=size[son[x][<span class="number">0</span>]];</div><div class="line">			<span class="keyword">if</span>(son[x][<span class="number">1</span>]) size[x]+=size[son[x][<span class="number">1</span>]];	</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="keyword">int</span> y=f[x],z=f[y],which=get(x);</div><div class="line">			<span class="keyword">if</span>(!isroot(y)) son[z][son[z][<span class="number">1</span>]==y]=x;</div><div class="line">			son[y][which]=son[x][which^<span class="number">1</span>];  f[son[y][which]]=y;</div><div class="line">			son[x][which^<span class="number">1</span>]=y;  f[y]=x;  f[x]=z;</div><div class="line">			updata(y);  updata(x);</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="keyword">if</span>(rev[x])&#123;</div><div class="line">				swap(son[x][<span class="number">0</span>],son[x][<span class="number">1</span>]);</div><div class="line">				rev[son[x][<span class="number">0</span>]]^=<span class="number">1</span>;  rev[son[x][<span class="number">1</span>]]^=<span class="number">1</span>;</div><div class="line">				rev[x]=<span class="number">0</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">(<span class="number">0</span>)</span></span>;  st[++top]=x;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=x;!isroot(i);i=f[i]) st[++top]=f[i];</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=top;i;--i) pushdown(st[i]);</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> y=f[x];!isroot(x);rotate(x),y=f[x])</div><div class="line">				<span class="keyword">if</span>(!isroot(y)) rotate(get(x)==get(y)?y:x);</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			<span class="keyword">int</span> last=<span class="number">0</span>;</div><div class="line">			<span class="keyword">while</span>(x)&#123;</div><div class="line">				splay(x);</div><div class="line">				<span class="keyword">if</span>(son[x][<span class="number">1</span>]) Vsize[x]+=size[son[x][<span class="number">1</span>]];</div><div class="line">				<span class="keyword">if</span>(last) Vsize[x]-=size[last];</div><div class="line">				son[x][<span class="number">1</span>]=last;  updata(x);</div><div class="line">				last=x;  x=f[x];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			access(x); splay(x); rev[x]^=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">linkk</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">			<span class="keyword">int</span> root=find(x);</div><div class="line">			access(x); splay(x);  f[y]=x;</div><div class="line">			Vsize[x]+=size[y];  updata(x);</div><div class="line">			access(y); splay(root);  <span class="keyword">int</span> root_size=size[root];</div><div class="line">			<span class="keyword">int</span> temp=son[root][<span class="number">1</span>];</div><div class="line">			<span class="keyword">while</span>(son[temp][<span class="number">0</span>]) temp=son[temp][<span class="number">0</span>];</div><div class="line">			access(temp);  splay(temp);</div><div class="line">			<span class="keyword">if</span>((Vsize[temp]+<span class="number">1</span>)*<span class="number">2</span>&gt;root_size||((Vsize[temp]+<span class="number">1</span>)*<span class="number">2</span>==root_size&amp;&amp;temp&lt;root))</div><div class="line">				now^=root,now^=temp,reverse(temp);</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</div><div class="line">			son[x][<span class="number">0</span>]=son[x][<span class="number">1</span>]=f[x]=rev[x]=Vsize[x]=<span class="number">0</span>; size[x]=<span class="number">1</span>;</div><div class="line">			linkk(fa,x);</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=Link[x];i;i=e[i].next)</div><div class="line">				<span class="keyword">if</span>(e[i].y!=fa) dfs(e[i].y,x);</div><div class="line">		&#125;</div><div class="line">	<span class="keyword">public</span>:</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pre</span><span class="params">()</span></span>&#123;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) size[i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) now^=i;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">			access(x); splay(x);</div><div class="line">			<span class="keyword">while</span>(son[x][<span class="number">0</span>]) x=son[x][<span class="number">0</span>];</div><div class="line">			splay(x);</div><div class="line">			<span class="keyword">return</span> x;</div><div class="line">		&#125;</div><div class="line">		<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">			<span class="keyword">if</span>(size[find(x)]&lt;size[find(y)])  swap(x,y);</div><div class="line">			now^=find(y);</div><div class="line">			dfs(y,x);</div><div class="line">			insert(x,y);</div><div class="line">		&#125;</div><div class="line">&#125;Tree;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read();  m=read();  Tree.pre();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</div><div class="line">		<span class="keyword">char</span> opt[<span class="number">5</span>]; <span class="built_in">scanf</span>(<span class="string">"%s"</span>,opt); </div><div class="line">		<span class="keyword">if</span>(opt[<span class="number">0</span>]==<span class="string">'A'</span>)&#123;</div><div class="line">			<span class="keyword">int</span> x=read(),y=read();</div><div class="line">			Tree.merge(x,y);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(opt[<span class="number">0</span>]==<span class="string">'Q'</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Tree.find(read()));</div><div class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,now);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -2578,9 +2735,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -2687,9 +2844,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 模拟 </tag>
             
@@ -5947,9 +6104,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> UOJ </tag>
-            
             <tag> 最短路 </tag>
+            
+            <tag> UOJ </tag>
             
             <tag> 概率dp </tag>
             
@@ -6144,9 +6301,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树形dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
@@ -7050,8 +7207,8 @@
 <p>　　</p>
 <p>　　</p>
 <h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><ul>
-<li>【bzoj2301】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2301" target="_blank" rel="external">【传送门】</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2301%E3%80%91/">【题解传送门】</a></li>
-<li>【bzoj2820】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2820" target="_blank" rel="external">【传送门】</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2820%E3%80%91/">【题解传送门】</a></li>
+<li>【bzoj2301】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2301" target="_blank" rel="external">【传送门】</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2301%E3%80%91/" target="_blank" rel="external">【题解传送门】</a></li>
+<li>【bzoj2820】<a href="http://www.lydsy.com/JudgeOnline/problem.php?id=2820" target="_blank" rel="external">【传送门】</a>  <a href="https://chty.coding.me/2017/02/27/%E3%80%90bzoj2820%E3%80%91/" target="_blank" rel="external">【题解传送门】</a></li>
 </ul>
 <p>　　</p>
 <p>　　</p>
@@ -7237,9 +7394,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 整体二分 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
