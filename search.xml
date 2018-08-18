@@ -234,12 +234,17 @@
 <tr>
 <td>2011年10月</td>
 <td>罪恶王冠</td>
-<td>日常黑王冠（1/1）</td>
+<td>日常黑网管（1/1）</td>
 </tr>
 <tr>
 <td>2012年7月</td>
 <td>刀剑神域</td>
 <td>最爱结城明日奈<del>本子</del></td>
+</tr>
+<tr>
+<td>2012年10月</td>
+<td>樱花庄的宠物女孩</td>
+<td>面对天才的思考以及真白好可爱</td>
 </tr>
 <tr>
 <td>2013年1月</td>
@@ -2636,9 +2641,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 博弈论 </tag>
             
@@ -2735,9 +2740,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -2844,9 +2849,9 @@
         
         <tags>
             
-            <tag> dp </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> dp </tag>
             
             <tag> 模拟 </tag>
             
@@ -4000,9 +4005,9 @@
         
         <tags>
             
-            <tag> UOJ </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -6301,9 +6306,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> UOJ </tag>
             
@@ -7394,9 +7399,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 整体二分 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 整体二分 </tag>
             
         </tags>
         
