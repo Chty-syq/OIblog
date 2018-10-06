@@ -70,7 +70,38 @@
 <li>纪念那些年我们一起追过的动漫<a id="more"></a></li>
 </ul>
 <hr>
-<h2 id="新番追番表"><a href="#新番追番表" class="headerlink" title="新番追番表"></a>新番追番表</h2><h3 id="2018年7月新番"><a href="#2018年7月新番" class="headerlink" title="2018年7月新番"></a>2018年7月新番</h3><table>
+<h2 id="新番追番表"><a href="#新番追番表" class="headerlink" title="新番追番表"></a>新番追番表</h2><h3 id="2018年10月新番"><a href="#2018年10月新番" class="headerlink" title="2018年10月新番"></a>2018年10月新番</h3><table>
+<thead>
+<tr>
+<th><center><strong>番名</strong></center></th>
+<th><center><strong>类型</strong></center></th>
+<th><center><strong>备注</strong></center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>魔法禁书目录第三季</td>
+<td>热血后宫</td>
+<td>十年之际，魔禁归来</td>
+</tr>
+<tr>
+<td>刀剑神域第三季</td>
+<td>热血后宫</td>
+<td>壮哉我大刀剑</td>
+</tr>
+<tr>
+<td>终将成为你</td>
+<td>百合</td>
+<td>硬核百合，大橘已定</td>
+</tr>
+<tr>
+<td>我喜欢的是小说里的你</td>
+<td>妹系</td>
+<td>标题出来挨打</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2018年7月新番"><a href="#2018年7月新番" class="headerlink" title="2018年7月新番"></a>2018年7月新番</h3><table>
 <thead>
 <tr>
 <th><center><strong>番名</strong></center></th>
@@ -2641,9 +2672,9 @@
         
         <tags>
             
-            <tag> 模拟 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 博弈论 </tag>
             
@@ -2740,9 +2771,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -2849,9 +2880,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 模拟 </tag>
             
@@ -6306,9 +6337,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树形dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
