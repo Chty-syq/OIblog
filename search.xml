@@ -2674,9 +2674,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2771,9 +2771,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -2880,9 +2880,9 @@
         
         <tags>
             
-            <tag> dp </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> dp </tag>
             
             <tag> 模拟 </tag>
             
@@ -4036,9 +4036,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -6110,9 +6110,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 容斥原理 </tag>
             
         </tags>
         
@@ -6140,9 +6140,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
@@ -6337,9 +6337,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> UOJ </tag>
             
@@ -7373,9 +7373,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
