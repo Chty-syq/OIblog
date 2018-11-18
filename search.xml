@@ -90,6 +90,11 @@
 <td>壮哉我大刀剑</td>
 </tr>
 <tr>
+<td>青春猪头少年不会梦到兔女郎学姐</td>
+<td>校园</td>
+<td>男主你的操作为何这么骚</td>
+</tr>
+<tr>
 <td>终将成为你</td>
 <td>百合</td>
 <td>硬核百合，大橘已定</td>
@@ -296,6 +301,11 @@
 <td>2014年4月</td>
 <td>魔法科高校的劣等生</td>
 <td>德骨+装逼，观影体验极佳</td>
+</tr>
+<tr>
+<td>2014年10月</td>
+<td>天使与龙的轮舞</td>
+<td>自古毒番出神曲</td>
 </tr>
 <tr>
 <td>2015年6月</td>
@@ -1696,9 +1706,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -1724,9 +1734,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 线性基 </tag>
             
@@ -2466,9 +2476,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 哈希 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 日常小测 </tag>
             
@@ -2674,9 +2684,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2880,9 +2890,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> dp </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 模拟 </tag>
             
@@ -3720,11 +3730,11 @@
         
         <tags>
             
+            <tag> bzoj </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
-            
-            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3857,9 +3867,9 @@
         
         <tags>
             
-            <tag> KDTree </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> KDTree </tag>
             
         </tags>
         
@@ -4036,9 +4046,9 @@
         
         <tags>
             
-            <tag> UOJ </tag>
-            
             <tag> 构造 </tag>
+            
+            <tag> UOJ </tag>
             
         </tags>
         
@@ -4487,9 +4497,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态树 </tag>
             
@@ -4721,9 +4731,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 动态树 </tag>
             
@@ -5888,9 +5898,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -6110,9 +6120,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -6335,11 +6345,11 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
@@ -6646,9 +6656,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6807,9 +6817,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 费用流 </tag>
             
@@ -7373,9 +7383,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -7400,9 +7410,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 整体二分 </tag>
             
@@ -7439,7 +7449,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[${\color{Yellow}【}{\color{Yellow}置}{\color{Yellow}顶}{\color{Yellow}】}$OIer的伤与痛]]></title>
+      <title><![CDATA[OIer的伤与痛]]></title>
       <url>/blog/2017/01/16/OIer%E7%9A%84%E4%BC%A4%E4%B8%8E%E7%97%9B/</url>
       <content type="html"><![CDATA[<ul>
 <li>本文为Menci在WC2017上的倾情歌唱，这是所有OIer共同的伤与痛<a id="more"></a> </li>
