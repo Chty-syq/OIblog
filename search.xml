@@ -854,20 +854,20 @@
 <h3 id="Theorem-2-1"><a href="#Theorem-2-1" class="headerlink" title="Theorem 2.1"></a>Theorem 2.1</h3><blockquote>
 <p>若素数$P$满足丢番图方程$x^2+y^2=P$无解，则$P$为高斯素数</p>
 </blockquote>
-<p>（1）证明充分性：若$P$为素数且$(a,b)$是丢番图方程$x^2+y^2=P$的一组解</p>
+<p>这个定理直接证比较困难，我们证明它的逆否命题：若$P$不是高斯素数，则丢番图方程$x^2+y^2=P$无解</p>
+<p>（1）证明必要性：若$P$为素数且$(a,b)$是丢番图方程$x^2+y^2=P$的一组解</p>
 <p>则$P=a^2+b^2=(a+bi)(a-bi)$，$P$不是高斯素数</p>
-<p>（2）证明必要性：若$P$不是高斯素数，设$P=(x+yi)(a+bi)=ax-by+(bx+ay)i$</p>
+<p>（2）证明充分性：若$P$不是高斯素数，设$P=(x+yi)(a+bi)=ax-by+(bx+ay)i$</p>
 <p>由于$P$是整数，故$ax-by=P$且$bx+ay=0$，得到$(a^2+b^2)x=aP$</p>
 <p>由于$a+bi$不是单位元，$a^2+b^2\neq 1$，且P为素数，故$a^2+b^2=P$</p>
 <p>故$P$不是高斯素数时，上述方程有解</p>
 <p>　　</p>
 <h3 id="Lemma-2-1"><a href="#Lemma-2-1" class="headerlink" title="Lemma 2.1"></a>Lemma 2.1</h3><blockquote>
-<p>若高斯整数z满足N(z)是素数，则z是高斯素数</p>
+<p>若高斯整数$z$满足$N(z)$是素数，则$z$是高斯素数</p>
 </blockquote>
+<p>我们同样证明它的逆否命题：若$z$不是高斯素数，则$N(z)$不是素数</p>
 <p>证明：若$z$不是高斯整数，则存在非单位元$a,b$满足$z=ab$</p>
 <p>则$N(z)=N(ab)=N(a)N(b)$，故$N(z)$不是素数</p>
-<font color="33FFFF"><br>注：引理2.1和定理2.1都是采用证明逆否命题的方式间接证明原命题<br></font>
-
 <p>　　</p>
 <h3 id="Theorem-2-2"><a href="#Theorem-2-2" class="headerlink" title="Theorem 2.2"></a>Theorem 2.2</h3><font color="yellow">高斯整数的代数基本定理（Fundermental Theorem of Arithmetic for Guassian Integers）</font>
 
@@ -2547,9 +2547,9 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 仙人掌 </tag>
             
             <tag> UOJ </tag>
             
@@ -2781,9 +2781,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -3867,9 +3867,9 @@
         
         <tags>
             
-            <tag> KDTree </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> KDTree </tag>
             
         </tags>
         
@@ -4046,9 +4046,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -4230,9 +4230,9 @@
             
             <tag> 51nod </tag>
             
-            <tag> AC自动机 </tag>
-            
             <tag> 数位dp </tag>
+            
+            <tag> AC自动机 </tag>
             
         </tags>
         
@@ -6120,9 +6120,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -7383,9 +7383,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -7440,9 +7440,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 整体二分 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 整体二分 </tag>
             
         </tags>
         
