@@ -350,6 +350,40 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【bzoj1938】ALADIN]]></title>
+      <url>/blog/2019/01/20/1938/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<ul>
+<li><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1938" target="_blank" rel="external">AC通道</a></li>
+</ul>
+<hr>
+<p>间问题我们考虑线段树，把区间离散掉</p>
+<p>假设线段树上当前被访问的区间是$[l,r]$，要修改的区间是$[L,R]$</p>
+<p>区间的和就是$\sum_{x=l}^{r}(x-L+1)\times A\%B$</p>
+<p>调整上下界化为$\sum_{x=l-L+1}^{r-L+1}Ax\%B=\sum_{x=l-L+1}^{r-L+1}Ax- B\sum_{x=l-L+1}^{r-L+1}\left \lfloor \frac{Ax}{B} \right \rfloor$</p>
+<p>这个和式的值左边是等差数列，右边可以类欧几里得算</p>
+<p>那么现在我们只需要维护求和上下界以及A,B的值就可以了</p>
+<p>值得注意的是离散化之后，$[mid,mid+1]$之间是有值存在的</p>
+<p>我们在划分区间时调整一下就可以了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 50010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">struct</span> event&#123;<span class="keyword">int</span> L,R,A,B,opt;&#125;eve[MAXN],tree[MAXN&lt;&lt;<span class="number">3</span>];</div><div class="line"><span class="keyword">int</span> tot,hash[MAXN&lt;&lt;<span class="number">1</span>];ll sum[MAXN&lt;&lt;<span class="number">3</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">hash_L</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> hash[x];&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">hash_R</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> hash[x+<span class="number">1</span>]<span class="number">-1</span>;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> !b?a:gcd(b,a%b);&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Simgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c,ll n)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(!a)&#123;</div><div class="line">		<span class="keyword">return</span> b&gt;=c?(n+<span class="number">1</span>):<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(a&gt;=c||b&gt;=c)&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">1L</span>L*n*(n+<span class="number">1</span>)/<span class="number">2</span>*(a/c)+<span class="number">1L</span>L*(n+<span class="number">1</span>)*(b/c)+Simgcd(a%c,b%c,c,n);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(a&lt;=c&amp;&amp;b&lt;=c)&#123;</div><div class="line">		ll m=<span class="number">1L</span>L*(a*n+b)/c;</div><div class="line">		<span class="keyword">return</span> <span class="number">1L</span>L*n*m-Simgcd(c,c-b<span class="number">-1</span>,a,m<span class="number">-1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> A,<span class="keyword">int</span> B)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> Gcd=gcd(A,B);</div><div class="line">	<span class="keyword">return</span> <span class="number">1L</span>L*n*(n+<span class="number">1</span>)/<span class="number">2</span>*A<span class="number">-1</span>LL*B*Simgcd(A/Gcd,<span class="number">0</span>,B/Gcd,n);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> A=tree[p].A,B=tree[p].B;</div><div class="line">	sum[p]=solve(tree[p].R,A,B)-solve(tree[p].L<span class="number">-1</span>,A,B);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(tree[p].B)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>,A=tree[p].A,B=tree[p].B;</div><div class="line">		tree[p&lt;&lt;<span class="number">1</span>].A=tree[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].A=A;</div><div class="line">		tree[p&lt;&lt;<span class="number">1</span>].B=tree[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].B=B;</div><div class="line">		tree[p&lt;&lt;<span class="number">1</span>].L=tree[p].L;</div><div class="line">		tree[p&lt;&lt;<span class="number">1</span>].R=tree[p].L+hash_R(mid)-hash_L(l);</div><div class="line">		tree[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].L=tree[p].L+hash_L(mid+<span class="number">1</span>)-hash_L(l);</div><div class="line">		tree[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].R=tree[p].R;</div><div class="line">		calc(p&lt;&lt;<span class="number">1</span>); calc(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	tree[p].B=<span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> A,<span class="keyword">int</span> B)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(L&lt;=l&amp;&amp;R&gt;=r)&#123;</div><div class="line">		tree[p].A=A;</div><div class="line">		tree[p].B=B;</div><div class="line">		tree[p].L=hash_L(l)-hash_L(L)+<span class="number">1</span>;</div><div class="line">		tree[p].R=hash_R(r)-hash_L(L)+<span class="number">1</span>;</div><div class="line">		calc(p);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>; pushdown(p,l,r);</div><div class="line">	<span class="keyword">if</span>(L&lt;=mid)   modify(p&lt;&lt;<span class="number">1</span>,l,mid,L,R,A,B);</div><div class="line">	<span class="keyword">if</span>(R&gt;=mid+<span class="number">1</span>) modify(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,L,R,A,B);</div><div class="line">	sum[p]=sum[p&lt;&lt;<span class="number">1</span>]+sum[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">query</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(L&lt;=l&amp;&amp;R&gt;=r) <span class="keyword">return</span> sum[p];</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>; pushdown(p,l,r);</div><div class="line">	ll ret=<span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(L&lt;=mid)   ret+=query(p&lt;&lt;<span class="number">1</span>,l,mid,L,R);</div><div class="line">	<span class="keyword">if</span>(R&gt;=mid+<span class="number">1</span>) ret+=query(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,L,R);</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	<span class="keyword">int</span> n=read(),Q=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;++i)&#123;</div><div class="line">		eve[i].opt=read(); eve[i].L=read(); eve[i].R=read();</div><div class="line">		hash[++tot]=eve[i].L; hash[++tot]=eve[i].R+<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(eve[i].opt&amp;<span class="number">1</span>)&#123;</div><div class="line">			eve[i].A=read();</div><div class="line">			eve[i].B=read();</div><div class="line">			eve[i].A%=eve[i].B;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	sort(hash+<span class="number">1</span>,hash+tot+<span class="number">1</span>);</div><div class="line">	tot=unique(hash+<span class="number">1</span>,hash+tot+<span class="number">1</span>)-hash<span class="number">-1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;++i)&#123;</div><div class="line">		<span class="keyword">int</span> L=lower_bound(hash+<span class="number">1</span>,hash+tot+<span class="number">1</span>,eve[i].L)-hash;</div><div class="line">		<span class="keyword">int</span> R=lower_bound(hash+<span class="number">1</span>,hash+tot+<span class="number">1</span>,eve[i].R+<span class="number">1</span>)-hash<span class="number">-1</span>;</div><div class="line">		<span class="keyword">if</span>(eve[i].opt&amp;<span class="number">1</span>) modify(<span class="number">1</span>,<span class="number">1</span>,tot,L,R,eve[i].A,eve[i].B);</div><div class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,query(<span class="number">1</span>,<span class="number">1</span>,tot,L,R));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> bzoj </tag>
+            
+            <tag> 线段树 </tag>
+            
+            <tag> 类欧几里得 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【算法笔记】指数提升定理]]></title>
       <url>/blog/2018/08/12/%E3%80%90%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E3%80%91%E6%8C%87%E6%95%B0%E6%8F%90%E5%8D%87%E5%AE%9A%E7%90%86/</url>
       <content type="html"><![CDATA[<ul>
@@ -2476,9 +2510,9 @@
         
         <tags>
             
-            <tag> 线段树 </tag>
-            
             <tag> 哈希 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> 日常小测 </tag>
             
@@ -2547,9 +2581,9 @@
         
         <tags>
             
-            <tag> 树形dp </tag>
-            
             <tag> 仙人掌 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
@@ -2781,9 +2815,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -2814,9 +2848,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 网络流 </tag>
+            
+            <tag> 计算几何 </tag>
             
         </tags>
         
@@ -2892,9 +2926,9 @@
             
             <tag> dp </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 线段树 </tag>
             
             <tag> CF </tag>
             
@@ -3732,11 +3766,11 @@
             
             <tag> bzoj </tag>
             
+            <tag> 网络流 </tag>
+            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
-            
-            <tag> 网络流 </tag>
             
             <tag> 三分 </tag>
             
@@ -4230,9 +4264,9 @@
             
             <tag> 51nod </tag>
             
-            <tag> 数位dp </tag>
-            
             <tag> AC自动机 </tag>
+            
+            <tag> 数位dp </tag>
             
         </tags>
         
@@ -6150,9 +6184,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
@@ -6658,9 +6692,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树形dp </tag>
-            
             <tag> 后缀自动机 </tag>
+            
+            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
@@ -6819,9 +6853,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 线段树 </tag>
-            
             <tag> 费用流 </tag>
+            
+            <tag> 线段树 </tag>
             
         </tags>
         
@@ -7163,9 +7197,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 莫比乌斯反演 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
@@ -7440,9 +7474,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 整体二分 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
