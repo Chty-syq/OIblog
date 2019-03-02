@@ -70,7 +70,28 @@
 <li>纪念那些年我们一起追过的动漫<a id="more"></a></li>
 </ul>
 <hr>
-<h2 id="新番追番表"><a href="#新番追番表" class="headerlink" title="新番追番表"></a>新番追番表</h2><h3 id="2018年10月新番"><a href="#2018年10月新番" class="headerlink" title="2018年10月新番"></a>2018年10月新番</h3><table>
+<h2 id="新番追番表"><a href="#新番追番表" class="headerlink" title="新番追番表"></a>新番追番表</h2><h3 id="2019年1月新番"><a href="#2019年1月新番" class="headerlink" title="2019年1月新番"></a>2019年1月新番</h3><table>
+<thead>
+<tr>
+<th><center><strong>番名</strong></center></th>
+<th><center><strong>类型</strong></center></th>
+<th><center><strong>备注</strong></center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>辉夜大小姐想让我告白</td>
+<td>恋爱搞笑</td>
+<td>这是我见过最牛逼的恋爱番</td>
+</tr>
+<tr>
+<td>明治东京恋伽</td>
+<td>异世界恋爱</td>
+<td>日本明治时期的历史，涨姿势了</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2018年10月新番"><a href="#2018年10月新番" class="headerlink" title="2018年10月新番"></a>2018年10月新番</h3><table>
 <thead>
 <tr>
 <th><center><strong>番名</strong></center></th>
@@ -350,6 +371,52 @@
     </entry>
     
     <entry>
+      <title><![CDATA[【康复训练】Codeforces做题总结]]></title>
+      <url>/blog/2019/02/28/Codeforces%E5%81%9A%E9%A2%98%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<ul>
+<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
+</ul>
+<hr>
+<h3 id="Codeforces1100F"><a href="#Codeforces1100F" class="headerlink" title="Codeforces1100F"></a>Codeforces1100F</h3><p>区间子序列最大异或和问题，这个数据范围线段树是跪了</p>
+<p>考虑离线处理，询问按右端点排序，在线性基中插数的时候保留位置</p>
+<p>显然这个位置越靠后越优，遇到这种情况就交换基中的数</p>
+<p>回答询问时，基中数的位置大于询问左端点时对答案有贡献</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 500010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">struct</span> Query&#123;</div><div class="line">	<span class="keyword">int</span> l,r,id;</div><div class="line">	<span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Query &amp;b)<span class="keyword">const</span>&#123;<span class="keyword">return</span> r&lt;b.r;&#125;</div><div class="line">&#125;Q[MAXN];</div><div class="line"><span class="keyword">int</span> n,m,L,b[<span class="number">55</span>],pos[<span class="number">55</span>],a[MAXN],Ans[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> P)</span></span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&gt;=<span class="number">0</span>;--i)<span class="keyword">if</span>(x&gt;&gt;i&amp;<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">if</span>(b[i])&#123;</div><div class="line">			<span class="keyword">if</span>(P&gt;pos[i]) </div><div class="line">				swap(b[i],x),swap(pos[i],P);</div><div class="line">			x^=b[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			b[i]=x; pos[i]=P;</div><div class="line">			<span class="comment">//for(int k=i-1;k&gt;=0;--k)if(b[k]&amp;&amp;(b[i]&gt;&gt;k&amp;1))b[i]^=b[k];</span></div><div class="line">			<span class="comment">//for(int k=i+1;k&lt;=L;++k)if(b[k]&amp;&amp;(b[i]&gt;&gt;k&amp;1))b[k]^=b[i];</span></div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=L;i&gt;=<span class="number">0</span>;--i)<span class="keyword">if</span>(pos[i]&gt;=x)cmax(ret,ret^b[i]);</div><div class="line">	<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	freopen(FILE<span class="string">".in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">	freopen(FILE<span class="string">".out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">	n=read(); L=<span class="number">20</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) a[i]=read();</div><div class="line">	m=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</div><div class="line">		<span class="keyword">int</span> l=read(),r=read();</div><div class="line">		Q[i]=(Query)&#123;l,r,i&#125;;</div><div class="line">	&#125;</div><div class="line">	sort(Q+<span class="number">1</span>,Q+m+<span class="number">1</span>); <span class="keyword">int</span> now=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</div><div class="line">		<span class="keyword">while</span>(now&lt;=Q[i].r&amp;&amp;now&lt;=n) insert(a[now],now),++now;</div><div class="line">		Ans[Q[i].id]=query(Q[i].l);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Ans[i]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="Codeforces1110E"><a href="#Codeforces1110E" class="headerlink" title="Codeforces1110E"></a>Codeforces1110E</h3><p>考虑差分序列$d_i$，每做一次题中的操作：</p>
+<p>$d_{i}’=c_{i+1}-c_{i}’=c_{i+1}-(c_{i+1}+c_{i-1}-c_{i})=c_{i}-c_{i-1}=d_{i-1}$</p>
+<p>$d_{i-1}’=c_{i}’-c_{i-1}=(c_{i+1}+c_{i-1}-c_{i})-c_{i-1}=c_{i+1}-c_{i}=d_{i}$</p>
+<p>所以题中操作等价于交换差分序列中的相邻两项，判断一下就好了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,a[MAXN],b[MAXN];</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Check</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(a[<span class="number">1</span>]!=b[<span class="number">1</span>]) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i) a[i]=a[i+<span class="number">1</span>]-a[i];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i) b[i]=b[i+<span class="number">1</span>]-b[i];</div><div class="line">	sort(a+<span class="number">1</span>,a+n); sort(b+<span class="number">1</span>,b+n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i) <span class="keyword">if</span>(a[i]!=b[i]) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</div><div class="line">	<span class="built_in">puts</span>(Check()?<span class="string">"Yes"</span>:<span class="string">"No"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="Codeforces1110D"><a href="#Codeforces1110D" class="headerlink" title="Codeforces1110D"></a>Codeforces1110D</h3><p>注意到如果有3个三元组$[i,i+1,i+2]$，那么可以用$[i,i,i],[i+1,i+1,i+1],[i+2,i+2,i+2]$代替答案</p>
+<p>考虑到数$i$只可能被包含在$[i-2,i-1,i],[i-1,i,i+1],[i,i+1,i+2]$三类三元组中</p>
+<p>所以我们需要设置其中两个的状态进行转移</p>
+<p>设$f[i][A][B]$表示前$i$个数中有A组$[i-1,i,i+1]$,B组$[i,i+1,i+2]$的答案</p>
+<p>考虑转移过程，$f[i-1][C][A]$表示前$i-1$个数中有C组$[i-2,i-1,i]$，A组$[i-1,i,i+1]$的答案</p>
+<p>所以数$i$一共被用去了$A+B+C$次，所以转移如下：</p>
+<p>$$f[i][A][B]=f[i-1][C][A]+B+(cnt[i]-A-B-C)/3$$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,m,cnt[MAXN],f[MAXN][<span class="number">3</span>][<span class="number">3</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">int</span> x; <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</div><div class="line">		cnt[x]++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)<span class="keyword">for</span>(<span class="keyword">int</span> A=<span class="number">0</span>;A&lt;<span class="number">3</span>;++A)</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> B=<span class="number">0</span>;B&lt;<span class="number">3</span>;++B)<span class="keyword">for</span>(<span class="keyword">int</span> C=<span class="number">0</span>;C&lt;<span class="number">3</span>;++C)<span class="keyword">if</span>(A+B+C&lt;=cnt[i])</div><div class="line">			cmax(f[i][A][B],f[i<span class="number">-1</span>][C][A]+B+(cnt[i]-A-B-C)/<span class="number">3</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,f[m][<span class="number">0</span>][<span class="number">0</span>]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> dp </tag>
+            
+            <tag> 差分 </tag>
+            
+            <tag> 线性基 </tag>
+            
+            <tag> CF </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[【HDU5958】New Signal Decomposition]]></title>
       <url>/blog/2019/02/18/5958/</url>
       <content type="html"><![CDATA[<ul>
@@ -403,11 +470,11 @@
         
         <tags>
             
+            <tag> LOJ </tag>
+            
             <tag> 离散对数 </tag>
             
             <tag> 多项式 </tag>
-            
-            <tag> LOJ </tag>
             
         </tags>
         
@@ -437,9 +504,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 类欧几里得 </tag>
             
@@ -1570,9 +1637,9 @@
         
         <tags>
             
-            <tag> dp </tag>
-            
             <tag> 51nod </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -1804,9 +1871,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1832,9 +1899,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2780,11 +2847,11 @@
         
         <tags>
             
-            <tag> 模拟 </tag>
+            <tag> 二分 </tag>
             
             <tag> 博弈论 </tag>
             
-            <tag> 二分 </tag>
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -2879,9 +2946,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -2988,9 +3055,9 @@
         
         <tags>
             
-            <tag> dp </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> dp </tag>
             
             <tag> 模拟 </tag>
             
@@ -3828,11 +3895,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -3965,9 +4032,9 @@
         
         <tags>
             
-            <tag> 算法笔记 </tag>
-            
             <tag> KDTree </tag>
+            
+            <tag> 算法笔记 </tag>
             
         </tags>
         
@@ -4595,9 +4662,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4829,9 +4896,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5846,9 +5913,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 哈希 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 最小割 </tag>
             
@@ -5996,9 +6063,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -6443,11 +6510,11 @@
         
         <tags>
             
+            <tag> 树形dp </tag>
+            
             <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
-            
-            <tag> 树形dp </tag>
             
             <tag> UOJ </tag>
             
@@ -6754,9 +6821,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -6915,9 +6982,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -7481,9 +7548,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 容斥原理 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 容斥原理 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -7508,9 +7575,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
