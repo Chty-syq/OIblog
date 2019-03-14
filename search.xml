@@ -377,7 +377,36 @@
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
 <hr>
-<h3 id="Codeforces1137C"><a href="#Codeforces1137C" class="headerlink" title="Codeforces1137C"></a>Codeforces1137C</h3><p>我们把每个点建成$(x,k)$，表示第$k$天的第$x$个城市，连边的话就是$(x,k)\arrow(y,k+1)$</p>
+<h3 id="Codeforces1136E"><a href="#Codeforces1136E" class="headerlink" title="Codeforces1136E"></a>Codeforces1136E</h3><p>题目中的判断条件可以搞一搞</p>
+<p>$$a_{i+1}&lt;a_{i}+k_{i}\Leftrightarrow a_{i+1}-a_{i}&lt;k_{i}$$</p>
+<p>我们想办法把右边化成和左边一样的形式，很容易想到前缀和之差</p>
+<p>$$a_{i+1}-a_{i}&lt;Sumk_{i+1}-Sumk_{i}$$</p>
+<p>我们用线段树维护$b_{i}=a_{i}+Sumk_{i-1}$</p>
+<p>那么修改就相当于在该点右端找到第一个大于$b_{i}$的数，然后区间覆盖</p>
+<p>这份代码在CF上跑了第一（我的线段树什么时候这么优秀了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll INF=<span class="number">1e18</span>;</div><div class="line"><span class="keyword">struct</span> Segment_Tree&#123;</div><div class="line">	ll sum,maxx,tag;</div><div class="line">	Segment_Tree()&#123;tag=-INF;&#125;</div><div class="line">&#125;tr[MAXN&lt;&lt;<span class="number">2</span>];</div><div class="line">ll n,Q,a[MAXN],b[MAXN],c[MAXN],S[MAXN],K[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	ll x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">relord</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</div><div class="line">	tr[p].sum=tr[p&lt;&lt;<span class="number">1</span>].sum+tr[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].sum;</div><div class="line">	tr[p].maxx=max(tr[p&lt;&lt;<span class="number">1</span>].maxx,tr[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].maxx);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(tr[p].tag!=-INF)&#123;</div><div class="line">		tr[p&lt;&lt;<span class="number">1</span>].tag=tr[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].tag=tr[p].tag;</div><div class="line">		tr[p&lt;&lt;<span class="number">1</span>].maxx=tr[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].maxx=tr[p].tag;</div><div class="line">		tr[p&lt;&lt;<span class="number">1</span>].sum=tr[p].tag*(mid-l+<span class="number">1</span>);</div><div class="line">		tr[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].sum=tr[p].tag*(r-mid);</div><div class="line">	&#125;</div><div class="line">	tr[p].tag=-INF;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(l==r)&#123;</div><div class="line">		tr[p].sum=tr[p].maxx=b[l];</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">	build(p&lt;&lt;<span class="number">1</span>,l,mid);</div><div class="line">	build(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r);</div><div class="line">	relord(p);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y,ll v)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(l==r) <span class="keyword">return</span> l;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>; pushdown(p,l,r);</div><div class="line">	<span class="keyword">if</span>(x&lt;=mid&amp;&amp;tr[p&lt;&lt;<span class="number">1</span>].maxx&gt;=v) <span class="keyword">return</span> find(p&lt;&lt;<span class="number">1</span>,l,mid,x,y,v);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(y&gt;mid&amp;&amp;tr[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].maxx&gt;=v) <span class="keyword">return</span> find(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y,v);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> n+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y,ll v)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;y&gt;=r)&#123;</div><div class="line">		tr[p].tag=tr[p].maxx=v;</div><div class="line">		tr[p].sum=v*(r-l+<span class="number">1</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>; pushdown(p,l,r);</div><div class="line">	<span class="keyword">if</span>(x&lt;=mid) modify(p&lt;&lt;<span class="number">1</span>,l,mid,x,y,v);</div><div class="line">	<span class="keyword">if</span>(y&gt;mid) modify(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y,v);</div><div class="line">	relord(p);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">query</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;y&gt;=r) <span class="keyword">return</span> tr[p].sum;</div><div class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;ll Ans=<span class="number">0</span>; pushdown(p,l,r);</div><div class="line">	<span class="keyword">if</span>(x&lt;=mid) Ans+=query(p&lt;&lt;<span class="number">1</span>,l,mid,x,y);</div><div class="line">	<span class="keyword">if</span>(y&gt;mid) Ans+=query(p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y);</div><div class="line">	<span class="keyword">return</span> Ans;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> x,ll v)</span></span>&#123;</div><div class="line">	ll Value=query(<span class="number">1</span>,<span class="number">1</span>,n,x,x)+v;</div><div class="line">	<span class="keyword">int</span> r=find(<span class="number">1</span>,<span class="number">1</span>,n,x+<span class="number">1</span>,n,Value)<span class="number">-1</span>;</div><div class="line">	modify(<span class="number">1</span>,<span class="number">1</span>,n,x,r,Value);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Sum</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%I64d\n"</span>,query(<span class="number">1</span>,<span class="number">1</span>,n,x,y)+S[y<span class="number">-1</span>]-S[x<span class="number">-2</span>]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) a[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)  K[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) c[i]=c[i<span class="number">-1</span>]+K[i];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) b[i]=a[i]-c[i<span class="number">-1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) S[i]=S[i<span class="number">-1</span>]+c[i];</div><div class="line">	build(<span class="number">1</span>,<span class="number">1</span>,n); Q=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;++i)&#123;</div><div class="line">		<span class="keyword">char</span> ch[<span class="number">3</span>]; <span class="built_in">scanf</span>(<span class="string">"%s"</span>,ch); <span class="keyword">int</span> x=read(),y=read();</div><div class="line">		<span class="keyword">if</span>(ch[<span class="number">0</span>]==<span class="string">'+'</span>) Add(x,y);</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(ch[<span class="number">0</span>]==<span class="string">'s'</span>) Sum(x,y);</div><div class="line">		<span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"出题人SB"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="Codeforces2B"><a href="#Codeforces2B" class="headerlink" title="Codeforces2B"></a>Codeforces2B</h3><p>末尾0的数量分开考虑乘积中2和5的贡献，取较小的就是答案</p>
+<p>矩阵中有0的情况得单独考虑</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">1e9</span>;</div><div class="line"><span class="keyword">int</span> n,sx,sy,a[MAXN][MAXN],b[MAXN][MAXN],f[MAXN][MAXN][<span class="number">2</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="built_in">puts</span>(<span class="string">"1"</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;x;++i) <span class="built_in">putchar</span>(<span class="string">'D'</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;y;++i) <span class="built_in">putchar</span>(<span class="string">'R'</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;n;++i) <span class="built_in">putchar</span>(<span class="string">'D'</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=y;i&lt;n;++i) <span class="built_in">putchar</span>(<span class="string">'R'</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> id)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x==<span class="number">1</span>&amp;&amp;y==<span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(x==<span class="number">1</span>) solve(x,y<span class="number">-1</span>,id),<span class="built_in">putchar</span>(<span class="string">'R'</span>);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(y==<span class="number">1</span>) solve(x<span class="number">-1</span>,y,id),<span class="built_in">putchar</span>(<span class="string">'D'</span>);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(f[x<span class="number">-1</span>][y][id]&lt;f[x][y<span class="number">-1</span>][id]) solve(x<span class="number">-1</span>,y,id),<span class="built_in">putchar</span>(<span class="string">'D'</span>);</div><div class="line">	<span class="keyword">else</span> solve(x,y<span class="number">-1</span>,id),<span class="built_in">putchar</span>(<span class="string">'R'</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read(); <span class="keyword">int</span> Flag=<span class="number">0</span>;</div><div class="line">	<span class="built_in">memset</span>(f,<span class="number">10</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)&#123;</div><div class="line">		<span class="keyword">int</span> x=read();</div><div class="line">		<span class="keyword">if</span>(!x)&#123;</div><div class="line">			a[i][j]=b[i][j]=INF;</div><div class="line">			Flag=<span class="number">1</span>; sx=i; sy=j;</div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span>(x%<span class="number">2</span>==<span class="number">0</span>) ++a[i][j],x/=<span class="number">2</span>;</div><div class="line">		<span class="keyword">while</span>(x%<span class="number">5</span>==<span class="number">0</span>) ++b[i][j],x/=<span class="number">5</span>;</div><div class="line">	&#125;</div><div class="line">	f[<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>]=a[<span class="number">1</span>][<span class="number">1</span>];</div><div class="line">	f[<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>]=b[<span class="number">1</span>][<span class="number">1</span>];</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)&#123;</div><div class="line">		cmin(f[i+<span class="number">1</span>][j][<span class="number">0</span>],f[i][j][<span class="number">0</span>]+a[i+<span class="number">1</span>][j]);</div><div class="line">		cmin(f[i][j+<span class="number">1</span>][<span class="number">0</span>],f[i][j][<span class="number">0</span>]+a[i][j+<span class="number">1</span>]);</div><div class="line">		cmin(f[i+<span class="number">1</span>][j][<span class="number">1</span>],f[i][j][<span class="number">1</span>]+b[i+<span class="number">1</span>][j]);</div><div class="line">		cmin(f[i][j+<span class="number">1</span>][<span class="number">1</span>],f[i][j][<span class="number">1</span>]+b[i][j+<span class="number">1</span>]);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(Flag&amp;&amp;min(f[n][n][<span class="number">0</span>],f[n][n][<span class="number">1</span>])) solve(sx,sy);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(f[n][n][<span class="number">0</span>]&lt;f[n][n][<span class="number">1</span>])&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,f[n][n][<span class="number">0</span>]);</div><div class="line">		solve(n,n,<span class="number">0</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,f[n][n][<span class="number">1</span>]);</div><div class="line">		solve(n,n,<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="Codeforces607B"><a href="#Codeforces607B" class="headerlink" title="Codeforces607B"></a>Codeforces607B</h3><p>这种删除游戏还是挺有意思的</p>
+<p>设$f[l][r]$表示删除区间$[l,r]$的答案，那么分情况讨论</p>
+<ol>
+<li><p>左端点单独删除$f[l][r]=f[l+1][r]+1$</p>
+</li>
+<li><p>左端点与相邻位置颜色相同可以一起删除$f[l][r]=f[l+2][r]+1$</p>
+</li>
+<li><p>找到一个与左端点颜色相同的位置$k$，左端点与位置$k$随区间$[l+1,k-1]$一起删除，$f[l][r]=f[l+1][k-1]+f[k+1][r]$</p>
+</li>
+</ol>
+<p>记忆化搜索无脑实现即可</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,S[<span class="number">505</span>],f[<span class="number">505</span>][<span class="number">505</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(l&gt;r) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(l==r) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(f[l][r]!=<span class="number">-1</span>) <span class="keyword">return</span> f[l][r];</div><div class="line">	f[l][r]=solve(l+<span class="number">1</span>,r)+<span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(S[l]==S[l+<span class="number">1</span>]) cmin(f[l][r],solve(l+<span class="number">2</span>,r)+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=l+<span class="number">2</span>;k&lt;=r;++k)<span class="keyword">if</span>(S[l]==S[k])</div><div class="line">		cmin(f[l][r],solve(l+<span class="number">1</span>,k<span class="number">-1</span>)+solve(k+<span class="number">1</span>,r));</div><div class="line">	<span class="keyword">return</span> f[l][r];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read(); <span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span>(f));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) S[i]=read();</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,solve(<span class="number">1</span>,n));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="Codeforces1137C"><a href="#Codeforces1137C" class="headerlink" title="Codeforces1137C"></a>Codeforces1137C</h3><p>我们把每个点建成$(x,k)$，表示第$k$天的第$x$个城市，连边的话就是$(x,k)\rightarrow(y,k+1)$</p>
 <p>我们发现一个强连通分量中所有的状态都能到达，并且对于同一个城市$x$，若$(x,i),(x,j)$有边相连，则他们必然在同一个SCC中</p>
 <p>这样的话求一下SCC，然后统计SCC中能到达的不同博物馆个数</p>
 <p>然后在缩点后的图上按拓扑序统计答案就行了</p>
@@ -407,7 +436,7 @@
 <ol>
 <li><p>单独删除左端点字符，$f[l][r]=f[l+1][r]+1$</p>
 </li>
-<li><p>左端点字符和区间中另外一个相同字符一起删除，$f[l][r]=min{f[l+1][k-1],f[k][r]}(s[l]==s[k])$</p>
+<li><p>左端点字符和区间中另外一个相同字符一起删除，$f[l][r]= min(f[l+1][k-1],f[k][r])(s[l]==s[k])$</p>
 </li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 555</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmax(a,b) a=max(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmin(a,b) a=min(a,b)</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF=<span class="number">1e9</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,f[MAXN][MAXN];</div><div class="line"><span class="keyword">char</span> S[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(l&gt;r) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(l==r) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span>(f[l][r]!=INF) <span class="keyword">return</span> f[l][r];</div><div class="line">	f[l][r]=solve(l+<span class="number">1</span>,r)+<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=l+<span class="number">1</span>;k&lt;=r;++k)<span class="keyword">if</span>(S[k]==S[l])</div><div class="line">		cmin(f[l][r],solve(l+<span class="number">1</span>,k<span class="number">-1</span>)+solve(k,r));</div><div class="line">	<span class="keyword">return</span> f[l][r];</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%s"</span>,&amp;n,S+<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)f[i][j]=INF;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,solve(<span class="number">1</span>,n));</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -566,9 +595,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 类欧几里得 </tag>
             
@@ -1699,9 +1728,9 @@
         
         <tags>
             
-            <tag> dp </tag>
-            
             <tag> 51nod </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -1933,9 +1962,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -1961,9 +1990,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2774,9 +2803,9 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 仙人掌 </tag>
             
             <tag> UOJ </tag>
             
@@ -2911,9 +2940,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 模拟 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 模拟 </tag>
             
             <tag> 搜索 </tag>
             
@@ -3008,9 +3037,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -3041,9 +3070,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 网络流 </tag>
+            
+            <tag> 计算几何 </tag>
             
         </tags>
         
@@ -3957,11 +3986,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -4094,9 +4123,9 @@
         
         <tags>
             
-            <tag> KDTree </tag>
-            
             <tag> 算法笔记 </tag>
+            
+            <tag> KDTree </tag>
             
         </tags>
         
@@ -4724,9 +4753,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -4958,9 +4987,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -6125,9 +6154,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -6572,9 +6601,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -6883,13 +6912,13 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
             
-            <tag> 后缀自动机 </tag>
+            <tag> bzoj </tag>
             
             <tag> UOJ </tag>
+            
+            <tag> 后缀自动机 </tag>
             
         </tags>
         
@@ -7044,9 +7073,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -7637,9 +7666,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
