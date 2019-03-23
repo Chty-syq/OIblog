@@ -377,6 +377,21 @@
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
 <hr>
+<h3 id="Codeforces1139D"><a href="#Codeforces1139D" class="headerlink" title="Codeforces1139D"></a>Codeforces1139D</h3><p>有趣的概率问题，比赛时脑残了一直WA</p>
+<p>正常做的话思路还是比较简单的，Tutorial评论区给出了奇妙的Mobius做法</p>
+<p>我们知道答案是$$E(gcd(a_i)&gt;1)+1$$但是这个期望不太好算的样子</p>
+<p>我们尝试计算$E_k(k|a_i)$，那么$$E(gcd(a_i)&gt;1)=\sum_{k=1}^{m}-\mu(k)E_k(k|a_i)$$</p>
+<p>为什么这个式子成立？其实就是一个容斥，贡献系数与Mobius函数有关</p>
+<p>那么接下来就是计算$E_k(k|a_i)$的问题了，设$P_k=P(k|rand())=\frac{\left\lfloor m/k \right\rfloor}{m}$，那么$$E_k(k|a_i)=\sum_{n=1}^{+\infty}nP_{k}^{n}(1-P_k)=\frac{P_k}{1-P_k}$$</p>
+<p>注：$$\sum_{n=1}^{+\infty}nx^n(1-x)=x\sum_{n=1}^{+\infty}{(x^{n})}’-x^2\sum_{n=1}^{+\infty}{(x^{n})}’=(x-x^2){(\sum_{n=1}^{+\infty}x^n)}’=x(1-x){(\frac{x}{1-x})}’=\frac{x}{1-x}$$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100010</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cadd(a,b) a=add(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> csub(a,b) a=sub(a,b)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> cmul(a,b) a=mul(a,b)</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod=<span class="number">1e9</span>+<span class="number">7</span>;</div><div class="line"><span class="keyword">int</span> m,cnt,Ans,mu[MAXN],check[MAXN],prime[MAXN/<span class="number">10</span>];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a+=b)&gt;=mod?a-mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> (a-=b)&lt;<span class="number">0</span>?a+mod:a;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;<span class="keyword">return</span> <span class="number">1L</span>L*a*b%mod;&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Pow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> ret=<span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span>(b)&#123;</div><div class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>) cmul(ret,a);</div><div class="line">		cmul(a,a); b&gt;&gt;=<span class="number">1</span>;</div><div class="line">	&#125;<span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;<span class="keyword">return</span> Pow(a,mod<span class="number">-2</span>);&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> N=m; Ans=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!check[i]) prime[++cnt]=i,mu[i]=sub(<span class="number">0</span>,<span class="number">1</span>);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]*i&lt;=N;++j)&#123;</div><div class="line">			check[prime[j]*i]=<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">			mu[prime[j]*i]=sub(<span class="number">0</span>,mu[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;mu[<span class="number">1</span>]=<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m); Init(); </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</div><div class="line">		<span class="keyword">int</span> P=mul(m/i,inv(m));</div><div class="line">		csub(Ans,mul(mu[i],mul(P,inv(sub(<span class="number">1</span>,P)))));</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Ans);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
+<h3 id="Codeforces1139E"><a href="#Codeforces1139E" class="headerlink" title="Codeforces1139E"></a>Codeforces1139E</h3><p>倒着做删除就变成了添加，每个$p_i$向$c_i$连边，问题就变成了一个匹配问题</p>
+<p>由于是求最大的$mex$，我们从0开始匹配，直到匹配不上为止就行了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FILE <span class="meta-string">"read"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 5010</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> n,m,d,p[MAXN],c[MAXN],del[MAXN],vis[MAXN],Mat[MAXN],Ans[MAXN];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[MAXN];</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>; <span class="keyword">char</span> ch=getchar();</div><div class="line">	<span class="keyword">while</span>(ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=<span class="number">-1</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) &#123;x=x*<span class="number">10</span>+ch-<span class="string">'0'</span>; ch=getchar();&#125;</div><div class="line">	<span class="keyword">return</span> x*f;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Match</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(vis[x]) <span class="keyword">return</span> <span class="number">0</span>; vis[x]=<span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;G[x].size();++i)&#123;</div><div class="line">		<span class="keyword">int</span> y=G[x][i];</div><div class="line">		<span class="keyword">if</span>(Mat[y]==<span class="number">-1</span>||Match(Mat[y]))&#123;</div><div class="line">			Mat[y]=x;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="comment">//freopen(FILE".in","r",stdin);</span></div><div class="line">	<span class="comment">//freopen(FILE".out","w",stdout);</span></div><div class="line">	n=read(); m=read(); <span class="keyword">int</span> cur=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) p[i]=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) c[i]=read();</div><div class="line">	d=read();</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=d;++i)&#123;</div><div class="line">		del[i]=read();</div><div class="line">		vis[del[i]]=<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</div><div class="line">		<span class="keyword">if</span>(!vis[i]) G[p[i]].push_back(c[i]);</div><div class="line">	<span class="built_in">memset</span>(Mat,<span class="number">-1</span>,<span class="keyword">sizeof</span>(Mat));</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=d;i&gt;=<span class="number">1</span>;--i)&#123;</div><div class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">			<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</div><div class="line">			<span class="keyword">if</span>(Match(cur)) ++cur;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		G[p[del[i]]].push_back(c[del[i]]);</div><div class="line">		Ans[i]=cur;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=d;++i) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,Ans[i]);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>　　</p>
+<p>　　</p>
 <h3 id="Codeforces1136E"><a href="#Codeforces1136E" class="headerlink" title="Codeforces1136E"></a>Codeforces1136E</h3><p>题目中的判断条件可以搞一搞</p>
 <p>$$a_{i+1}&lt;a_{i}+k_{i}\Leftrightarrow a_{i+1}-a_{i}&lt;k_{i}$$</p>
 <p>我们想办法把右边化成和左边一样的形式，很容易想到前缀和之差</p>
@@ -503,60 +518,9 @@
             
             <tag> CF </tag>
             
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[职规作品展示]]></title>
-      <url>/blog/2019/02/18/%E8%81%8C%E8%A7%84%E4%BD%9C%E5%93%81%E5%B1%95%E7%A4%BA/</url>
-      <content type="html"><![CDATA[<ul>
-<li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
-</ul>
-<hr>
-<h2 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h2><p>宋逸群：程序员</p>
-<p>张浩康：大学教师</p>
-<p>高兴：律师</p>
-<p>拉莱：医生</p>
-<p>米玉湘：会计师</p>
-<p>陈梓萱：心理咨询师</p>
-<h2 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h2><p>毕业之时约定十年后重聚</p>
-<p>六个人相互写信，以同学聚会结尾</p>
-<p>大学教师$\rightarrow$医生$\rightarrow$心理咨询师$\rightarrow$会计师$\rightarrow$律师$\rightarrow$程序员</p>
-<h2 id="服装及场地"><a href="#服装及场地" class="headerlink" title="服装及场地"></a>服装及场地</h2><p>律师：西装 + 教室</p>
-<p>医生：白大褂 + 校医院</p>
-<p>会计师：衬衫 + 辅导员办公室</p>
-<p>程序员：电脑 + 随意</p>
-<p>大学教师：普通服装 + 教室</p>
-<p>系里咨询师：普通服装 + 心理咨询室</p>
-<h2 id="旁白及背景音乐"><a href="#旁白及背景音乐" class="headerlink" title="旁白及背景音乐"></a>旁白及背景音乐</h2><p>待定</p>
-<font color="red" size="4">DDL：本周日</font>
-
-<h2 id="剧本"><a href="#剧本" class="headerlink" title="剧本"></a>剧本</h2><ol>
-<li>毕业分别</li>
-</ol>
-<p>一张照片表示已经毕业</p>
-<ol>
-<li>同学聚会</li>
-</ol>
-<p>月牙楼，穿着随意一些</p>
-<ol>
-<li>分镜剧本</li>
-</ol>
-<p>待定</p>
-<font color="red" size="4">DDL：下周四</font>
-
-
-
-
-
-
-]]></content>
-      
-        
-        <tags>
+            <tag> 级数求和 </tag>
             
-            <tag> ZJU </tag>
+            <tag> 概率论 </tag>
             
         </tags>
         
@@ -650,9 +614,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 类欧几里得 </tag>
             
@@ -2017,9 +1981,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2045,9 +2009,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2858,9 +2822,9 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 仙人掌 </tag>
             
             <tag> UOJ </tag>
             
@@ -3092,9 +3056,9 @@
         
         <tags>
             
-            <tag> 计算几何 </tag>
-            
             <tag> 二分 </tag>
+            
+            <tag> 计算几何 </tag>
             
             <tag> CF </tag>
             
@@ -4041,11 +4005,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -4178,9 +4142,9 @@
         
         <tags>
             
-            <tag> 算法笔记 </tag>
-            
             <tag> KDTree </tag>
+            
+            <tag> 算法笔记 </tag>
             
         </tags>
         
@@ -4357,9 +4321,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -4808,9 +4772,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5042,9 +5006,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -6209,9 +6173,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -6461,9 +6425,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
@@ -6656,9 +6620,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -6967,9 +6931,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -7128,9 +7092,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -7474,9 +7438,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 树状数组 </tag>
-            
             <tag> 莫比乌斯反演 </tag>
+            
+            <tag> 树状数组 </tag>
             
         </tags>
         
@@ -7721,9 +7685,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
