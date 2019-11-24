@@ -377,6 +377,7 @@
 <li>本文为博主原创，未经许可不得转载<a id="more"></a></li>
 </ul>
 <hr>
+<p>### </p>
 <h3 id="Codeforces1142B"><a href="#Codeforces1142B" class="headerlink" title="Codeforces1142B"></a>Codeforces1142B</h3><p>循环位移相关问题，我们记录一下值的链接关系</p>
 <p>然后对于每一个$l$，求出包含循环位移的最小右端点$r$，然后就可以$O(1)$回答询问了</p>
 <p>我们从后往前扫，把当前值看成匹配循环位移的第一个，倍增找答案，然后与上一个取min就行了</p>
@@ -510,6 +511,8 @@
             
             <tag> 线段树 </tag>
             
+            <tag> 计算几何 </tag>
+            
             <tag> dp </tag>
             
             <tag> 二分 </tag>
@@ -527,6 +530,8 @@
             <tag> 级数求和 </tag>
             
             <tag> 概率论 </tag>
+            
+            <tag> 倍增 </tag>
             
         </tags>
         
@@ -2965,9 +2970,9 @@
             
             <tag> 二分 </tag>
             
-            <tag> 博弈论 </tag>
-            
             <tag> 模拟 </tag>
+            
+            <tag> 博弈论 </tag>
             
             <tag> 搜索 </tag>
             
@@ -3062,9 +3067,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -4327,9 +4332,9 @@
         
         <tags>
             
-            <tag> 构造 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 构造 </tag>
             
         </tags>
         
@@ -6401,9 +6406,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -6431,9 +6436,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 最短路 </tag>
-            
             <tag> UOJ </tag>
+            
+            <tag> 最短路 </tag>
             
             <tag> 概率dp </tag>
             
@@ -7444,9 +7449,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 莫比乌斯反演 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 莫比乌斯反演 </tag>
             
         </tags>
         
@@ -7664,9 +7669,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -7721,9 +7726,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 整体二分 </tag>
-            
             <tag> 树状数组 </tag>
+            
+            <tag> 整体二分 </tag>
             
         </tags>
         
