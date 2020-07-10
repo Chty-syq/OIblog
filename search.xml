@@ -511,11 +511,11 @@
             
             <tag> 线段树 </tag>
             
+            <tag> 计算几何 </tag>
+            
             <tag> dp </tag>
             
             <tag> 二分 </tag>
-            
-            <tag> 计算几何 </tag>
             
             <tag> tarjan </tag>
             
@@ -591,11 +591,11 @@
         
         <tags>
             
-            <tag> LOJ </tag>
-            
             <tag> 离散对数 </tag>
             
             <tag> 多项式 </tag>
+            
+            <tag> LOJ </tag>
             
         </tags>
         
@@ -625,9 +625,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 类欧几里得 </tag>
             
@@ -1992,9 +1992,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2020,9 +2020,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 线性基 </tag>
             
@@ -2833,9 +2833,9 @@
         
         <tags>
             
-            <tag> 仙人掌 </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> 仙人掌 </tag>
             
             <tag> UOJ </tag>
             
@@ -3067,9 +3067,9 @@
         
         <tags>
             
-            <tag> 二分 </tag>
-            
             <tag> 计算几何 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> CF </tag>
             
@@ -3213,9 +3213,9 @@
         
         <tags>
             
-            <tag> UOJ </tag>
-            
             <tag> 斜率优化 </tag>
+            
+            <tag> UOJ </tag>
             
             <tag> 凸包 </tag>
             
@@ -4016,11 +4016,11 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
             
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 网络流 </tag>
             
@@ -4783,9 +4783,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -5017,9 +5017,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 动态树 </tag>
             
@@ -6184,9 +6184,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 树链剖分 </tag>
             
@@ -6406,9 +6406,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> dp </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> dp </tag>
             
         </tags>
         
@@ -6631,9 +6631,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 容斥原理 </tag>
             
@@ -6942,9 +6942,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 树形dp </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 后缀自动机 </tag>
             
@@ -7103,9 +7103,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 费用流 </tag>
             
@@ -7669,9 +7669,9 @@
             
             <tag> bzoj </tag>
             
-            <tag> 二分 </tag>
-            
             <tag> 容斥原理 </tag>
+            
+            <tag> 二分 </tag>
             
             <tag> 莫比乌斯反演 </tag>
             
@@ -7696,9 +7696,9 @@
         
         <tags>
             
-            <tag> bzoj </tag>
-            
             <tag> 线段树 </tag>
+            
+            <tag> bzoj </tag>
             
             <tag> 整体二分 </tag>
             
